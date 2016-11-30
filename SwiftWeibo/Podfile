@@ -1,0 +1,19 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+
+use_frameworks!
+
+target 'SwiftWeibo' do
+
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'YYModel'
+pod 'FMDB'
+pod 'SVProgressHUD'
+pod 'pop'
+
+
+
+end

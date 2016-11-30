@@ -1,0 +1,41 @@
+[
+  {
+    "visitorInfo" : {
+      "tipTitle" : "关注一些人,回这里看看有什么惊喜!!!",
+      "imageName" : ""
+    },
+    "className" : "JPHomeController",
+    "imageName" : "home",
+    "classTitle" : "首页"
+  },
+  {
+    "visitorInfo" : {
+      "tipTitle" : "登录后,别人评论你的微薄,发给你的消息,都会在这里收到通知!!!",
+      "imageName" : "visitordiscover_image_message"
+    },
+    "className" : "JPMessageController",
+    "imageName" : "message_center",
+    "classTitle" : "消息"
+  },
+  {
+    "className" : "UIViewController"
+  },
+  {
+    "visitorInfo" : {
+      "tipTitle" : "登录后,最新最热微博尽在掌握,不再会与实事潮流擦肩而过!!!",
+      "imageName" : "visitordiscover_image_message"
+    },
+    "className" : "JPDiscoverController",
+    "imageName" : "discover",
+    "classTitle" : "发现"
+  },
+  {
+    "visitorInfo" : {
+      "tipTitle" : "登录后,你的微博,相册,个人信息资料会显示在这里,展示给别人看!!!",
+      "imageName" : "visitordiscover_image_profile"
+    },
+    "className" : "JPProfileController",
+    "imageName" : "profile",
+    "classTitle" : "我"
+  }
+]
