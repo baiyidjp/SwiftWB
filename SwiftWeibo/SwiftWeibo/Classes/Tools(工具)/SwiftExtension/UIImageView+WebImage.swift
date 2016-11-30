@@ -16,7 +16,7 @@ extension UIImageView {
     ///   - urlString: 图像URL
     ///   - placeholderImage: 占位图
     ///   - isRound: 是否是圆形
-    func jp_setWebImage(urlString: String?,placeholderImage: UIImage?,isRound: Bool = false) {
+    func jp_setWebImage(urlString: String?,placeholderImage: UIImage?,isRound: Bool = false,backColor: UIColor = UIColor.white,lineColor: UIColor = UIColor.lightGray) {
         
         guard let urlString = urlString,
               let url = URL(string: urlString) else {
@@ -30,7 +30,7 @@ extension UIImageView {
         sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) { [weak self](image, _, _, _) in
             if isRound  {
                 
-               self?.image = image?.jp_newRoundImage(size: self?.bounds.size)
+               self?.image = image?.jp_newRoundImage(size: self?.bounds.size,backColor: backColor)
             }
         }
     }

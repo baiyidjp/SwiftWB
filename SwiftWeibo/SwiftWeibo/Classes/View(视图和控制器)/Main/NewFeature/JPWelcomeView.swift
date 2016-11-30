@@ -65,7 +65,7 @@ extension JPWelcomeView {
         
         welcomeLable.alpha = 0
 
-        avatarImage.jp_setWebImage(urlString: JPNetworkManager.sharedManager.userAccount.avatar_large, placeholderImage: #imageLiteral(resourceName: "avatar_default_big"), isRound: true)
+        avatarImage.jp_setWebImage(urlString: JPNetworkManager.sharedManager.userAccount.avatar_large, placeholderImage: #imageLiteral(resourceName: "avatar_default_big"), isRound: true,backColor: UIColor(patternImage: #imageLiteral(resourceName: "ad_background")))
         
         setViewConstraints()
     }
