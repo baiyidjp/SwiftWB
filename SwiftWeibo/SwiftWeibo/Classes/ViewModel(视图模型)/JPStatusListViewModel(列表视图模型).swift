@@ -71,10 +71,10 @@ class JPStatusListViewModel: NSObject {
                 completion(isSuccess, false)
             }else{
                 
-                self.cacheSingleImage(statusViewModels: statusViewModels)
+                self.cacheSingleImage(statusViewModels: statusViewModels, finished: completion)
                 
-                /// 完成回调
-                completion(isSuccess,true)
+                /// 完成回调 -- 应该是在所有单张图片缓存完成后再回调
+//                completion(isSuccess,true)
             }
             
         }
@@ -83,7 +83,7 @@ class JPStatusListViewModel: NSObject {
     /// 缓存当前请求回来的微博数据中的 单张图片
     ///
     /// - Parameter statusViewModels: 当前请求回来的微博的viewmodle列表
-    fileprivate func cacheSingleImage(statusViewModels: [JPStatusViewModel]) {
+    fileprivate func cacheSingleImage(statusViewModels: [JPStatusViewModel], finished: @escaping (_ isSuccess: Bool,_ isReloadData: Bool)->()) {
         
         //创建调度组
         let group = DispatchGroup()
@@ -118,6 +118,9 @@ class JPStatusListViewModel: NSObject {
                     let data = UIImagePNGRepresentation(image) {
                     
                     imageData += data.count
+                    
+                    //更新单条微博viewmodel中的配图的size
+                    viewModel.updatePicViewSizeWithImage(image: image)
                 }
                 
 //                print("缓存的图像是--- \(image) 大小--\(imageData)")
@@ -131,6 +134,8 @@ class JPStatusListViewModel: NSObject {
         group.notify(queue: DispatchQueue.main) {
             
             print("图像缓存完成---\(imageData/1024)K")
+            /// 完成回调 -- 应该是在所有单张图片缓存完成后再回调
+            finished(true,true)
         }
     }
 }

@@ -48,8 +48,8 @@ class JPStatusCell: UITableViewCell {
             iconView.jp_setWebImage(urlString: statusViewModel?.status.user?.profile_image_url, placeholderImage: #imageLiteral(resourceName: "avatar_default"),isRound: true)
             ///将模型赋值给bar
             statusToolBar.statusViewModel = statusViewModel
-            /// 配图
-            pictureView.heightCons.constant = statusViewModel?.pictureViewSize.height ?? 0
+            /// 配图的视图模型
+            pictureView.statusViewModel = statusViewModel
             /// 配图的URLS
             //测试4张图
 //            if statusViewModel?.status.pic_urls?.count ?? 0 > 4 {

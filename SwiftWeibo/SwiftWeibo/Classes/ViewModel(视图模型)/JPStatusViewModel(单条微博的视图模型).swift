@@ -108,4 +108,16 @@ class JPStatusViewModel: CustomStringConvertible {
         
         return CGSize(width: JPStatusPictureViewWidth, height: pictureViewHeight)
     }
+    
+    /// 根据已缓存的单张图片更新配图view的尺寸
+    ///
+    /// - Parameter image: 缓存的单张图片
+    func updatePicViewSizeWithImage(image: UIImage) {
+        
+        var size = image.size
+        
+        size.height += JPStatusPicOutterMargin
+        
+        pictureViewSize = size
+    }
 }

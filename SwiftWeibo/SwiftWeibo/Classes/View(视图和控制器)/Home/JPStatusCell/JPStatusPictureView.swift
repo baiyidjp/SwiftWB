@@ -18,6 +18,37 @@ class JPStatusPictureView: UIView {
         setupPicUI()
     }
     
+    /// 视图模型
+    var statusViewModel: JPStatusViewModel? {
+        
+        didSet {
+            updateViewSize()
+        }
+    }
+    
+    fileprivate func updateViewSize() {
+        
+        //判断是单张图片 只改变第一个view的大小
+        if statusViewModel?.picURLs?.count == 1 {
+            
+            let viewSize = statusViewModel?.pictureViewSize ?? CGSize()
+        
+            let imageV = subviews[0]
+            imageV.frame = CGRect(x: 0, y: JPStatusPicOutterMargin,
+                                  width: viewSize.width,
+                                  height: viewSize.height - JPStatusPicOutterMargin)
+            
+        }else{
+            //判断是多图(无图) 恢复第一个view的大小
+            let imageV = subviews[0]
+            imageV.frame = CGRect(x: 0, y: JPStatusPicOutterMargin,
+                                  width: JPStatusPictureWidth,
+                                  height: JPStatusPictureWidth)
+        }
+        
+        self.heightCons.constant = statusViewModel?.pictureViewSize.height ?? 0
+    }
+    
     var picUrls: [JPStatusPicModel]? {
         
         didSet {
