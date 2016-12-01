@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 //刷新失败最大次数
 fileprivate let reloadFailedMaxTime = 3
@@ -69,6 +70,9 @@ class JPStatusListViewModel: NSObject {
                 self.reloadFailesTimes += 1
                 completion(isSuccess, false)
             }else{
+                
+                self.cacheSingleImage(statusViewModels: statusViewModels)
+                
                 /// 完成回调
                 completion(isSuccess,true)
             }
@@ -76,4 +80,57 @@ class JPStatusListViewModel: NSObject {
         }
     }
     
+    /// 缓存当前请求回来的微博数据中的 单张图片
+    ///
+    /// - Parameter statusViewModels: 当前请求回来的微博的viewmodle列表
+    fileprivate func cacheSingleImage(statusViewModels: [JPStatusViewModel]) {
+        
+        //创建调度组
+        let group = DispatchGroup()
+        
+        
+        //总图片的大小
+        var imageData = 0
+        
+        //遍历数组 找出微博数据中 图片是单张的微博数据
+        for viewModel in statusViewModels {
+            
+            //判断图片数量
+            if viewModel.picURLs?.count != 1 {
+                continue
+            }
+            
+            //获取图像模型
+            guard let picUrl = viewModel.picURLs?[0].thumbnail_pic,
+                  let url = URL(string: picUrl)
+            else {
+                continue
+            }
+            
+            //入组(会监听最近的一个block/闭包 必须和出组配合使用)
+            group.enter()
+            
+            //下载图片
+            //SDWebImage的核心下载方法 图片下载完成后会缓存在沙盒中 名字是地址的MD5
+            SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _) in
+                
+                if let image = image,
+                    let data = UIImagePNGRepresentation(image) {
+                    
+                    imageData += data.count
+                }
+                
+//                print("缓存的图像是--- \(image) 大小--\(imageData)")
+                
+                //出组 (一定要闭包的最后一句)
+                group.leave()
+            })
+        }
+        
+        //监听调度组
+        group.notify(queue: DispatchQueue.main) {
+            
+            print("图像缓存完成---\(imageData/1024)K")
+        }
+    }
 }
