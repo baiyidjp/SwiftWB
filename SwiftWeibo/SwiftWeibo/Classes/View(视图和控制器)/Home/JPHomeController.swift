@@ -78,6 +78,13 @@ extension JPHomeController {
         
         
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //取出模型数据
+        let model = statusListViewModel.statusList[indexPath.row]
+        
+        return model.cellRowHeight
+    }
 }
 
 //MARK: 设置界面
@@ -95,8 +102,8 @@ extension JPHomeController {
         tableView?.register(UINib(nibName: "JPStatusRetweetedCell", bundle: nil), forCellReuseIdentifier: retweetCellId)
         tableView?.separatorStyle = .none
         //设置行高
-        tableView?.rowHeight = UITableViewAutomaticDimension
-        tableView?.estimatedRowHeight = 300
+//        tableView?.rowHeight = UITableViewAutomaticDimension
+//        tableView?.estimatedRowHeight = 300
         setUpNavTitleView()
     }
     

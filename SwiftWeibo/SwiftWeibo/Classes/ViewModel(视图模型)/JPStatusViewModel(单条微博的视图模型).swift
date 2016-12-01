@@ -32,6 +32,9 @@ class JPStatusViewModel: CustomStringConvertible {
     /// 被转发微博的文本
     var retweetText: String?
     
+    var cellRowHeight: CGFloat = 0
+    
+    
     /// 构造函数
     /// - Parameter model: 微博模型
     init(model: JPStatusesModel) {
@@ -62,6 +65,8 @@ class JPStatusViewModel: CustomStringConvertible {
         
         //被转发微博的文字
         retweetText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
+        
+        updateCellHeight()
     }
     
     var description: String {
@@ -116,8 +121,90 @@ class JPStatusViewModel: CustomStringConvertible {
         
         var size = image.size
         
+        /// 对于图片的过宽和过窄的处理
+        let maxWidth: CGFloat = ScreenWidth - 2*JPStatusPicOutterMargin
+        let minWidth: CGFloat = 60
+        let maxHeight: CGFloat = 120
+        
+        
+        if size.width > maxWidth {
+            
+            size.width = maxWidth
+            size.height = size.width*image.size.height/image.size.width
+        }
+        
+        if size.width < minWidth {
+            
+            size.width = minWidth
+            size.height = size.width*image.size.height/image.size.width
+            if size.height > maxHeight {
+                size.height = maxHeight
+            }
+        }
+        
         size.height += JPStatusPicOutterMargin
         
         pictureViewSize = size
+        
+        //重新计算行高
+        updateCellHeight()
+    }
+    
+    fileprivate func updateCellHeight() {
+        /*
+            原创微博: 顶部视图(12)+间距(12)+头像的高度(34)+间距(12)+正文高度(计算)+配图高度(计算)+间距(12)+底部视图(36)
+            转发微博: 顶部视图(12)+间距(12)+头像的高度(34)+间距(12)+正文高度(计算)+间距(12)+间距(12)+转发文本高度(计算)+配图高度(计算)+间距(12)+底部视图(36)
+         */
+        
+        //间距/头像/底部视图
+        let margin: CGFloat = 12
+        let iconHeight: CGFloat = 34
+        let bottomHeight: CGFloat = 36
+        //期望文本size/正文字号/转发字号
+        let textSize = CGSize(width: ScreenWidth-2*margin, height: CGFloat(MAXFLOAT))
+        let originalFont = UIFont.systemFont(ofSize: 15)
+        let retweetFont = UIFont.systemFont(ofSize: 14)
+        
+        //cell 高度
+        var cellHeight: CGFloat = 0
+        
+        //文本顶部的高度
+        cellHeight = 2*margin + iconHeight + margin
+        
+        //正文文本的高度
+        if let text = status.text {
+            /*
+                预期的文本宽度高度
+                选项 换行文本 统一使用usesLineFragmentOrigin
+                attributes 指定字体的字典 一般计算高度是指定字号
+             */
+            cellHeight += (text as NSString).boundingRect(with: textSize,
+                                                           options: .usesLineFragmentOrigin,
+                                                           attributes: [NSFontAttributeName : originalFont],
+                                                           context: nil).height
+        }
+        
+        //判断是否是转发微博
+        if status.retweeted_status != nil {
+            
+            cellHeight += 2*margin
+            
+            //转发文本一定使用retweettext 这个是拼接了@昵称:的
+            if let rettext = retweetText {
+                
+                cellHeight += (rettext as NSString).boundingRect(with: textSize,
+                                                              options: .usesLineFragmentOrigin,
+                                                              attributes: [NSFontAttributeName : retweetFont],
+                                                              context: nil).height
+            }
+        }
+        
+        //配图
+        cellHeight += pictureViewSize.height
+        //底部
+        cellHeight += margin + bottomHeight
+        
+        //使用属性记录
+        cellRowHeight = cellHeight
     }
 }

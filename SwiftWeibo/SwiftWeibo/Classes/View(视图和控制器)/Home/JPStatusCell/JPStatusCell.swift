@@ -50,19 +50,6 @@ class JPStatusCell: UITableViewCell {
             statusToolBar.statusViewModel = statusViewModel
             /// 配图的视图模型
             pictureView.statusViewModel = statusViewModel
-            /// 配图的URLS
-            //测试4张图
-//            if statusViewModel?.status.pic_urls?.count ?? 0 > 4 {
-//                
-//                var urls = statusViewModel?.status.pic_urls!
-//                urls?.removeSubrange(((urls?.startIndex)!+4)..<(urls?.endIndex)!)
-//                pictureView.picUrls = urls
-//            }else{
-//                pictureView.picUrls = statusViewModel?.status.pic_urls
-//            }
-            //正常显示图片  (有转发的时候使用转发)
-            pictureView.picUrls = statusViewModel?.picURLs
-            
             //被转发微博的文本
             retweetLabel?.text = statusViewModel?.retweetText
         }
@@ -79,6 +66,18 @@ class JPStatusCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        //如果 性能已经很好 就不需要离屏渲染 因为会有额外消耗  CPU和GPU之间会一直切换 耗电
+        
+        //离屏渲染 -- 异步绘制
+//        self.layer.drawsAsynchronously = true
+        
+        //栅格化 -- 异步绘制后会生成一张独立的图像,cell在屏幕滚动时,本质上是滚动的这张图片
+        //cell优化 图层越少 越快
+        //停止滚动后可以接收监听
+//        self.layer.shouldRasterize = true
+        //使用栅格化 必须指定分辨率 否则不清楚
+//        self.layer.rasterizationScale = UIScreen.main.scale
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

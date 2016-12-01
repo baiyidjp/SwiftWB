@@ -22,6 +22,9 @@ class JPStatusPictureView: UIView {
     var statusViewModel: JPStatusViewModel? {
         
         didSet {
+            //正常显示图片  (有转发的时候使用转发)
+            picUrls = statusViewModel?.picURLs
+            
             updateViewSize()
         }
     }
