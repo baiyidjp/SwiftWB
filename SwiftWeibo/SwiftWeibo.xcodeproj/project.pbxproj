@@ -12,6 +12,8 @@
 		A20C56E61DEBCCC600A28144 /* JPNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20C56E51DEBCCC600A28144 /* JPNewFeatureView.swift */; };
 		A228A1351DDF016000F20EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228A1341DDF016000F20EA0 /* AppDelegate.swift */; };
 		A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A228A13B1DDF016000F20EA0 /* Assets.xcassets */; };
+		A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */; };
+		A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */; };
 		A288D8A11DEE7D180061C0CD /* JPStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288D8A01DEE7D180061C0CD /* JPStatusPictureView.swift */; };
 		A288D8A31DEE9F250061C0CD /* JPStatusPicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288D8A21DEE9F250061C0CD /* JPStatusPicModel.swift */; };
 		A288D8A51DEEBFE30061C0CD /* JPStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A288D8A41DEEBFE30061C0CD /* JPStatusRetweetedCell.xib */; };
@@ -103,6 +105,8 @@
 		A228A1341DDF016000F20EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A228A13B1DDF016000F20EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A228A1401DDF016000F20EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPRefreshView.xib; sourceTree = "<group>"; };
+		A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshView.swift; sourceTree = "<group>"; };
 		A288D8A01DEE7D180061C0CD /* JPStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusPictureView.swift; sourceTree = "<group>"; };
 		A288D8A21DEE9F250061C0CD /* JPStatusPicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusPicModel.swift; sourceTree = "<group>"; };
 		A288D8A41DEEBFE30061C0CD /* JPStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPStatusRetweetedCell.xib; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */,
+				A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */,
+				A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */,
 			);
 			path = JPRefreshControl;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
 				A29BC5DD1DED528D0092B024 /* JPStatusNormalCell.xib in Resources */,
 				A2CBFB171DE4212B001D82B6 /* weibomain.json in Resources */,
@@ -669,6 +676,7 @@
 				F58A08C91DDFF4BC001E9521 /* JPDiscoverController.swift in Sources */,
 				A2CBFB061DE3E2DA001D82B6 /* ConstraintMakerRelatable.swift in Sources */,
 				A288D8A11DEE7D180061C0CD /* JPStatusPictureView.swift in Sources */,
+				A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */,
 				F58A08FB1DE092DB001E9521 /* UIButton+Extensions.swift in Sources */,
 				A2D06A5E1DEC152A0029DF80 /* UIPageControl+Extensions.swift in Sources */,
 				A2CBFAFB1DE3E2DA001D82B6 /* ConstraintItem.swift in Sources */,

@@ -34,7 +34,7 @@ class JPStatusListViewModel: NSObject {
         
         // 取出数组的第一条数据的ID 作为下拉刷新的参数
         let since_id = isPullup ? 0 : (statusList.first?.status.id ?? 0)
-        // 取出数组的第一条数据的ID 作为下拉刷新的参数
+        // 取出数组的最后一条数据的ID 作为上拉刷新的参数
         let max_id = isPullup ? (statusList.last?.status.id ?? 0) : 0
         
         JPNetworkManager.sharedManager.statusList(since_id: since_id, max_id: max_id) { (status, isSuccess) in
@@ -55,7 +55,6 @@ class JPStatusListViewModel: NSObject {
                 let statusViewModel = JPStatusViewModel(model: statusModel)
                 statusViewModels.append(statusViewModel)
             }
-            print("model数据--\(array)")
             /// 闭包中使用 self 拼接数组 
             /// 下拉刷新 最新的拼接到前面
             if isPullup {
