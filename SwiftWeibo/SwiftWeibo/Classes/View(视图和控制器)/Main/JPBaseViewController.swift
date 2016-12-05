@@ -24,7 +24,7 @@ class JPBaseViewController: UIViewController{
     //列表
     var tableView: UITableView?
     //下拉刷新控件
-    var refreshControl: UIRefreshControl?
+    var refreshControl: JPRefreshControl?
     //是否正在上拉刷新
     var isPullup = false
     
@@ -96,7 +96,7 @@ extension JPBaseViewController {
         tableView?.scrollIndicatorInsets = tableView!.contentInset
         
         //实例化刷新控件
-        refreshControl = UIRefreshControl()
+        refreshControl = JPRefreshControl()
         tableView?.addSubview(refreshControl!)
         refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
     }

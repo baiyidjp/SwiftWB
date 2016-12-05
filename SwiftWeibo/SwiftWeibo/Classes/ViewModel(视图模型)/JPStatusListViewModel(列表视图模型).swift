@@ -109,17 +109,17 @@ class JPStatusListViewModel: NSObject {
             
             //入组(会监听最近的一个block/闭包 必须和出组配合使用)
             group.enter()
-            
+
             //下载图片
             //SDWebImage的核心下载方法 图片下载完成后会缓存在沙盒中 名字是地址的MD5
-            SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _) in
+            SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, url) in
                 
                 if let image = image,
                     let data = UIImagePNGRepresentation(image) {
                     
                     imageData += data.count
                     
-                    print("缓存的图像是--- \(image) 大小--\(imageData)")
+                    print("缓存的图像是--- \(image) 大小--\(imageData) URL--\(url)")
                     //更新单条微博viewmodel中的配图的size
                     viewModel.updatePicViewSizeWithImage(image: image)
                 }

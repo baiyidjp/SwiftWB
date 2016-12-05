@@ -40,7 +40,6 @@ class JPStatusPictureView: UIView {
             imageV.frame = CGRect(x: 0, y: JPStatusPicOutterMargin,
                                   width: viewSize.width,
                                   height: viewSize.height - JPStatusPicOutterMargin)
-            
         }else{
             //判断是多图(无图) 恢复第一个view的大小
             let imageV = subviews[0]
@@ -107,12 +106,9 @@ extension JPStatusPictureView {
             //计算x/y
             let imageX = col * (JPStatusPictureWidth + JPStatusPicIntterMargin)
             let imageY = row * (JPStatusPictureWidth + JPStatusPicIntterMargin) + JPStatusPicOutterMargin
+            
+            imageV.frame = CGRect(x: imageX, y: imageY, width: JPStatusPictureWidth, height: JPStatusPictureWidth)
 
-            imageV.snp.makeConstraints({ (make) in
-                make.top.equalTo(imageY)
-                make.left.equalTo(imageX)
-                make.size.equalTo(CGSize(width: JPStatusPictureWidth, height: JPStatusPictureWidth))
-            })
         }
         
     }

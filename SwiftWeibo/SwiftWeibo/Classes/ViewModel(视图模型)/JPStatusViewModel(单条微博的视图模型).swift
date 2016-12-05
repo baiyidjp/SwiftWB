@@ -119,13 +119,11 @@ class JPStatusViewModel: CustomStringConvertible {
     /// - Parameter image: 缓存的单张图片
     func updatePicViewSizeWithImage(image: UIImage) {
         
-        var size = image.size
-        
+        var size = CGSize(width: image.size.width*2, height: image.size.height*2)
+
         /// 对于图片的过宽和过窄的处理
         let maxWidth: CGFloat = ScreenWidth - 2*JPStatusPicOutterMargin
-        let minWidth: CGFloat = 60
-        let maxHeight: CGFloat = 120
-        
+        let minWidth: CGFloat = 40
         
         if size.width > maxWidth {
             
@@ -136,10 +134,7 @@ class JPStatusViewModel: CustomStringConvertible {
         if size.width < minWidth {
             
             size.width = minWidth
-            size.height = size.width*image.size.height/image.size.width
-            if size.height > maxHeight {
-                size.height = maxHeight
-            }
+            size.height = size.width*image.size.height/image.size.width/4
         }
         
         size.height += JPStatusPicOutterMargin
@@ -181,7 +176,7 @@ class JPStatusViewModel: CustomStringConvertible {
             cellHeight += (text as NSString).boundingRect(with: textSize,
                                                            options: .usesLineFragmentOrigin,
                                                            attributes: [NSFontAttributeName : originalFont],
-                                                           context: nil).height
+                                                           context: nil).height+1
         }
         
         //判断是否是转发微博
@@ -195,7 +190,7 @@ class JPStatusViewModel: CustomStringConvertible {
                 cellHeight += (rettext as NSString).boundingRect(with: textSize,
                                                               options: .usesLineFragmentOrigin,
                                                               attributes: [NSFontAttributeName : retweetFont],
-                                                              context: nil).height
+                                                              context: nil).height+1
             }
         }
         

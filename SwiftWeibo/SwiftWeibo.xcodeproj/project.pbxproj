@@ -22,6 +22,7 @@
 		A29BC5DD1DED528D0092B024 /* JPStatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29BC5DC1DED528D0092B024 /* JPStatusNormalCell.xib */; };
 		A29BC6051DED782C0092B024 /* JPStatusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BC6041DED782C0092B024 /* JPStatusUserModel.swift */; };
 		A29BC6071DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BC6061DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift */; };
+		A2A452C21DF5054D00AE8FD7 /* JPRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */; };
 		A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */; };
 		A2CBFAF41DE3E2DA001D82B6 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */; };
 		A2CBFAF51DE3E2DA001D82B6 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */; };
@@ -112,6 +113,7 @@
 		A29BC5DC1DED528D0092B024 /* JPStatusNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPStatusNormalCell.xib; sourceTree = "<group>"; };
 		A29BC6041DED782C0092B024 /* JPStatusUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusUserModel.swift; sourceTree = "<group>"; };
 		A29BC6061DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPStatusViewModel(单条微博的视图模型).swift"; sourceTree = "<group>"; };
+		A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshControl.swift; sourceTree = "<group>"; };
 		A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -271,6 +273,14 @@
 			path = JPStatusCell;
 			sourceTree = "<group>";
 		};
+		A2A452C01DF5051600AE8FD7 /* JPRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */,
+			);
+			path = JPRefreshControl;
+			sourceTree = "<group>";
+		};
 		A2CBFACF1DE3E2DA001D82B6 /* Third */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +389,7 @@
 		F58A08B81DDFF3F7001E9521 /* Tools(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				A2A452C01DF5051600AE8FD7 /* JPRefreshControl */,
 				A2EB2D661DE56F8700D2CCE5 /* Network */,
 				A2CBFACF1DE3E2DA001D82B6 /* Third */,
 				F58A08F21DDFFBFC001E9521 /* SwiftExtension */,
@@ -699,6 +710,7 @@
 				A2CBFB011DE3E2DA001D82B6 /* ConstraintMaker.swift in Sources */,
 				A2CBFAFA1DE3E2DA001D82B6 /* ConstraintInsetTarget.swift in Sources */,
 				A2CBFB0E1DE3E2DA001D82B6 /* ConstraintViewDSL.swift in Sources */,
+				A2A452C21DF5054D00AE8FD7 /* JPRefreshControl.swift in Sources */,
 				A29BC5D81DED30EE0092B024 /* UIImage+Extensions.swift in Sources */,
 				A2CBFAFE1DE3E2DA001D82B6 /* ConstraintLayoutGuideDSL.swift in Sources */,
 				F58A08F41DDFFBFC001E9521 /* Bundle+Extension.swift in Sources */,
