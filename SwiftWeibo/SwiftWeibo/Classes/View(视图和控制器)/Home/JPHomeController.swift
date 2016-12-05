@@ -27,13 +27,17 @@ class JPHomeController: JPBaseViewController {
     //加载数据
     override func loadData() {
         
+        refreshControl?.beginRefreshing()
         //MARK: -从 ViewModel 中加载数据
         self.statusListViewModel.loadStatusList(isPullup: self.isPullup) { (isSucces,isReloadData) in
             
             //不管上拉还是下拉 完成之后将判断条件改为false
             self.isPullup = false
-            //结束刷新
-            self.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(wallDeadline: .now()+2, execute: {
+                
+                //结束刷新
+                self.refreshControl?.endRefreshing()
+            })
             
             if isSucces == true && isReloadData == true {
                 self.tableView?.reloadData()

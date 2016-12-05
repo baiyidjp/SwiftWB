@@ -43,15 +43,6 @@ class JPRefreshControl: UIControl {
         setupUI()
     }
     
-    /// 开始刷新
-    func beginRefreshing() {
-        
-    }
-    
-    /// 结束刷新
-    func endRefreshing() {
-    
-    }
     
     /// 将要显示在父视图上
     ///
@@ -102,28 +93,59 @@ class JPRefreshControl: UIControl {
             
             if height > refreshOffset && (refreshView.refreshState == .Normal) {
                 refreshView.refreshState = .Pulling
-                print("放手刷新")
+                
             }else if height <= refreshOffset && (refreshView.refreshState == .Pulling) {
                 refreshView.refreshState = .Normal
-                print("使劲拉啊")
+                
             }
             
         }else{
             
             // 放手 -- 判断是否超过临界点
             if refreshView.refreshState == .Pulling {
-                print("准备刷新")
-                refreshView.refreshState = .WillRefresh
-                
-                //让刷新控件界面显示出来  修改滚动视图的 contentInset
-                var inset = scrollV.contentInset
-                inset.top += refreshOffset
-                scrollV.contentInset = inset
+                //开始刷新
+                beginRefreshing()
+                //发送刷新数据的事件
+                sendActions(for: .valueChanged)
                 // 刷新结束后 将状态改为Normal 才能继续刷新
             }
         }
     }
-
+    
+    /// 开始刷新
+    func beginRefreshing() {
+        
+        guard let scrollV = scrollView else {
+            return
+        }
+        //判断是否正在刷新 正在刷新则返回
+        if refreshView.refreshState == .WillRefresh {
+            return
+        }
+        //设置刷新视图的状态
+        refreshView.refreshState = .WillRefresh
+        //让刷新控件界面显示出来  修改滚动视图的 contentInset
+        var inset = scrollV.contentInset
+        inset.top += refreshOffset
+        scrollV.contentInset = inset
+    }
+    
+    /// 结束刷新
+    func endRefreshing() {
+        guard let scrollV = scrollView else {
+            return
+        }
+        //判断是否正在刷新 正在刷新则返回
+        if refreshView.refreshState != .WillRefresh {
+            return
+        }
+        //恢复刷新视图的状态
+        refreshView.refreshState = .Normal
+        //恢复表格的contentInset
+        var inset = scrollV.contentInset
+        inset.top -= refreshOffset
+        scrollV.contentInset = inset
+    }
 }
 
 extension JPRefreshControl {

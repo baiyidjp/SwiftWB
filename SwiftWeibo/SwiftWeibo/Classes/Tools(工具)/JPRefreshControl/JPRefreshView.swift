@@ -34,6 +34,10 @@ class JPRefreshView: UIView {
             
             switch refreshState {
             case .Normal:
+                //恢复状态
+                tipIcon.isHidden = false
+                activityView.stopAnimating()
+                
                 tipLable.text = "下拉开始刷新"
                 
                 UIView.animate(withDuration: 0.25, animations: {
