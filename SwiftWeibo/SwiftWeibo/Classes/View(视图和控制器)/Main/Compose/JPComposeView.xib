@@ -44,7 +44,7 @@
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="638-dX-GnJ">
                                 <rect key="frame" x="0.0" y="299" width="375" height="224"/>
-                                <color key="backgroundColor" red="1" green="0.51030752580000005" blue="0.62696702130000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="224" id="vgp-KF-dpU"/>
                                 </constraints>
