@@ -9,7 +9,7 @@
 import UIKit
 
 let viewNormalHeight: CGFloat = 84
-let personImageCenterX: CGFloat = 100
+let personImageCenterX: CGFloat = ScreenWidth/3.0
 
 
 class JPRefreshJDView: UIView {
@@ -25,7 +25,7 @@ class JPRefreshJDView: UIView {
     /// 刷新图片
     lazy var refreshImage = UIImageView(image: #imageLiteral(resourceName: "deliveryStaff"))
     
-    //高度
+    //高度 JPRefreshControl的高度 根据高度的变化 设置UI
     var viewHeight: CGFloat = 0 {
         
         didSet {

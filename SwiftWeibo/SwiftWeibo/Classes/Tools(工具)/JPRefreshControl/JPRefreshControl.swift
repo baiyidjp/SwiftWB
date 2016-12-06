@@ -89,7 +89,7 @@ class JPRefreshControl: UIControl {
         refreshView.viewHeight = height
         /// 设置刷新控件的frame
         self.frame = CGRect(x: 0, y: -height, width: scrollV.bounds.width, height: height)
-        self.refreshView.frame = CGRect(x: ScreenWidth/2.0-refreshViewW/2, y: height-refreshViewH, width: refreshViewW, height: refreshViewH)
+        self.refreshView.frame = CGRect(x: 0, y: height-refreshViewH, width: refreshViewW, height: refreshViewH)
         /// 临界点
         if scrollV.isDragging {
             
