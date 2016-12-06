@@ -14,6 +14,7 @@
 		A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A228A13B1DDF016000F20EA0 /* Assets.xcassets */; };
 		A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */; };
 		A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */; };
+		A25C563B1DF65C9E00C7E042 /* JPRefreshJDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */; };
 		A288D8A11DEE7D180061C0CD /* JPStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288D8A01DEE7D180061C0CD /* JPStatusPictureView.swift */; };
 		A288D8A31DEE9F250061C0CD /* JPStatusPicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288D8A21DEE9F250061C0CD /* JPStatusPicModel.swift */; };
 		A288D8A51DEEBFE30061C0CD /* JPStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A288D8A41DEEBFE30061C0CD /* JPStatusRetweetedCell.xib */; };
@@ -107,6 +108,7 @@
 		A228A1401DDF016000F20EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPRefreshView.xib; sourceTree = "<group>"; };
 		A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshView.swift; sourceTree = "<group>"; };
+		A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshJDView.swift; sourceTree = "<group>"; };
 		A288D8A01DEE7D180061C0CD /* JPStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusPictureView.swift; sourceTree = "<group>"; };
 		A288D8A21DEE9F250061C0CD /* JPStatusPicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusPicModel.swift; sourceTree = "<group>"; };
 		A288D8A41DEEBFE30061C0CD /* JPStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPStatusRetweetedCell.xib; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */,
 				A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */,
+				A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */,
 				A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */,
 			);
 			path = JPRefreshControl;
@@ -708,6 +711,7 @@
 				A29668931DEE714000307029 /* JPStatusToolBar.swift in Sources */,
 				A2CBFB121DE3E2DA001D82B6 /* LayoutConstraintItem.swift in Sources */,
 				A2CBFB031DE3E2DA001D82B6 /* ConstraintMakerExtendable.swift in Sources */,
+				A25C563B1DF65C9E00C7E042 /* JPRefreshJDView.swift in Sources */,
 				A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */,
 				A2D5BB731DE2CACB00556800 /* JPVisitorView.swift in Sources */,
 				F58A08F71DE08821001E9521 /* JPTestViewController.swift in Sources */,

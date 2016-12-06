@@ -8,9 +8,9 @@
 
 import UIKit
 
-let refreshViewW: CGFloat = 150
-let refreshViewH: CGFloat = 64
-let refreshOffset: CGFloat = 64
+let refreshViewW: CGFloat = ScreenWidth
+let refreshViewH: CGFloat = 84
+let refreshOffset: CGFloat = 84
 /// 刷新状态枚举
 ///
 /// - Normal: 普通状态
@@ -27,7 +27,7 @@ class JPRefreshControl: UIControl {
     /// 懒加载 滚动视图
     fileprivate weak var scrollView: UIScrollView?
     /// 刷新视图
-    fileprivate lazy var refreshView = JPRefreshView(frame: CGRect())//x: ScreenWidth/2.0-refreshViewW/2, y: -refreshViewH, width: refreshViewW, height: refreshViewH
+    fileprivate lazy var refreshView = JPRefreshJDView(frame: CGRect())
     
     /// 构造函数
     init() {
@@ -81,12 +81,14 @@ class JPRefreshControl: UIControl {
         
         var height = -(scrollV.contentOffset.y + scrollV.contentInset.top)
         
-        /// 设置刷新控件的frame
-        self.frame = CGRect(x: 0, y: -height, width: scrollV.bounds.width, height: height)
         //对于个别height<0的情况处理
         if height < 0 {
             height = 0
         }
+        //刷新View的高度 用来设置动画
+        refreshView.viewHeight = height
+        /// 设置刷新控件的frame
+        self.frame = CGRect(x: 0, y: -height, width: scrollV.bounds.width, height: height)
         self.refreshView.frame = CGRect(x: ScreenWidth/2.0-refreshViewW/2, y: height-refreshViewH, width: refreshViewW, height: refreshViewH)
         /// 临界点
         if scrollV.isDragging {
@@ -127,7 +129,8 @@ class JPRefreshControl: UIControl {
         //让刷新控件界面显示出来  修改滚动视图的 contentInset
         var inset = scrollV.contentInset
         inset.top += refreshOffset
-        scrollV.contentInset = inset
+        scrollView?.contentInset = inset
+        print("inset-- \(scrollView?.contentInset)")
     }
     
     /// 结束刷新
@@ -144,7 +147,7 @@ class JPRefreshControl: UIControl {
         //恢复表格的contentInset
         var inset = scrollV.contentInset
         inset.top -= refreshOffset
-        scrollV.contentInset = inset
+        scrollView?.contentInset = inset
     }
 }
 

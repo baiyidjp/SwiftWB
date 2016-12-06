@@ -51,7 +51,7 @@ class JPRefreshView: UIView {
                 /**
                  UIView封装的旋转动画 默认的是顺时针旋转 并且是就近原则
                  想要实现原路径返回 需要调整一个很小的数值
-                 如果要360度旋转 使用CABaseAnimation
+                 如果要360度旋转 使用CABaseAnimation transform.rotation
                  */
                 UIView.animate(withDuration: 0.25, animations: {
                     self.tipIcon.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI - 0.001))
