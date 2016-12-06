@@ -22,27 +22,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_slogan" translatesAutoresizingMaskIntoConstraints="NO" id="edW-Is-C7m">
-                                <rect key="frame" x="110.5" y="70" width="154" height="48"/>
+                                <rect key="frame" x="111" y="70" width="154" height="48"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-yY-GZl">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-yY-GZl" userLabel="底部view">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8na-bN-FhY">
-                                        <rect key="frame" x="175.5" y="10" width="25" height="25"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8na-bN-FhY" userLabel="关闭">
+                                        <rect key="frame" x="175" y="10" width="25" height="25"/>
                                         <state key="normal" image="tabbar_compose_background_icon_close"/>
                                         <connections>
                                             <action selector="closeView" destination="iN0-l3-epB" eventType="touchUpInside" id="RhM-gx-6jO"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-Ee-zGL" userLabel="返回">
+                                        <rect key="frame" x="175" y="10" width="25" height="25"/>
+                                        <state key="normal" image="tabbar_compose_background_icon_return"/>
+                                        <connections>
+                                            <action selector="returnBtnClick" destination="iN0-l3-epB" eventType="touchUpInside" id="L3p-yJ-NzZ"/>
+                                        </connections>
+                                    </button>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oe9-Dh-LTa" userLabel="细线">
+                                        <rect key="frame" x="187" y="0.0" width="1" height="44"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="k8j-El-k3c"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="q3D-Ee-zGL" firstAttribute="centerX" secondItem="kMF-yY-GZl" secondAttribute="centerX" id="5fq-u5-eSK"/>
                                     <constraint firstAttribute="height" constant="44" id="A5c-r4-ccj"/>
                                     <constraint firstItem="8na-bN-FhY" firstAttribute="centerX" secondItem="kMF-yY-GZl" secondAttribute="centerX" id="BpD-6s-Hd3"/>
+                                    <constraint firstAttribute="bottom" secondItem="oe9-Dh-LTa" secondAttribute="bottom" id="FRi-EB-M7s"/>
+                                    <constraint firstItem="oe9-Dh-LTa" firstAttribute="centerY" secondItem="kMF-yY-GZl" secondAttribute="centerY" id="ONb-bQ-Ixm"/>
+                                    <constraint firstItem="q3D-Ee-zGL" firstAttribute="centerY" secondItem="kMF-yY-GZl" secondAttribute="centerY" id="Ss4-gn-Nha"/>
+                                    <constraint firstItem="oe9-Dh-LTa" firstAttribute="centerX" secondItem="kMF-yY-GZl" secondAttribute="centerX" id="ajs-mF-GMH"/>
+                                    <constraint firstItem="oe9-Dh-LTa" firstAttribute="top" secondItem="kMF-yY-GZl" secondAttribute="top" id="fZb-KY-NoZ"/>
                                     <constraint firstItem="8na-bN-FhY" firstAttribute="centerY" secondItem="kMF-yY-GZl" secondAttribute="centerY" id="rTg-sG-9lh"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="638-dX-GnJ">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="638-dX-GnJ">
                                 <rect key="frame" x="0.0" y="299" width="375" height="224"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -72,6 +92,10 @@
                 <constraint firstItem="GG5-Hn-2mb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sSt-ua-Bxv"/>
             </constraints>
             <connections>
+                <outlet property="closeBtnCenterXCons" destination="BpD-6s-Hd3" id="Z7G-rT-f1K"/>
+                <outlet property="lineView" destination="oe9-Dh-LTa" id="2nG-sn-mbV"/>
+                <outlet property="returnBtn" destination="q3D-Ee-zGL" id="rHk-Iw-TQF"/>
+                <outlet property="returnBtnCenterXCons" destination="5fq-u5-eSK" id="EiL-iU-NLE"/>
                 <outlet property="scrollView" destination="638-dX-GnJ" id="5IG-IF-vLb"/>
             </connections>
             <point key="canvasLocation" x="-114" y="67"/>
@@ -80,5 +104,6 @@
     <resources>
         <image name="compose_slogan" width="154" height="48"/>
         <image name="tabbar_compose_background_icon_close" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_return" width="25" height="25"/>
     </resources>
 </document>
