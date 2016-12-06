@@ -10,6 +10,10 @@
 		92FE7F752446DC5B8FDBE208 /* Pods_SwiftWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2CB7D8F996E307D9A76A47 /* Pods_SwiftWeibo.framework */; };
 		A20C56E41DEBCCB400A28144 /* JPWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20C56E31DEBCCB400A28144 /* JPWelcomeView.swift */; };
 		A20C56E61DEBCCC600A28144 /* JPNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20C56E51DEBCCC600A28144 /* JPNewFeatureView.swift */; };
+		A2120E1E1DF69B41002F8E85 /* JPComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */; };
+		A2120E201DF69D8E002F8E85 /* JPComposeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */; };
+		A2120E221DF6A8B1002F8E85 /* JPComposeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */; };
+		A2120E241DF6A8BB002F8E85 /* JPComposeBtn.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */; };
 		A228A1351DDF016000F20EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228A1341DDF016000F20EA0 /* AppDelegate.swift */; };
 		A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A228A13B1DDF016000F20EA0 /* Assets.xcassets */; };
 		A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */; };
@@ -102,6 +106,10 @@
 		9C2CB7D8F996E307D9A76A47 /* Pods_SwiftWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20C56E31DEBCCB400A28144 /* JPWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPWelcomeView.swift; sourceTree = "<group>"; };
 		A20C56E51DEBCCC600A28144 /* JPNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNewFeatureView.swift; sourceTree = "<group>"; };
+		A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeView.swift; sourceTree = "<group>"; };
+		A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeView.xib; sourceTree = "<group>"; };
+		A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeBtn.swift; sourceTree = "<group>"; };
+		A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeBtn.xib; sourceTree = "<group>"; };
 		A228A1311DDF016000F20EA0 /* SwiftWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A228A1341DDF016000F20EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A228A13B1DDF016000F20EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,6 +241,17 @@
 				A20C56E51DEBCCC600A28144 /* JPNewFeatureView.swift */,
 			);
 			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		A2120E1C1DF69B33002F8E85 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */,
+				A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */,
+				A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */,
+				A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */,
+			);
+			path = Compose;
 			sourceTree = "<group>";
 		};
 		A228A1281DDF016000F20EA0 = {
@@ -441,6 +460,7 @@
 		F58A08BC1DDFF3F7001E9521 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A2120E1C1DF69B33002F8E85 /* Compose */,
 				A20C56E21DEBCC9700A28144 /* NewFeature */,
 				A2D029981DE6CF5100658239 /* OAuth */,
 				F58A08F51DE08816001E9521 /* Test */,
@@ -610,11 +630,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2120E241DF6A8BB002F8E85 /* JPComposeBtn.xib in Resources */,
 				A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
 				A29BC5DD1DED528D0092B024 /* JPStatusNormalCell.xib in Resources */,
 				A2CBFB171DE4212B001D82B6 /* weibomain.json in Resources */,
 				A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */,
+				A2120E201DF69D8E002F8E85 /* JPComposeView.xib in Resources */,
 				A2CBFB151DE41A74001D82B6 /* weiboinfo.plist in Resources */,
 				A288D8A51DEEBFE30061C0CD /* JPStatusRetweetedCell.xib in Resources */,
 			);
@@ -700,6 +722,7 @@
 				F58A08C31DDFF458001E9521 /* JPNavigationController.swift in Sources */,
 				F58A08C51DDFF468001E9521 /* JPBaseViewController.swift in Sources */,
 				F58A08EB1DDFF799001E9521 /* UIImage+HMObjcSugar.m in Sources */,
+				A2120E1E1DF69B41002F8E85 /* JPComposeView.swift in Sources */,
 				A29668911DEE64E100307029 /* UIImageView+WebImage.swift in Sources */,
 				A2CBFAFC1DE3E2DA001D82B6 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				A29BC5DB1DED4C000092B024 /* JPStatusCell.swift in Sources */,
@@ -717,6 +740,7 @@
 				F58A08F71DE08821001E9521 /* JPTestViewController.swift in Sources */,
 				A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */,
 				A2CBFB0A1DE3E2DA001D82B6 /* ConstraintRelatableTarget.swift in Sources */,
+				A2120E221DF6A8B1002F8E85 /* JPComposeBtn.swift in Sources */,
 				A288D8A31DEE9F250061C0CD /* JPStatusPicModel.swift in Sources */,
 				F58A08E81DDFF799001E9521 /* NSString+HMObjcSugar.m in Sources */,
 				A2CBFB011DE3E2DA001D82B6 /* ConstraintMaker.swift in Sources */,

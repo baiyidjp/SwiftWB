@@ -42,7 +42,10 @@ class JPMainViewController: UITabBarController {
     
     //MARK: -按钮的点击事件
     @objc fileprivate func plusBtnSelect()  {
-        print("点击按钮")
+        
+        let composeView = JPComposeView.composeView()
+        
+        composeView.showView()
     }
     
     //MARK: 登陆
