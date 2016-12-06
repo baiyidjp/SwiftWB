@@ -64,7 +64,7 @@ class JPComposeView: UIView {
     
     /// 点击按钮
     @objc fileprivate func clickBtn(btn: JPComposeBtn) {
-        print("点了\(btn.tag)")
+        
         if btn.tag == 5 {
             
             // 滚动视图 需要动画的使用 set 方法 .方法不带动画属性
@@ -82,11 +82,13 @@ class JPComposeView: UIView {
             
                 self.layoutIfNeeded()
             }
+            
             // 如果点击是更多按钮 则不做动画
-            return
+        }else {
+        
+            clickAnimation(btn: btn)
         }
         
-        clickAnimation(btn: btn)
     }
     /// 关闭
     @IBAction func closeView() {
@@ -238,7 +240,7 @@ fileprivate extension JPComposeView {
             composeBtn.pop_add(springAnima, forKey: nil)
             
             if i == 0 {
-                springAnima.completionBlock = {_,_ in
+                alphaAnima.completionBlock = {_,_ in
                     
                     self.removeFromSuperview()
                 }
@@ -272,7 +274,8 @@ fileprivate extension JPComposeView {
             
             if composeBtn == buttonArray[0] {
                 alphaAnima.completionBlock = {_,_ in
-                    print("动画完成")
+                    
+                    self.removeFromSuperview()
                 }
             }
         }

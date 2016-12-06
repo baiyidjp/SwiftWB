@@ -195,12 +195,19 @@ extension JPMainViewController:UITabBarControllerDelegate {
             homeVC.tableView?.setContentOffset(CGPoint(x: 0,y: -64), animated: true)
             //刷新数据
             DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-                homeVC.loadData()
+//                homeVC.loadData()
+                homeVC.refreshControl?.beginRefreshing()
+                homeVC.refreshControl?.sendActions(for: .valueChanged)
             })
         }
         
         //此处解决是否是点击了容错点 判断目标控制器是不是(UIViewController)
         return !viewController.isMember(of: UIViewController.self)
+    }
+    
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
     }
 }
 

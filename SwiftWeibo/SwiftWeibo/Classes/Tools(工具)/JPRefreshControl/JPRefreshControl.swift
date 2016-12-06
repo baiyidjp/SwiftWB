@@ -109,7 +109,6 @@ class JPRefreshControl: UIControl {
                 beginRefreshing()
                 //发送刷新数据的事件
                 sendActions(for: .valueChanged)
-                // 刷新结束后 将状态改为Normal 才能继续刷新
             }
         }
     }
@@ -130,7 +129,7 @@ class JPRefreshControl: UIControl {
         var inset = scrollV.contentInset
         inset.top += refreshOffset
         scrollView?.contentInset = inset
-        print("inset-- \(scrollView?.contentInset)")
+        print("inset-- \(scrollView?.contentInset) \(scrollV)")
     }
     
     /// 结束刷新
