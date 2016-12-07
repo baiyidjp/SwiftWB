@@ -21,6 +21,29 @@ class JPEmoticonModel: NSObject {
     /// 表情图片名 用于本地的图文混排
     var png: String?
     
+    /// 表情所在文件名
+    var directory: String?
+    
+    /// 图片表情对应的图片
+    var image: UIImage? {
+        
+        // 如果是emoji表情 直接return nil
+        if type {
+            return nil
+        }
+        
+        guard let directory = directory,
+            let png = png,
+            let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil),
+            let bundle = Bundle(path: path)
+            else{
+                return nil
+        }
+        
+        return UIImage(named: "\(directory)/\(png)", in: bundle, compatibleWith: nil)
+    }
+    
+    
     /// emoji的16进制编码
     var code: String?
     

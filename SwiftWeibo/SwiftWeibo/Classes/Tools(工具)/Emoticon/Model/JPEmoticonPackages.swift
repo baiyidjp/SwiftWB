@@ -17,6 +17,7 @@ class JPEmoticonPackages: NSObject {
     /// 图片所在文件名
     var directory: String? {
         
+        /// 使用didSet直接加载出表情模型数组
         didSet {
             guard let directory = directory,
                 let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil),
@@ -27,6 +28,12 @@ class JPEmoticonPackages: NSObject {
                 else{
                     return
                 }
+            
+            //遍历models 设置每一个 表情的 目录地址
+            for model in models {
+                model.directory  = directory
+            }
+            
             emoticons += models
 //            print(emoticons)
         }

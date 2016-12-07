@@ -21,6 +21,7 @@ class JPHomeController: JPBaseViewController {
         super.viewDidLoad()
 
         let manager = JPEmoticonManager.shared
+        let image = manager.packagesModels.last?.emoticons.first?.image
         
     }
     
