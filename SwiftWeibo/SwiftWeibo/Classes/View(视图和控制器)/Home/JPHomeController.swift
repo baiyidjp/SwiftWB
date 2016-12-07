@@ -20,7 +20,7 @@ class JPHomeController: JPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let manager = JPEmoticonManager.shared
         
     }
     
