@@ -30,6 +30,8 @@
 		A29BC6051DED782C0092B024 /* JPStatusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BC6041DED782C0092B024 /* JPStatusUserModel.swift */; };
 		A29BC6071DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BC6061DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift */; };
 		A2A452C21DF5054D00AE8FD7 /* JPRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */; };
+		A2C3B90D1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B90C1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift */; };
+		A2C3B90F1DF7B36C008B0ED2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B90E1DF7B36C008B0ED2 /* String+Extensions.swift */; };
 		A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */; };
 		A2CBFAF41DE3E2DA001D82B6 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */; };
 		A2CBFAF51DE3E2DA001D82B6 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */; };
@@ -106,10 +108,10 @@
 		9C2CB7D8F996E307D9A76A47 /* Pods_SwiftWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20C56E31DEBCCB400A28144 /* JPWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPWelcomeView.swift; sourceTree = "<group>"; };
 		A20C56E51DEBCCC600A28144 /* JPNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNewFeatureView.swift; sourceTree = "<group>"; };
-		A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeView.swift; sourceTree = "<group>"; };
-		A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeView.xib; sourceTree = "<group>"; };
-		A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeBtn.swift; sourceTree = "<group>"; };
-		A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeBtn.xib; sourceTree = "<group>"; };
+		A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JPComposeView.swift; path = ../JPComposeView.swift; sourceTree = "<group>"; };
+		A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JPComposeView.xib; path = ../JPComposeView.xib; sourceTree = "<group>"; };
+		A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JPComposeBtn.swift; path = ../JPComposeBtn.swift; sourceTree = "<group>"; };
+		A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JPComposeBtn.xib; path = ../JPComposeBtn.xib; sourceTree = "<group>"; };
 		A228A1311DDF016000F20EA0 /* SwiftWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A228A1341DDF016000F20EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A228A13B1DDF016000F20EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +130,8 @@
 		A29BC6041DED782C0092B024 /* JPStatusUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusUserModel.swift; sourceTree = "<group>"; };
 		A29BC6061DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPStatusViewModel(单条微博的视图模型).swift"; sourceTree = "<group>"; };
 		A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshControl.swift; sourceTree = "<group>"; };
+		A2C3B90C1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeNewWeiboController.swift; sourceTree = "<group>"; };
+		A2C3B90E1DF7B36C008B0ED2 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -246,10 +250,8 @@
 		A2120E1C1DF69B33002F8E85 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
-				A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */,
-				A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */,
-				A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */,
-				A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */,
+				A2C3B90A1DF79DEA008B0ED2 /* Controller */,
+				A2C3B90B1DF79DEA008B0ED2 /* View */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -307,6 +309,25 @@
 				A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */,
 			);
 			path = JPRefreshControl;
+			sourceTree = "<group>";
+		};
+		A2C3B90A1DF79DEA008B0ED2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A2C3B90C1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A2C3B90B1DF79DEA008B0ED2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A2120E1D1DF69B41002F8E85 /* JPComposeView.swift */,
+				A2120E1F1DF69D8E002F8E85 /* JPComposeView.xib */,
+				A2120E211DF6A8B1002F8E85 /* JPComposeBtn.swift */,
+				A2120E231DF6A8BB002F8E85 /* JPComposeBtn.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A2CBFACF1DE3E2DA001D82B6 /* Third */ = {
@@ -537,6 +558,7 @@
 				A2D06A5D1DEC152A0029DF80 /* UIPageControl+Extensions.swift */,
 				A29BC5D71DED30EE0092B024 /* UIImage+Extensions.swift */,
 				A29668901DEE64E100307029 /* UIImageView+WebImage.swift */,
+				A2C3B90E1DF7B36C008B0ED2 /* String+Extensions.swift */,
 			);
 			path = SwiftExtension;
 			sourceTree = "<group>";
@@ -601,7 +623,7 @@
 				TargetAttributes = {
 					A228A1301DDF016000F20EA0 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = U37X4645WQ;
+						DevelopmentTeam = E8A54ES6H6;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -701,6 +723,7 @@
 				F58A08C91DDFF4BC001E9521 /* JPDiscoverController.swift in Sources */,
 				A2CBFB061DE3E2DA001D82B6 /* ConstraintMakerRelatable.swift in Sources */,
 				A288D8A11DEE7D180061C0CD /* JPStatusPictureView.swift in Sources */,
+				A2C3B90D1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift in Sources */,
 				A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */,
 				F58A08FB1DE092DB001E9521 /* UIButton+Extensions.swift in Sources */,
 				A2D06A5E1DEC152A0029DF80 /* UIPageControl+Extensions.swift in Sources */,
@@ -769,6 +792,7 @@
 				A2CBFB111DE3E2DA001D82B6 /* LayoutConstraint.swift in Sources */,
 				A2CBFAF81DE3E2DA001D82B6 /* ConstraintDSL.swift in Sources */,
 				A2CBFB071DE3E2DA001D82B6 /* ConstraintMultiplierTarget.swift in Sources */,
+				A2C3B90F1DF7B36C008B0ED2 /* String+Extensions.swift in Sources */,
 				F58A08C71DDFF4A2001E9521 /* JPHomeController.swift in Sources */,
 				F58A08F01DDFF799001E9521 /* UIView+HMObjcSugar.m in Sources */,
 				A2CBFB001DE3E2DA001D82B6 /* ConstraintLayoutSupportDSL.swift in Sources */,
@@ -885,7 +909,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = U37X4645WQ;
+				DEVELOPMENT_TEAM = E8A54ES6H6;
 				INFOPLIST_FILE = SwiftWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -903,7 +927,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = U37X4645WQ;
+				DEVELOPMENT_TEAM = E8A54ES6H6;
 				INFOPLIST_FILE = SwiftWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

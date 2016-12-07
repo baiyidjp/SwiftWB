@@ -22,8 +22,9 @@ class JPComposeView: UIView {
     @IBOutlet weak var returnBtnCenterXCons: NSLayoutConstraint!
     /// btn容器
     lazy var buttonArray = [JPComposeBtn]()
-    
-    let buttonInfo = [["imageName":"tabbar_compose_idea","title":"文字"],
+    /// 闭包回调
+    fileprivate var completionBlock: ((_ className: String?)->())?
+    let buttonInfo = [["imageName":"tabbar_compose_idea","title":"文字","className":"JPComposeNewWeiboController"],
                       ["imageName":"tabbar_compose_photo","title":"照片/视频"],
                       ["imageName":"tabbar_compose_headlines","title":"头条文章"],
                       ["imageName":"tabbar_compose_lbs","title":"签到"],
@@ -50,7 +51,11 @@ class JPComposeView: UIView {
         
     }
     
-    func showView() {
+    /// 展示视图
+    func showView(completion: @escaping (_ className: String?)->()) {
+        
+        //记录闭包
+        completionBlock = completion
         
         guard let mainVC = UIApplication.shared.keyWindow?.rootViewController else {
             return
@@ -65,7 +70,9 @@ class JPComposeView: UIView {
     /// 点击按钮
     @objc fileprivate func clickBtn(btn: JPComposeBtn) {
         
-        if btn.tag == 5 {
+        let btnTag = btn.tag
+        
+        if btnTag == 5 {
             
             // 滚动视图 需要动画的使用 set 方法 .方法不带动画属性
             scrollView.setContentOffset(CGPoint(x: scrollView.bounds.width, y: 0), animated: true)
@@ -85,8 +92,8 @@ class JPComposeView: UIView {
             
             // 如果点击是更多按钮 则不做动画
         }else {
-        
-            clickAnimation(btn: btn)
+            
+            clickAnimation(btn: btn,dict: buttonInfo[btnTag])
         }
         
     }
@@ -172,6 +179,7 @@ fileprivate extension JPComposeView {
             let col = CGFloat(btnTag/3)
             
             let btnX = margin + row*(btnSize.width+margin)
+            // 默认将按钮放在屏幕外 为了动画需求
             let btnY = col*(btnSize.height+24) + btnBeginY
             
             btn.frame = CGRect(x: btnX, y: btnY, width: btnSize.width, height: btnSize.height)
@@ -185,6 +193,7 @@ fileprivate extension JPComposeView {
 // MARK: - 动画扩展
 fileprivate extension JPComposeView {
     
+    // 点击加号 展示弹性动画
     func showCurrentView() {
        
         let btnBeginY = ScreenHeight - scrollView.frame.minY
@@ -195,7 +204,7 @@ fileprivate extension JPComposeView {
             let alphaAnima: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
             alphaAnima.fromValue = 0
             alphaAnima.toValue = 1
-            alphaAnima.duration = 0.3
+            alphaAnima.duration = 0.25
             composeBtn.pop_add(alphaAnima, forKey: nil)
             //2-弹性动画
             let springAnima: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
@@ -204,7 +213,7 @@ fileprivate extension JPComposeView {
             //弹力系数 取值0-20 数值越大 弹性越大 默认4
             springAnima.springBounciness = 8
             //弹力速速 取值0-20 数值越大 速度越快 默认12
-            springAnima.springSpeed = 8
+            springAnima.springSpeed = 10
             //动画开启时间
             springAnima.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.025
             //添加
@@ -212,6 +221,7 @@ fileprivate extension JPComposeView {
         }
     }
     
+    // 点击X号 展示动画
     func showCloseAnimation() {
         
         let btnBeginY = ScreenHeight - scrollView.frame.minY
@@ -219,12 +229,12 @@ fileprivate extension JPComposeView {
         let view = scrollView.subviews[page]
         
         for (i,composeBtn) in view.subviews.enumerated().reversed() {
-            print(i)
+            
             //1--渐变动画
             let alphaAnima: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
             alphaAnima.fromValue = 1
             alphaAnima.toValue = 0
-            alphaAnima.duration = 0.3
+            alphaAnima.duration = 0.4
             composeBtn.pop_add(alphaAnima, forKey: nil)
             //2-弹性动画
             let springAnima: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
@@ -249,7 +259,8 @@ fileprivate extension JPComposeView {
 
     }
     
-    func clickAnimation(btn: JPComposeBtn) {
+    // 点击除了更多的任一按钮 展示动画
+    func clickAnimation(btn: JPComposeBtn,dict: [String:String]?) {
         
         for composeBtn in buttonArray {
             
@@ -261,7 +272,7 @@ fileprivate extension JPComposeView {
             
             //用Value包装x.y
             scaleAnima.toValue = NSValue(cgPoint: CGPoint(x: scale, y: scale))
-            scaleAnima.duration = 0.5
+            scaleAnima.duration = 0.25
             
             //将动画加到btn上
             composeBtn.pop_add(scaleAnima, forKey: nil)
@@ -269,13 +280,15 @@ fileprivate extension JPComposeView {
             //2--渐变动画
             let alphaAnima: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
             alphaAnima.toValue = 0.2
-            alphaAnima.duration = 0.5
+            alphaAnima.duration = 0.25
             composeBtn.pop_add(alphaAnima, forKey: nil)
             
             if composeBtn == buttonArray[0] {
                 alphaAnima.completionBlock = {_,_ in
-                    
+                    //移除
                     self.removeFromSuperview()
+                    //执行闭包回调
+                    self.completionBlock?(dict?["className"])
                 }
             }
         }

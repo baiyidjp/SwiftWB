@@ -52,6 +52,9 @@ class JPStatusCell: UITableViewCell {
             pictureView.statusViewModel = statusViewModel
             //被转发微博的文本
             retweetLabel?.text = statusViewModel?.retweetText
+            // 设置来源
+            sourceLabel.text = statusViewModel?.sourceStr
+            
         }
     }
     

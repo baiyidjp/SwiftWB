@@ -8,6 +8,12 @@
 
 import UIKit
 
+/// 普通刷新控件的常量
+//let refreshViewW: CGFloat = 150
+//let refreshViewH: CGFloat = 64
+//let refreshOffset: CGFloat = 64
+
+/// 仿京东的刷新控件常量
 let refreshViewW: CGFloat = ScreenWidth
 let refreshViewH: CGFloat = 84
 let refreshOffset: CGFloat = 84
@@ -89,7 +95,7 @@ class JPRefreshControl: UIControl {
         refreshView.viewHeight = height
         /// 设置刷新控件的frame
         self.frame = CGRect(x: 0, y: -height, width: scrollV.bounds.width, height: height)
-        self.refreshView.frame = CGRect(x: 0, y: height-refreshViewH, width: refreshViewW, height: refreshViewH)
+        self.refreshView.frame = CGRect(x: (ScreenWidth - refreshViewW)/2, y: height-refreshViewH, width: refreshViewW, height: refreshViewH)
         /// 临界点
         if scrollV.isDragging {
             

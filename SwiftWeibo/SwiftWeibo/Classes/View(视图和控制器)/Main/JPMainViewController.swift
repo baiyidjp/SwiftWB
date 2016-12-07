@@ -45,7 +45,17 @@ class JPMainViewController: UITabBarController {
         
         let composeView = JPComposeView.composeView()
         
-        composeView.showView()
+        composeView.showView { (className) in
+            
+            guard let className = className,
+                  let clsCtrl = NSClassFromString( Bundle.main.nameSpace(className)) as? UIViewController.Type
+            else {
+                return
+            }
+            let composeVC = clsCtrl.init()
+            let navCtrl = UINavigationController(rootViewController: composeVC)
+            self.present(navCtrl, animated: true, completion: nil)
+        }
     }
     
     //MARK: 登陆

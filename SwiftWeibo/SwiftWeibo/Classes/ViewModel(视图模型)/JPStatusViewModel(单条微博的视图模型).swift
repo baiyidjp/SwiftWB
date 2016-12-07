@@ -21,6 +21,8 @@ class JPStatusViewModel: CustomStringConvertible {
     var retweetStr: String?
     var commentStr: String?
     var unlikeStr: String?
+    /// 来源字符串
+    var sourceStr: String?
     
     /// 配图大小
     var pictureViewSize = CGSize()
@@ -66,6 +68,14 @@ class JPStatusViewModel: CustomStringConvertible {
         //被转发微博的文字
         retweetText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
         
+        //使用正则表达式抽取来源字符串
+        if ((status.source?.jp_hrefSource()?.text) != nil) {
+            sourceStr =  "来自 " + (status.source?.jp_hrefSource()?.text)!
+        }else {
+            sourceStr = ""
+        }
+        
+        //MARK: 更新高度
         updateCellHeight()
     }
     
@@ -141,7 +151,7 @@ class JPStatusViewModel: CustomStringConvertible {
         
         pictureViewSize = size
         
-        //重新计算行高
+        //MARK: 重新计算行高
         updateCellHeight()
     }
     
