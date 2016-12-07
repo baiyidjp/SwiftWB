@@ -15,7 +15,22 @@ class JPEmoticonPackages: NSObject {
     var groupName: String?
     
     /// 图片所在文件名
-    var directory: String?
+    var directory: String? {
+        
+        didSet {
+            guard let directory = directory,
+                let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil),
+                let bundle = Bundle(path: path),
+                let plistPath = bundle.path(forResource: "info.plist", ofType: nil, inDirectory: directory),
+                let array = NSArray(contentsOfFile: plistPath) as? [[String:String]],
+                let models = NSArray.yy_modelArray(with: JPEmoticonModel.self, json: array) as? [JPEmoticonModel]
+                else{
+                    return
+                }
+            emoticons += models
+//            print(emoticons)
+        }
+    }
     
     /// 表情model数组
     lazy var emoticons = [JPEmoticonModel]()

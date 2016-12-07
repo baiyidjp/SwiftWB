@@ -240,7 +240,7 @@ extension JPMainViewController {
         
         /// 未读微博数
         JPNetworkManager.sharedManager.unreadCount { (unreadCount) in
-            print("未读微博数: \(unreadCount)")
+            
             self.tabBar.items?.first?.badgeValue = unreadCount > 0 ? "\(unreadCount)" : nil
             
             UIApplication.shared.applicationIconBadgeNumber = unreadCount

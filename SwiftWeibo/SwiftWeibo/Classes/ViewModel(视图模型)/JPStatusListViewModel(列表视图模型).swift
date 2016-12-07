@@ -118,7 +118,7 @@ class JPStatusListViewModel: NSObject {
                     
                     imageData += data.count
                     
-                    print("缓存的图像是--- \(image) 大小--\(imageData) URL--\(url)")
+//                    print("缓存的图像是--- \(image) 大小--\(imageData) URL--\(url)")
                     //更新单条微博viewmodel中的配图的size
                     viewModel.updatePicViewSizeWithImage(image: image)
                 }

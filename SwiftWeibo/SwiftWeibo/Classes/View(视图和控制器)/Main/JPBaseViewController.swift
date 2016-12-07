@@ -195,7 +195,7 @@ extension JPBaseViewController {
     }
     
     @objc fileprivate func loginSuccess(){
-        print("login  success")
+        
         // 在访问view的getter时 如果View = nil 则会调用loadview --> Viewdidload 等于刷新界面
         view = nil
         // 避免通知被重复注册

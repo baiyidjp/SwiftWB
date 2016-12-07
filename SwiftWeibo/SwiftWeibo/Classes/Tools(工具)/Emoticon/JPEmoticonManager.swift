@@ -19,6 +19,9 @@ class JPEmoticonManager {
     fileprivate init() {
         loadPackages()
     }
+    
+    /// 表情包 models
+    lazy var packagesModels = [JPEmoticonPackages]()
 }
 
 // MARK: - 加载表情数据地址
@@ -30,12 +33,13 @@ fileprivate extension JPEmoticonManager {
         guard let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil),
               let bundle = Bundle(path: path),
               let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
-              let array = NSArray(contentsOfFile: plistPath) as? [[String:String]]
-
+              let array = NSArray(contentsOfFile: plistPath) as? [[String:String]],
+             let models = NSArray.yy_modelArray(with: JPEmoticonPackages.self, json: array) as? [JPEmoticonPackages]
             else{
                 return
         }
         
-        print(array)
+        packagesModels += models
+//        print(packagesModels)
     }
 }

@@ -135,7 +135,7 @@ class JPRefreshControl: UIControl {
         var inset = scrollV.contentInset
         inset.top += refreshOffset
         scrollView?.contentInset = inset
-        print("inset-- \(scrollView?.contentInset) \(scrollV)")
+        
     }
     
     /// 结束刷新
