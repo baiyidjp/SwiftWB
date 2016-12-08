@@ -32,7 +32,12 @@ class JPStatusViewModel: CustomStringConvertible {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
     /// 被转发微博的文本
-    var retweetText: String?
+//    var retweetText: String?
+    
+    /// 正文的属性(带表情)文本
+    var originalAttributeText: NSAttributedString?
+    /// 转发微博的属性文本
+    var retweetAttributeText: NSAttributedString?
     
     var cellRowHeight: CGFloat = 0
     
@@ -66,7 +71,17 @@ class JPStatusViewModel: CustomStringConvertible {
         pictureViewSize = pictureSize(picCount: picURLs?.count)
         
         //被转发微博的文字
-        retweetText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
+        let retweetText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
+        
+        // 文字大小
+        let originalFont = UIFont.systemFont(ofSize: 15)
+        let retweetFont = UIFont.systemFont(ofSize: 14)
+        
+        //正文微博属性文本
+        originalAttributeText = JPEmoticonManager.shared.emoticonString(string: status.text ?? "", font: originalFont)
+        
+        //转发微博的属性文本
+        retweetAttributeText = JPEmoticonManager.shared.emoticonString(string: retweetText, font: retweetFont)
         
         //使用正则表达式抽取来源字符串
         if ((status.source?.jp_hrefSource()?.text) != nil) {
@@ -177,16 +192,22 @@ class JPStatusViewModel: CustomStringConvertible {
         cellHeight = 2*margin + iconHeight + margin
         
         //正文文本的高度
-        if let text = status.text {
-            /*
-                预期的文本宽度高度
-                选项 换行文本 统一使用usesLineFragmentOrigin
-                attributes 指定字体的字典 一般计算高度是指定字号
-             */
-            cellHeight += (text as NSString).boundingRect(with: textSize,
-                                                           options: .usesLineFragmentOrigin,
-                                                           attributes: [NSFontAttributeName : originalFont],
-                                                           context: nil).height+1
+        if let text = originalAttributeText {
+            
+            /// attribute 设置行高不再需要Font
+            cellHeight += text.boundingRect(with: textSize,
+                                            options: .usesLineFragmentOrigin,
+                                            context: nil).height+1
+            
+//            /*
+//                预期的文本宽度高度
+//                选项 换行文本 统一使用usesLineFragmentOrigin
+//                attributes 指定字体的字典 一般计算高度是指定字号
+//             */
+//            cellHeight += (text as NSString).boundingRect(with: textSize,
+//                                                           options: .usesLineFragmentOrigin,
+//                                                           attributes: [NSFontAttributeName : originalFont],
+//                                                           context: nil).height+1
         }
         
         //判断是否是转发微博
@@ -195,12 +216,16 @@ class JPStatusViewModel: CustomStringConvertible {
             cellHeight += 2*margin
             
             //转发文本一定使用retweettext 这个是拼接了@昵称:的
-            if let rettext = retweetText {
+            if let rettext = retweetAttributeText {
                 
-                cellHeight += (rettext as NSString).boundingRect(with: textSize,
-                                                              options: .usesLineFragmentOrigin,
-                                                              attributes: [NSFontAttributeName : retweetFont],
-                                                              context: nil).height+1
+                cellHeight += rettext.boundingRect(with: textSize,
+                                                   options: .usesLineFragmentOrigin,
+                                                   context: nil).height+1
+
+//                cellHeight += (rettext as NSString).boundingRect(with: textSize,
+//                                                              options: .usesLineFragmentOrigin,
+//                                                              attributes: [NSFontAttributeName : retweetFont],
+//                                                              context: nil).height+1
             }
         }
         

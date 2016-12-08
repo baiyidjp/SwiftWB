@@ -20,9 +20,6 @@ class JPHomeController: JPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let label = UILabel(frame: CGRect(x: 10, y: 30, width: 200, height: 30))
-        view.addSubview(label)
-        label.attributedText = JPEmoticonManager.shared.emoticonString(string: "你好[微笑]世界[笑哈哈]", font: label.font)
     }
     
     //加载数据

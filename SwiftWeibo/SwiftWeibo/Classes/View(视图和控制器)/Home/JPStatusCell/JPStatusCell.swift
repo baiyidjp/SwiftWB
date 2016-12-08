@@ -37,7 +37,7 @@ class JPStatusCell: UITableViewCell {
         
         didSet {
             /// 文本
-            statusLabel?.text = statusViewModel?.status.text
+            statusLabel?.attributedText = statusViewModel?.originalAttributeText
             /// 昵称
             nameLabel.text = statusViewModel?.status.user?.screen_name
             /// 设置会员图标
@@ -51,7 +51,7 @@ class JPStatusCell: UITableViewCell {
             /// 配图的视图模型
             pictureView.statusViewModel = statusViewModel
             //被转发微博的文本
-            retweetLabel?.text = statusViewModel?.retweetText
+            retweetLabel?.attributedText = statusViewModel?.retweetAttributeText
             // 设置来源
             sourceLabel.text = statusViewModel?.sourceStr
             
