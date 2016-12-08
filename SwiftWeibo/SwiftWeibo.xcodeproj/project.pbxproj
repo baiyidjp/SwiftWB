@@ -78,6 +78,7 @@
 		A2D5BB771DE2DD6C00556800 /* UILable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5BB761DE2DD6C00556800 /* UILable+Extensions.swift */; };
 		A2EB2D681DE5701300D2CCE5 /* JPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */; };
 		A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */; };
+		F55FE2121DF96480005515B3 /* JPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55FE2111DF96480005515B3 /* JPWebViewController.swift */; };
 		F58A08C11DDFF436001E9521 /* JPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08C01DDFF436001E9521 /* JPMainViewController.swift */; };
 		F58A08C31DDFF458001E9521 /* JPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08C21DDFF458001E9521 /* JPNavigationController.swift */; };
 		F58A08C51DDFF468001E9521 /* JPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08C41DDFF468001E9521 /* JPBaseViewController.swift */; };
@@ -185,6 +186,7 @@
 		A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNetworkManager.swift; sourceTree = "<group>"; };
 		A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		E9E01608140BD22C7059D414 /* Pods-SwiftWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftWeibo/Pods-SwiftWeibo.debug.xcconfig"; sourceTree = "<group>"; };
+		F55FE2111DF96480005515B3 /* JPWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPWebViewController.swift; sourceTree = "<group>"; };
 		F58A08C01DDFF436001E9521 /* JPMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPMainViewController.swift; sourceTree = "<group>"; };
 		F58A08C21DDFF458001E9521 /* JPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNavigationController.swift; sourceTree = "<group>"; };
 		F58A08C41DDFF468001E9521 /* JPBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPBaseViewController.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				A29BC5D91DED4BE50092B024 /* JPStatusCell */,
 				F5CA7C081DE82C7400A1FB69 /* JPHomeNavTitleBtn */,
 				F58A08C61DDFF4A2001E9521 /* JPHomeController.swift */,
+				F55FE2111DF96480005515B3 /* JPWebViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				A2CBFB071DE3E2DA001D82B6 /* ConstraintMultiplierTarget.swift in Sources */,
 				A2C3B90F1DF7B36C008B0ED2 /* String+Extensions.swift in Sources */,
 				F58A08C71DDFF4A2001E9521 /* JPHomeController.swift in Sources */,
+				F55FE2121DF96480005515B3 /* JPWebViewController.swift in Sources */,
 				F58A08F01DDFF799001E9521 /* UIView+HMObjcSugar.m in Sources */,
 				A2CBFB001DE3E2DA001D82B6 /* ConstraintLayoutSupportDSL.swift in Sources */,
 				F58A08CB1DDFF4C6001E9521 /* JPMessageController.swift in Sources */,

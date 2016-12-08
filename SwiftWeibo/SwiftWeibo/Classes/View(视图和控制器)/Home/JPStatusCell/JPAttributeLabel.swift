@@ -14,8 +14,20 @@ import UIKit
     3.交互
  */
 
+
+/// 点击内容代理/协议
+@objc protocol JPAttributeLabelDelegate: NSObjectProtocol {
+    
+    @objc optional func labelDidSelectedLinkText(label: JPAttributeLabel, text: String)
+}
+
+
 class JPAttributeLabel: UILabel {
 
+    var linkTextColor = UIColor.blue
+    var selectedBackgroudColor = UIColor.lightGray
+    var delegate: JPAttributeLabelDelegate?
+    
     //MARK: -textKit的核心对象
     /// 属性文本存储
     fileprivate var textStorage = NSTextStorage()
@@ -23,6 +35,8 @@ class JPAttributeLabel: UILabel {
     fileprivate var layoutManager = NSLayoutManager()
     /// 设定文本绘制的范围
     fileprivate var textContainer = NSTextContainer()
+    /// 选中的范围
+    fileprivate var selectedRange: NSRange?
     
     /// 重写属性 重新接管 label
     override var text: String? {
@@ -42,10 +56,26 @@ class JPAttributeLabel: UILabel {
 
     }
     
+    override var font: UIFont! {
+        didSet {
+            //当text内容变化 重新设置 textStorage
+            prepareTextSystem()
+        }
+    }
+    
+    override var textColor: UIColor! {
+        didSet {
+            //当text内容变化 重新设置 textStorage
+            prepareTextSystem()
+        }
+
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         // 指定绘制文本的区域
         textContainer.size = bounds.size
+        
     }
     
     override init(frame: CGRect) {
@@ -81,16 +111,39 @@ class JPAttributeLabel: UILabel {
         let index = layoutManager.glyphIndex(for: location, in: textContainer)
         
         //判断index是否是在URL的range内
-        for range in urlRanges ?? [] {
+        for range in linkRanges ?? [] {
             
             if NSLocationInRange(index, range) {
-                //需要高亮
-                textStorage.addAttributes([NSForegroundColorAttributeName : UIColor.red], range: range)
                 
+                //记录当前点中的 range
+                selectedRange = range
+                //需要设置背景色
+                textStorage.addAttributes([NSBackgroundColorAttributeName : selectedBackgroudColor], range: range)
                 //重绘
                 setNeedsDisplay()
             }
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if selectedRange == nil {
+            return
+        }
+        
+        //取消背景色
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.25, execute: {
+            self.textStorage.addAttributes([NSBackgroundColorAttributeName : UIColor.clear], range: self.selectedRange!)
+            //重绘
+            self.setNeedsDisplay()
+            
+            //发送代理
+            let text = (self.textStorage.string as NSString).substring(with: self.selectedRange!)
+            //插入? 如果代理没实现 则什么都不做 不能使用!
+            self.delegate?.labelDidSelectedLinkText?(label: self, text: text)
+
+        })
+        
     }
 }
 
@@ -105,8 +158,13 @@ fileprivate extension JPAttributeLabel {
         //准备文本内容
         prepareTextContent()
         //设置对象的关系
+        // 先移除后添加 否则会崩溃
+        textStorage.removeLayoutManager(layoutManager)
+        
         textStorage.addLayoutManager(layoutManager)
         layoutManager.addTextContainer(textContainer)
+        //此句代码不加会导致布局混乱 起始位置设置在0
+        textContainer.lineFragmentPadding = 0
     }
     
     /// 准备文本 使用textStorage 接管 label
@@ -121,13 +179,9 @@ fileprivate extension JPAttributeLabel {
         }
         
         /// 设置文本的属性 - URL高亮
-        for range in urlRanges ?? [] {
+        for range in linkRanges ?? [] {
             
-            textStorage.addAttributes([NSForegroundColorAttributeName : UIColor.blue,
-                                       NSBackgroundColorAttributeName : UIColor.purple,
-                                       NSFontAttributeName : UIFont.systemFont(ofSize: 20)
-                                       ],
-                                      range: range)
+            textStorage.addAttributes([NSForegroundColorAttributeName : linkTextColor],range: range)
         }
     }
 }
@@ -135,29 +189,32 @@ fileprivate extension JPAttributeLabel {
 // MARK: - 正则表达式函数
 fileprivate extension JPAttributeLabel {
 
-    /// 返回文本中的 URL range 数组
-    var urlRanges: [NSRange]? {
+    /// 返回文本中的 需要高亮的 range 数组
+    var linkRanges: [NSRange]? {
         
-        //正则表达式
-        let pattern = "[a-zA-Z]*://[a-zA-Z0-9/\\.]*"
-        
-        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
-            
-            return []
-        }
-        
-        //多重匹配
-        let matches = regx.matches(in: textStorage.string, options: [], range: NSRange(location: 0, length: textStorage.length))
-        
-        //生成数组
         var ranges = [NSRange]()
+
+        //正则表达式 匹配 url #话题# @xxx
+        let patterns = ["[a-zA-Z]*://[a-zA-Z0-9/\\.]*", "#.*?#", "@[\\u4e00-\\u9fa5a-zA-Z0-9_-]*"]
         
-        for match in matches {
-            let range = match.rangeAt(0)
-            ranges.append(range)
+        for pattern in patterns {
+            
+            guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+                
+                return []
+            }
+            
+            //多重匹配
+            let matches = regx.matches(in: textStorage.string, options: [], range: NSRange(location: 0, length: textStorage.length))
+            
+            //生成数组
+            
+            for match in matches {
+                let range = match.rangeAt(0)
+                ranges.append(range)
+            }
+            
         }
-        
         return ranges
     }
-    
 }

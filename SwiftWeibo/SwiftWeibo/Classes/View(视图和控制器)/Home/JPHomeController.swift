@@ -73,6 +73,9 @@ extension JPHomeController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! JPStatusCell
         
+        //代理
+        cell.retweetLabel?.delegate = self
+        cell.statusLabel.delegate = self 
         //赋值
         cell.statusViewModel = model
         
@@ -122,5 +125,22 @@ extension JPHomeController {
     @objc fileprivate func nameClicked(btn: UIButton){
         
         btn.isSelected = !btn.isSelected
+    }
+}
+
+// MARK: - JPAttributeLabelDelegate
+extension JPHomeController : JPAttributeLabelDelegate {
+    
+    func labelDidSelectedLinkText(label: JPAttributeLabel, text: String) {
+        print(text)
+        //跳转到一个webView
+        
+        let webVc = JPWebViewController()
+        
+        webVc.urlStr = text
+        webVc.title = "webView"
+        
+        navigationController?.pushViewController(webVc, animated: true)
+        
     }
 }

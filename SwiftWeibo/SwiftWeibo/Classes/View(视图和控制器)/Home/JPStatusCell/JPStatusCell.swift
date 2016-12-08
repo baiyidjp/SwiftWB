@@ -21,7 +21,7 @@ class JPStatusCell: UITableViewCell {
     /// 来源
     @IBOutlet weak var sourceLabel: UILabel!
     /// 文本
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel: JPAttributeLabel!
     /// 头像上的认证图标
     @IBOutlet weak var verifiedImage: UIImageView!
     /// 底部工具栏
@@ -29,7 +29,7 @@ class JPStatusCell: UITableViewCell {
     /// 配图视图
     @IBOutlet weak var pictureView: JPStatusPictureView!
     /// 被转发微博文本 -- 原创微博没有这个 不能用 ! 应该用 /.
-    @IBOutlet weak var retweetLabel: UILabel?
+    @IBOutlet weak var retweetLabel: JPAttributeLabel?
     
     
     /// 单条微博的视图模型
