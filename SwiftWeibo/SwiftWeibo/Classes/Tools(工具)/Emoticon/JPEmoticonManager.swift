@@ -105,6 +105,7 @@ extension JPEmoticonManager {
         }
         
         //统一设置了属性字符串的属性
+        //FIXME: 若不设置 字体大小 则会使布局混乱
         attribute.addAttributes([NSFontAttributeName:font], range: NSRange(location: 0, length: attribute.length))
         
         return attribute

@@ -100,6 +100,7 @@
 		F58A08F71DE08821001E9521 /* JPTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08F61DE08821001E9521 /* JPTestViewController.swift */; };
 		F58A08F91DE09225001E9521 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08F81DE09225001E9521 /* UIBarButtonItem+Extensions.swift */; };
 		F58A08FB1DE092DB001E9521 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08FA1DE092DB001E9521 /* UIButton+Extensions.swift */; };
+		F5C192711DF92FF8006E510C /* JPAttributeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C192701DF92FF8006E510C /* JPAttributeLabel.swift */; };
 		F5CA7C021DE7D0FB00A1FB69 /* JPStatusesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C011DE7D0FB00A1FB69 /* JPStatusesModel.swift */; };
 		F5CA7C041DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C031DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift */; };
 		F5CA7C071DE7D13300A1FB69 /* JPUserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C061DE7D13300A1FB69 /* JPUserAccountModel.swift */; };
@@ -219,6 +220,7 @@
 		F58A08F61DE08821001E9521 /* JPTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPTestViewController.swift; sourceTree = "<group>"; };
 		F58A08F81DE09225001E9521 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		F58A08FA1DE092DB001E9521 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		F5C192701DF92FF8006E510C /* JPAttributeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPAttributeLabel.swift; sourceTree = "<group>"; };
 		F5CA7C011DE7D0FB00A1FB69 /* JPStatusesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusesModel.swift; sourceTree = "<group>"; };
 		F5CA7C031DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPStatusListViewModel(列表视图模型).swift"; sourceTree = "<group>"; };
 		F5CA7C061DE7D13300A1FB69 /* JPUserAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPUserAccountModel.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				A29668921DEE714000307029 /* JPStatusToolBar.swift */,
 				A29BC5DC1DED528D0092B024 /* JPStatusNormalCell.xib */,
 				A288D8A41DEEBFE30061C0CD /* JPStatusRetweetedCell.xib */,
+				F5C192701DF92FF8006E510C /* JPAttributeLabel.swift */,
 			);
 			path = JPStatusCell;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				F5CA7C021DE7D0FB00A1FB69 /* JPStatusesModel.swift in Sources */,
 				A2EB2D681DE5701300D2CCE5 /* JPNetworkManager.swift in Sources */,
 				A29BC6071DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift in Sources */,
+				F5C192711DF92FF8006E510C /* JPAttributeLabel.swift in Sources */,
 				A2CBFAFF1DE3E2DA001D82B6 /* ConstraintLayoutSupport.swift in Sources */,
 				A2CBFAFD1DE3E2DA001D82B6 /* ConstraintLayoutGuide.swift in Sources */,
 				A2CBFB0D1DE3E2DA001D82B6 /* ConstraintView.swift in Sources */,

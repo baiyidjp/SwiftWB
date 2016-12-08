@@ -14,6 +14,13 @@ class JPTestViewController: JPBaseViewController {
         super.viewDidLoad()
 
         title = "第 \(navigationController?.childViewControllers.count ?? 0) 个"
+        
+        let label = JPAttributeLabel(frame: CGRect(x: 10, y: 94, width: 300, height: 300))
+        label.backgroundColor = UIColor.lightGray
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.text = "猛点 -- https://www.baidu.com/"
+        view.addSubview(label)
+
     }
 
     func showNext() {
