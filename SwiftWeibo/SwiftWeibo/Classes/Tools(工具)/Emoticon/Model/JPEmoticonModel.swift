@@ -43,6 +43,22 @@ class JPEmoticonModel: NSObject {
         return UIImage(named: "\(directory)/\(png)", in: bundle, compatibleWith: nil)
     }
     
+    /// 将当前的图像转换成图文混排的文本
+    func imageText(font: UIFont) -> NSAttributedString {
+        
+        //判断图片是否存在
+        guard let image = image else {
+            return NSAttributedString(string: "")
+        }
+        
+        //创建文本附件--图像
+        let attachment = NSTextAttachment()
+        attachment.image = image
+        let height = font.lineHeight
+        attachment.bounds = CGRect(x: 0, y: -4, width: height, height: height)
+        //返回属性文本--带图
+        return NSAttributedString (attachment: attachment)
+    }
     
     /// emoji的16进制编码
     var code: String?
