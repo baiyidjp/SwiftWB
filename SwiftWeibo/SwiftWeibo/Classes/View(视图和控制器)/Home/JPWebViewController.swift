@@ -33,6 +33,9 @@ extension JPWebViewController {
     
     override func setUpTableView() {
         
+        //设置标题
+        JPNavigationItem.title = "网页网页"
+        
         //设置webView
         view.insertSubview(webView, belowSubview: JPNavigationBar)
         

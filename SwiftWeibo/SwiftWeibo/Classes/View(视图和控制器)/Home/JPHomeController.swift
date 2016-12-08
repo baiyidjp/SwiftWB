@@ -31,7 +31,7 @@ class JPHomeController: JPBaseViewController {
             
             //不管上拉还是下拉 完成之后将判断条件改为false
             self.isPullup = false
-            DispatchQueue.main.asyncAfter(wallDeadline: .now()+2, execute: {
+            DispatchQueue.main.asyncAfter(wallDeadline: .now(), execute: {
                 
                 //结束刷新
                 self.refreshControl?.endRefreshing()
@@ -138,7 +138,6 @@ extension JPHomeController : JPAttributeLabelDelegate {
         let webVc = JPWebViewController()
         
         webVc.urlStr = text
-        webVc.title = "webView"
         
         navigationController?.pushViewController(webVc, animated: true)
         
