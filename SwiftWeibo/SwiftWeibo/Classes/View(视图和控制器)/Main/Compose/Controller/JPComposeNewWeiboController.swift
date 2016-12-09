@@ -10,12 +10,17 @@ import UIKit
 
 class JPComposeNewWeiboController: UIViewController {
 
+    /// 底部工具栏
+    @IBOutlet weak var toolBar: UIToolbar!
+    
+    /// 文本编辑器
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.red
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(closeView))
+        setupUI()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +32,43 @@ class JPComposeNewWeiboController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
+    //懒加载button
+    lazy var sendBtn: UIButton = {
+        
+        let btn = UIButton(type: .custom)
+        
+        btn.setTitle("发布", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btn.layer.cornerRadius = 2
+        btn.layer.masksToBounds = true
+        
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.setTitleColor(UIColor.darkGray, for: .disabled)
+        
+        btn.setBackgroundImage(#imageLiteral(resourceName: "compose_guide_button_default"), for: .normal)
+        btn.setBackgroundImage(#imageLiteral(resourceName: "compose_guide_button_check"), for: .highlighted)
+        btn.setBackgroundImage(#imageLiteral(resourceName: "common_button_white_disable"), for: .disabled)
+        
+        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
+        
+        return btn
+    }()
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// MARK: - 设置界面
+fileprivate extension JPComposeNewWeiboController {
+    
+    func setupUI() {
+        
+        setItem()
     }
-    */
-
+    
+    func setItem() {
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(closeView))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendBtn)
+        
+//        sendBtn.isEnabled = false
+    }
 }

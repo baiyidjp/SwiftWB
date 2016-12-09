@@ -106,6 +106,7 @@
 		F5CA7C041DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C031DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift */; };
 		F5CA7C071DE7D13300A1FB69 /* JPUserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C061DE7D13300A1FB69 /* JPUserAccountModel.swift */; };
 		F5CA7C0A1DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C091DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift */; };
+		F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5FEC74D1DFA8283007951B3 /* JPComposeNewWeiboController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +228,7 @@
 		F5CA7C031DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPStatusListViewModel(列表视图模型).swift"; sourceTree = "<group>"; };
 		F5CA7C061DE7D13300A1FB69 /* JPUserAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPUserAccountModel.swift; sourceTree = "<group>"; };
 		F5CA7C091DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPHomeNavTitleBtn.swift; sourceTree = "<group>"; };
+		F5FEC74D1DFA8283007951B3 /* JPComposeNewWeiboController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeNewWeiboController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				A2C3B90C1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift */,
+				F5FEC74D1DFA8283007951B3 /* JPComposeNewWeiboController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				A2120E241DF6A8BB002F8E85 /* JPComposeBtn.xib in Resources */,
 				A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
+				F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */,
 				A29BC5DD1DED528D0092B024 /* JPStatusNormalCell.xib in Resources */,
 				A2CBFB171DE4212B001D82B6 /* weibomain.json in Resources */,
 				A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */,
