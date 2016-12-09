@@ -67,8 +67,8 @@ class JPMainViewController: UITabBarController {
         //判断 notification.object 是否有值 有值提示用户token过期 在重新登陆
         if notification.object != nil{
             //设置背景渐变
-//            SVProgressHUD.setDefaultMaskType(.gradient)
-//            SVProgressHUD.showInfo(withStatus: "用户登录权限超时,需要重新登录")
+            SVProgressHUD.setDefaultMaskType(.gradient)
+            SVProgressHUD.showInfo(withStatus: "用户登录权限超时,需要重新登录")
             when = DispatchTime.now() + 1.5
         }
         //延时跳转
@@ -205,9 +205,9 @@ extension JPMainViewController:UITabBarControllerDelegate {
             homeVC.tableView?.setContentOffset(CGPoint(x: 0,y: -64), animated: true)
             //刷新数据
             DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-//                homeVC.loadData()
-                homeVC.refreshControl?.beginRefreshing()
-                homeVC.refreshControl?.sendActions(for: .valueChanged)
+                homeVC.loadData()
+//                homeVC.refreshControl?.beginRefreshing()
+//                homeVC.refreshControl?.sendActions(for: .valueChanged)
             })
         }
         

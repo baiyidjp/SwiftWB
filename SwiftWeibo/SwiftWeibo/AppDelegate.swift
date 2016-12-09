@@ -75,7 +75,7 @@ extension AppDelegate {
     fileprivate func setAdditions() {
         
         //设置最小的显示时间
-//        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
         //显示网络加载提示
         AFNetworkActivityIndicatorManager.shared().isEnabled = true
         

@@ -50,7 +50,7 @@ class JPOAuthViewController: UIViewController {
     
     @objc fileprivate func loginBack() {
         
-//        SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
 
@@ -93,23 +93,23 @@ extension JPOAuthViewController: UIWebViewDelegate {
         
         JPNetworkManager.sharedManager.getToken(code: code!) { (isSuccess) in
             if isSuccess {
-//                SVProgressHUD.showSuccess(withStatus: "登陆成功")
+                SVProgressHUD.showSuccess(withStatus: "登陆成功")
                 //发送通知
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: JPUserLoginSuccessNotification), object: nil)
                 //关闭当前控制器
                 self.loginBack()
             }else{
-//                SVProgressHUD.showError(withStatus: "网络请求失败")
+                SVProgressHUD.showError(withStatus: "网络请求失败")
             }
         }
         return false
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-//        SVProgressHUD.show()
+        SVProgressHUD.show()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-//        SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
     }
 }

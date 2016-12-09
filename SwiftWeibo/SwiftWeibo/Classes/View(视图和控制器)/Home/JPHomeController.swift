@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
 private let originalCellId = "originalCellId"
 private let retweetCellId = "retweetCellId"
@@ -132,14 +133,22 @@ extension JPHomeController {
 extension JPHomeController : JPAttributeLabelDelegate {
     
     func labelDidSelectedLinkText(label: JPAttributeLabel, text: String) {
-        print(text)
-        //跳转到一个webView
         
-        let webVc = JPWebViewController()
+        if text.hasPrefix("http") {
         
-        webVc.urlStr = text
+            //跳转到一个webView
+            let webVc = JPWebViewController()
+            
+            webVc.urlStr = text
+            
+            navigationController?.pushViewController(webVc, animated: true)
+        }else if text.hasPrefix("@") {
+            SVProgressHUD.showInfo(withStatus: "点击的是人名")
+        }else if text.hasPrefix("#") {
+            SVProgressHUD.showInfo(withStatus: "点击的是话题")
+            
+        }
         
-        navigationController?.pushViewController(webVc, animated: true)
         
     }
 }
