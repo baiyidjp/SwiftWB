@@ -109,14 +109,34 @@ extension JPNetworkManager {
 // MARK: - 发布微博
 extension JPNetworkManager {
 
-    func postStatus(text: String,completion:@escaping (_ result:[String: Any]?,_ isSuccess: Bool)->()) -> () {
+    /// 发布微博
+    ///
+    /// - Parameters:
+    ///   - text: 文字
+    ///   - image: 图片 为nil则是发布文字微博
+    ///   - completion: 回调
+    func postStatus(text: String,image: UIImage? ,completion:@escaping (_ result:[String: Any]?,_ isSuccess: Bool)->()) -> () {
         
-        let urlStr = "https://api.weibo.com/2/statuses/update.json"
+        
+        
+        let urlStr: String
+        var name: String?
+        var data: Data?
+        
+        //判断是使用哪个接口 和 是否需要传入name和data
+        
+        if image == nil {
+            urlStr = "https://api.weibo.com/2/statuses/update.json"
+        }else {
+            urlStr = "https://upload.api.weibo.com/2/statuses/upload.json"
+            name = "pic"
+            data = UIImagePNGRepresentation(image!)
+        }
         
         let params = ["status": text]
         
-        tokenRequest(method: .POST, URLString: urlStr, parameters: params ) { (data, isSuccess) in
-        
+        tokenRequest(method: .POST, URLString: urlStr, name: name, data: data, parameters: params) { (data, isSuccess) in
+            
             completion(data as? [String: Any], isSuccess)
         }
         

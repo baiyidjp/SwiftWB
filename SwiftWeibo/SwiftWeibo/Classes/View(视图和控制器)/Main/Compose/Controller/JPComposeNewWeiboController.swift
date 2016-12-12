@@ -145,7 +145,8 @@ class JPComposeNewWeiboController: UIViewController {
         }
         
         //发布微博
-        JPNetworkManager.sharedManager.postStatus(text: text) { (data, isSuccess) in
+        let image = #imageLiteral(resourceName: "deliveryStaff")
+        JPNetworkManager.sharedManager.postStatus(text: text,image: image) { (data, isSuccess) in
             
             SVProgressHUD.setDefaultStyle(.dark)
             if isSuccess {

@@ -8,7 +8,7 @@
 
 import UIKit
 import AFNetworking
-
+import SVProgressHUD
 
 /// Swift枚举
 /// 支持任意类型
@@ -45,7 +45,7 @@ class JPNetworkManager: AFHTTPSessionManager {
     
     
     /// 自带token的网络请求 不需要另外传入token
-    func tokenRequest(method: JPHTTPMethod = .GET,URLString: String,parameters: [String: Any]?,completion:@escaping (_ data: Any?,_ isSuccess: Bool)->()) {
+    func tokenRequest(method: JPHTTPMethod = .GET,URLString: String,name: String? = nil,data : Data? = nil ,parameters: [String: Any]?,completion:@escaping (_ data: Any?,_ isSuccess: Bool)->()) {
         //判断是否存在token
         guard userAccount.access_token != nil else {
             
@@ -63,9 +63,52 @@ class JPNetworkManager: AFHTTPSessionManager {
         }
         //直接在此方法中将token加入字典
         parameters!["access_token"] = userAccount.access_token
-        //请求封装的接口
-        request(method: method,URLString: URLString, parameters: parameters, completion: completion)
+        
+        //判断name和data是否为nil 不为nil则是上传请求
+        if let name = name , let data = data{
+            
+            //调用封装好的接口
+            uploadRequest(URLString: URLString, parameters: parameters, name: name, data: data, completion: completion)
+        }else {
+            //请求封装的接口
+            request(method: method,URLString: URLString, parameters: parameters, completion: completion)
+        }
     }
+    //MARK: 封装AFN的上传
+    /// 上传图片的接口 只能使用post
+    ///
+    /// - Parameters:
+    ///   - URLString: URL
+    ///   - parameters: 参数
+    ///   - name: 服务器接收二进制数据的名字
+    ///   - data: 图片的二级制数据
+    ///   - completion: 回调
+    func uploadRequest(URLString: String,parameters: [String: Any]?,name: String,data : Data,completion:@escaping (_ data: Any?,_ isSuccess: Bool)->()) {
+        
+        post(URLString, parameters: parameters, constructingBodyWith: { (formData) in
+            
+            //MARK: 创建图片的fromData
+            /*
+                1.data :  要上传的数据
+                2.name :  服务器接收的数据名
+                3.fileName : 保存在服务器的文件名
+                4.mimeType : 类型 不想告诉可以直接写 application/octet-stream
+             */
+            formData.appendPart(withFileData: data, name: name, fileName: "xxx", mimeType: "application/octet-stream")
+            
+        }, progress: nil, success: { (task: URLSessionDataTask,  data: Any?) in
+            completion(data, true)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
+            // 发送通知--通知用户登录
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: JPUserShouldLoginNotification), object: "token timeout")
+            SVProgressHUD.showInfo(withStatus: "token过期了 请先登录")
+        }
+            
+            completion(nil, false)
+
+    })
+}
     
     /// 封装AFN GET/POST 请求接口
     ///
@@ -86,7 +129,7 @@ class JPNetworkManager: AFHTTPSessionManager {
             if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
                 // 发送通知--通知用户登录
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: JPUserShouldLoginNotification), object: "token timeout")
-                print("token过期了 请先登录")
+                SVProgressHUD.showInfo(withStatus: "token过期了 请先登录")
             }
             
             completion(nil, false)
