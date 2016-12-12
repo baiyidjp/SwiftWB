@@ -145,7 +145,8 @@ class JPComposeNewWeiboController: UIViewController {
         }
         
         //发布微博
-        let image = #imageLiteral(resourceName: "deliveryStaff")
+//        let image = #imageLiteral(resourceName: "deliveryStaff")
+        let image: UIImage? = nil
         JPNetworkManager.sharedManager.postStatus(text: text,image: image) { (data, isSuccess) in
             
             SVProgressHUD.setDefaultStyle(.dark)
@@ -161,6 +162,19 @@ class JPComposeNewWeiboController: UIViewController {
                 SVProgressHUD.setDefaultStyle(.light)
             }
         }
+    }
+    
+    /// 表情点击
+    @objc fileprivate func emoticonClick() {
+        
+        //宽度可以随便写 高度等于键盘的高度
+        let emoticonView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
+        emoticonView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        //替换原有的textview的inputview
+        textView.inputView = (textView.inputView == nil) ? emoticonView : nil
+        
+        //刷新inputview
+        textView.reloadInputViews()
     }
 }
 
@@ -188,7 +202,7 @@ fileprivate extension JPComposeNewWeiboController {
         let itemsName = [["imageName":"compose_toolbar_picture"],
                          ["imageName":"compose_mentionbutton_background"],
                          ["imageName":"compose_trendbutton_background"],
-                         ["imageName":"compose_emoticonbutton_background"],
+                         ["imageName":"compose_emoticonbutton_background","actionName":"emoticonClick"],
                          ["imageName":"compose_toolbar_more"]]
         
         //存放 底部的item
@@ -202,6 +216,11 @@ fileprivate extension JPComposeNewWeiboController {
             }
             
             let btn = UIButton(imageName: imageName, highlightName: "_highlighted")
+            
+            if let actionName = dict["actionName"] {
+                
+                btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
             
             items.append(UIBarButtonItem(customView: btn))
             //追加弹簧
