@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="textView" destination="woa-ag-Fzx" id="0Nd-Lw-t0L"/>
                 <outlet property="toolBar" destination="HZN-Fq-EBU" id="yep-5q-qUV"/>
+                <outlet property="toolBarBottomCons" destination="kWu-xU-OFp" id="NXx-op-Afp"/>
                 <outlet property="view" destination="tm8-YY-DVK" id="vCh-3m-nto"/>
             </connections>
         </placeholder>
@@ -30,10 +31,9 @@
                         <barButtonItem title="Item" id="Prc-yc-8tu"/>
                     </items>
                 </toolbar>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="woa-ag-Fzx">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="woa-ag-Fzx" customClass="JPComposeTextView" customModule="SwiftWeibo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>

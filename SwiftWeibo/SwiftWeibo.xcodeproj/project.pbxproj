@@ -79,6 +79,7 @@
 		F58992BD1DFE363500B050EA /* JPComposeBtn.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58992B91DFE363500B050EA /* JPComposeBtn.xib */; };
 		F58992BE1DFE363500B050EA /* JPComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58992BA1DFE363500B050EA /* JPComposeView.swift */; };
 		F58992BF1DFE363500B050EA /* JPComposeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58992BB1DFE363500B050EA /* JPComposeView.xib */; };
+		F58992C11DFE52AF00B050EA /* JPComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58992C01DFE52AF00B050EA /* JPComposeTextView.swift */; };
 		F58A08C11DDFF436001E9521 /* JPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08C01DDFF436001E9521 /* JPMainViewController.swift */; };
 		F58A08C31DDFF458001E9521 /* JPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08C21DDFF458001E9521 /* JPNavigationController.swift */; };
 		F58A08C51DDFF468001E9521 /* JPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A08C41DDFF468001E9521 /* JPBaseViewController.swift */; };
@@ -188,6 +189,7 @@
 		F58992B91DFE363500B050EA /* JPComposeBtn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeBtn.xib; sourceTree = "<group>"; };
 		F58992BA1DFE363500B050EA /* JPComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeView.swift; sourceTree = "<group>"; };
 		F58992BB1DFE363500B050EA /* JPComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeView.xib; sourceTree = "<group>"; };
+		F58992C01DFE52AF00B050EA /* JPComposeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeTextView.swift; sourceTree = "<group>"; };
 		F58A08C01DDFF436001E9521 /* JPMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPMainViewController.swift; sourceTree = "<group>"; };
 		F58A08C21DDFF458001E9521 /* JPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNavigationController.swift; sourceTree = "<group>"; };
 		F58A08C41DDFF468001E9521 /* JPBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPBaseViewController.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				F58992B91DFE363500B050EA /* JPComposeBtn.xib */,
 				F58992BA1DFE363500B050EA /* JPComposeView.swift */,
 				F58992BB1DFE363500B050EA /* JPComposeView.xib */,
+				F58992C01DFE52AF00B050EA /* JPComposeTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				A2CBFAF41DE3E2DA001D82B6 /* ConstraintAttributes.swift in Sources */,
 				F58A08F91DE09225001E9521 /* UIBarButtonItem+Extensions.swift in Sources */,
 				F5CA7C071DE7D13300A1FB69 /* JPUserAccountModel.swift in Sources */,
+				F58992C11DFE52AF00B050EA /* JPComposeTextView.swift in Sources */,
 				F58A08EE1DDFF799001E9521 /* UIScreen+HMObjcSugar.m in Sources */,
 				A2CBFB081DE3E2DA001D82B6 /* ConstraintOffsetTarget.swift in Sources */,
 				F5CA7C021DE7D0FB00A1FB69 /* JPStatusesModel.swift in Sources */,

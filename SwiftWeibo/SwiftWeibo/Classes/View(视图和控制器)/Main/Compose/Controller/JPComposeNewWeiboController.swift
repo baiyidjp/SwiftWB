@@ -14,7 +14,10 @@ class JPComposeNewWeiboController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
     
     /// 文本编辑器
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: JPComposeTextView!
+    
+    /// 底部工具栏的高度约束
+    @IBOutlet weak var toolBarBottomCons: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +25,52 @@ class JPComposeNewWeiboController: UIViewController {
         setupUI()
 
         ///监听键盘的弹出
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange), name: Notification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillChangeFrame),
+                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
     }
     
+    //视图将要加载
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        textView.becomeFirstResponder()
+    }
+    //视图将要消失
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        textView.resignFirstResponder()
+    }
     deinit {
         //移除通知
         NotificationCenter.default.removeObserver(self)
     }
     
-    func textChange(noti: Notification) {
+    @objc fileprivate func keyboardWillChangeFrame(noti: Notification) {
         
-        print(noti)
+        
+        //拿到键盘的rect 和 键盘的动画时间
+        guard let rect = (noti.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = (noti.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+            
+        else {
+            return
+        }
+        
+        //计算工具栏需要的位移
+        let offset = view.bounds.height - rect.origin.y
+        
+        toolBarBottomCons.constant = offset
+        
+        //动画更新约束
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
     }
     
-    func closeView() {
+    @objc fileprivate func closeView() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -56,7 +91,7 @@ class JPComposeNewWeiboController: UIViewController {
         btn.setBackgroundImage(#imageLiteral(resourceName: "compose_guide_button_check"), for: .highlighted)
         btn.setBackgroundImage(#imageLiteral(resourceName: "common_button_white_disable"), for: .disabled)
         
-        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 30)
+        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
         
         return btn
     }()
