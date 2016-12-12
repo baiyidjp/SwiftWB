@@ -105,3 +105,20 @@ extension JPNetworkManager {
         }
     }
 }
+
+// MARK: - 发布微博
+extension JPNetworkManager {
+
+    func postStatus(text: String,completion:@escaping (_ result:[String: Any]?,_ isSuccess: Bool)->()) -> () {
+        
+        let urlStr = "https://api.weibo.com/2/statuses/update.json"
+        
+        let params = ["status": text]
+        
+        tokenRequest(method: .POST, URLString: urlStr, parameters: params ) { (data, isSuccess) in
+        
+            completion(data as? [String: Any], isSuccess)
+        }
+        
+    }
+}

@@ -27,7 +27,7 @@ class JPWelcomeView: UIView {
     /// 头像
     fileprivate lazy var avatarImage: UIImageView = UIImageView()
     /// 欢迎文字
-    fileprivate lazy var welcomeLable: UILabel = UILabel(text: "欢迎归来", fontSize: 16, textColor: UIColor.purple, textAlignment: .center)
+    fileprivate lazy var welcomeLable: UILabel = UILabel(text: "欢迎归来", fontSize: 16, textColor: UIColor.darkGray, textAlignment: .center)
     
     /// view显示在window上 已经显示在视图上
     override func didMoveToWindow() {

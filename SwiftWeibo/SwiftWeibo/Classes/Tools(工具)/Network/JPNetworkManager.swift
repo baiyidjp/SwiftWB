@@ -64,7 +64,7 @@ class JPNetworkManager: AFHTTPSessionManager {
         //直接在此方法中将token加入字典
         parameters!["access_token"] = userAccount.access_token
         //请求封装的接口
-        request(URLString: URLString, parameters: parameters, completion: completion)
+        request(method: method,URLString: URLString, parameters: parameters, completion: completion)
     }
     
     /// 封装AFN GET/POST 请求接口

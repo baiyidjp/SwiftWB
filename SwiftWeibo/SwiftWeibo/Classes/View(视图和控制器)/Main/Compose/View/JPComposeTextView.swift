@@ -16,7 +16,7 @@ class JPComposeTextView: UITextView {
     override func awakeFromNib() {
         
         //注册通知
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: self)
         
         setupUI()
     }
@@ -24,6 +24,11 @@ class JPComposeTextView: UITextView {
     @objc fileprivate func textViewTextDidChange() {
         
         placeholderLabel.isHidden = self.hasText
+    }
+    
+    deinit {
+        //移除通知
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

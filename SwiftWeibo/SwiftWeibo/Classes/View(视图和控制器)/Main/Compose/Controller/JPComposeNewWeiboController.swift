@@ -29,6 +29,8 @@ class JPComposeNewWeiboController: UIViewController {
                                                selector: #selector(keyboardWillChangeFrame),
                                                name: Notification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        //注册通知 textView 的变化
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: textView)
     }
     
     //视图将要加载
@@ -47,6 +49,12 @@ class JPComposeNewWeiboController: UIViewController {
         //移除通知
         NotificationCenter.default.removeObserver(self)
     }
+    
+    @objc fileprivate func textViewTextDidChange() {
+        
+        sendBtn.isEnabled = textView.hasText
+    }
+
     
     @objc fileprivate func keyboardWillChangeFrame(noti: Notification) {
         
@@ -91,6 +99,8 @@ class JPComposeNewWeiboController: UIViewController {
         btn.setBackgroundImage(#imageLiteral(resourceName: "compose_guide_button_check"), for: .highlighted)
         btn.setBackgroundImage(#imageLiteral(resourceName: "common_button_white_disable"), for: .disabled)
         
+        btn.addTarget(self, action: #selector(sendStatus), for: .touchUpInside)
+        
         btn.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
         
         return btn
@@ -124,6 +134,21 @@ class JPComposeNewWeiboController: UIViewController {
         
         return view
     }()
+    
+    //发送微博
+    @objc fileprivate func sendStatus() {
+        
+        //获取微博文字
+        guard let text = textView.text else {
+            return
+        }
+        
+        //发布微博
+        JPNetworkManager.sharedManager.postStatus(text: text) { (data, isSuccess) in
+            
+            print(data)
+        }
+    }
 }
 
 // MARK: - 设置界面
