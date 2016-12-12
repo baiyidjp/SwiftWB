@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class JPComposeNewWeiboController: UIViewController {
 
@@ -135,7 +136,7 @@ class JPComposeNewWeiboController: UIViewController {
         return view
     }()
     
-    //发送微博
+    /// 发送微博
     @objc fileprivate func sendStatus() {
         
         //获取微博文字
@@ -146,7 +147,18 @@ class JPComposeNewWeiboController: UIViewController {
         //发布微博
         JPNetworkManager.sharedManager.postStatus(text: text) { (data, isSuccess) in
             
-            print(data)
+            SVProgressHUD.setDefaultStyle(.dark)
+            if isSuccess {
+                SVProgressHUD.showSuccess(withStatus: "发送成功")
+                self.sendBtn.isEnabled = false
+                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                    self.closeView()
+                    SVProgressHUD.setDefaultStyle(.light)
+                })
+            }else {
+                SVProgressHUD.showSuccess(withStatus: "发送失败")
+                SVProgressHUD.setDefaultStyle(.light)
+            }
         }
     }
 }
