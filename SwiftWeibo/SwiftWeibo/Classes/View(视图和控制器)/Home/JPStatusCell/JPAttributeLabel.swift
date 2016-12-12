@@ -158,7 +158,7 @@ fileprivate extension JPAttributeLabel {
         //准备文本内容
         prepareTextContent()
         //设置对象的关系
-        // 先移除后添加 否则会崩溃
+        //先移除后添加 否则会崩溃
         textStorage.removeLayoutManager(layoutManager)
         
         textStorage.addLayoutManager(layoutManager)

@@ -49,9 +49,36 @@ class JPComposeNewWeiboController: UIViewController {
         btn.setBackgroundImage(#imageLiteral(resourceName: "compose_guide_button_check"), for: .highlighted)
         btn.setBackgroundImage(#imageLiteral(resourceName: "common_button_white_disable"), for: .disabled)
         
-        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
+        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 30)
         
         return btn
+    }()
+    
+    //懒加载titleView
+    lazy var titleView : UIView = {
+        
+        let view = UIView()
+        
+        let topLable = UILabel(text: "发微博", fontSize: 15, textColor: UIColor.black, textAlignment: .center)
+        let bottomLable = UILabel(text: JPNetworkManager.sharedManager.userAccount.screen_name ?? ""
+ , fontSize: 13, textColor: UIColor.lightGray, textAlignment: .center)
+        
+        view.addSubview(topLable)
+        view.addSubview(bottomLable)
+        
+        topLable.snp.makeConstraints({ (make) in
+            make.top.equalTo(view)
+            make.centerX.equalTo(view)
+        })
+        
+        bottomLable.snp.makeConstraints({ (make) in
+            make.top.equalTo(topLable.snp.bottom).offset(1)
+            make.centerX.equalTo(view)
+        })
+        
+        view.bounds.size = CGSize(width: 100, height: 30)
+        
+        return view
     }()
 }
 
@@ -70,5 +97,7 @@ fileprivate extension JPComposeNewWeiboController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendBtn)
         
 //        sendBtn.isEnabled = false
+        
+        navigationItem.titleView = titleView
     }
 }
