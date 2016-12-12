@@ -21,11 +21,18 @@ class JPComposeNewWeiboController: UIViewController {
         
         setupUI()
 
+        ///监听键盘的弹出
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange), name: Notification.Name.UITextViewTextDidChange, object: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    deinit {
+        //移除通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func textChange(noti: Notification) {
+        
+        print(noti)
     }
     
     func closeView() {
@@ -60,6 +67,8 @@ class JPComposeNewWeiboController: UIViewController {
         let view = UIView()
         
         let topLable = UILabel(text: "发微博", fontSize: 15, textColor: UIColor.black, textAlignment: .center)
+        //加粗
+        topLable.font = UIFont.boldSystemFont(ofSize: 15)
         let bottomLable = UILabel(text: JPNetworkManager.sharedManager.userAccount.screen_name ?? ""
  , fontSize: 13, textColor: UIColor.lightGray, textAlignment: .center)
         
@@ -88,16 +97,46 @@ fileprivate extension JPComposeNewWeiboController {
     func setupUI() {
         
         setItem()
+        setupBottomItems()
     }
     
     func setItem() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(closeView))
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendBtn)
-        
-//        sendBtn.isEnabled = false
-        
+        sendBtn.isEnabled = false
+        //设置titleView
         navigationItem.titleView = titleView
+        
+    }
+    
+    func setupBottomItems() {
+        
+        let itemsName = [["imageName":"compose_toolbar_picture"],
+                         ["imageName":"compose_mentionbutton_background"],
+                         ["imageName":"compose_trendbutton_background"],
+                         ["imageName":"compose_emoticonbutton_background"],
+                         ["imageName":"compose_toolbar_more"]]
+        
+        //存放 底部的item
+        var items = [UIBarButtonItem]()
+        
+        for dict in itemsName {
+            
+            guard let imageName = dict["imageName"] else {
+                //继续下一个循环
+                continue
+            }
+            
+            let btn = UIButton(imageName: imageName, highlightName: "_highlighted")
+            
+            items.append(UIBarButtonItem(customView: btn))
+            //追加弹簧
+            items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+        }
+        //删除最后一个弹簧
+        items.removeLast()
+        
+        toolBar.items = items
     }
 }

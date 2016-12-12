@@ -38,7 +38,7 @@ extension UIButton {
 
 extension UIButton {
     
-    convenience init(imageName: String,backgroundImageName: String,highlightName: String) {
+    convenience init(imageName: String,backgroundImageName: String = " " ,highlightName: String) {
         
         self.init()
         self.setImage(UIImage(named: imageName), for: .normal)
