@@ -8,21 +8,35 @@
 
 import UIKit
 
+//协议/代理
+
+@objc protocol JPEmoticonViewCellDelegate: NSObjectProtocol {
+    
+    /// 选中表情或者删除按钮的代理
+    ///
+    /// - Parameter emoticonModel: 如果model为nil 则是删除按钮
+    func emoticonViewCellSelectEmoticon(cell: JPEmoticonViewCell,emoticonModel: JPEmoticonModel?)
+}
+
 class JPEmoticonViewCell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
     
+    /// 代理
+    weak var delegate: JPEmoticonViewCellDelegate?
+    
     /// 当前页面的表情数组 最多20个
     var emoticons: [JPEmoticonModel]? {
         
-        didSet {
-            
-            print("表情的数量--\(emoticons?.count ?? 0)")
+        didSet {           
+//            print("表情的数量--\(emoticons?.count ?? 0)")
             
             //先隐藏所有的按钮
             for btn in contentView.subviews {
                 btn.isHidden = true
             }
+            //显示删除按钮
+            contentView.subviews.last?.isHidden = false
             
             //遍历表情数组
             for (i,model) in (emoticons ?? []).enumerated() {
@@ -55,6 +69,22 @@ class JPEmoticonViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         //代码不在经过此处
         setupUI()
+    }
+    
+    @objc fileprivate func emoticonBtnClick(button: UIButton) {
+        
+        //tag 应该是0~20 20代表的就是删除按钮
+        let tag = button.tag
+        
+        //根据tag判断是否是删除按钮 不是的话取得对应的表情的模型
+        var emoticonModel: JPEmoticonModel?
+        
+        if tag != 20 {
+            emoticonModel = emoticons?[tag]
+        }
+        
+        //执行代理
+        delegate?.emoticonViewCellSelectEmoticon(cell: self, emoticonModel: emoticonModel)
     }
 }
 
@@ -90,7 +120,18 @@ fileprivate extension JPEmoticonViewCell {
             //根据图片的大小确定
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
             
+            //tag
+            btn.tag = i
+            //监听方法
+            btn.addTarget(self, action: #selector(emoticonBtnClick), for: .touchUpInside)
+            
             contentView.addSubview(btn)
         }
+        
+        //删除按钮
+        let deleteButton = contentView.subviews.last as! UIButton
+        deleteButton.setImage(#imageLiteral(resourceName: "compose_emotion_delete"), for: .normal)
+        deleteButton.setImage(#imageLiteral(resourceName: "compose_emotion_delete_highlighted"), for: .highlighted)
+        
     }
 }

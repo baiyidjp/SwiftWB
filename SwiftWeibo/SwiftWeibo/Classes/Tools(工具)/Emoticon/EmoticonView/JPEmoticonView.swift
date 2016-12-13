@@ -56,6 +56,15 @@ extension JPEmoticonView: UICollectionViewDelegate,UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! JPEmoticonViewCell
         //设置表情模型数组
         cell.emoticons = JPEmoticonManager.shared.packagesModels[indexPath.section].subEmoticons(page: indexPath.item)
+        cell.delegate = self
         return cell
+    }
+}
+
+// MARK: - JPEmoticonViewCellDelegate
+extension JPEmoticonView: JPEmoticonViewCellDelegate {
+    
+    func emoticonViewCellSelectEmoticon(cell: JPEmoticonViewCell, emoticonModel: JPEmoticonModel?) {
+        print(emoticonModel)
     }
 }
