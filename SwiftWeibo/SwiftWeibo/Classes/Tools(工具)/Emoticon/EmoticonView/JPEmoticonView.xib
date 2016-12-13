@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="WnM-3E-B2w" customClass="JPEmoticonView" customModule="SwiftWeibo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="258"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfA-NS-eJC" userLabel="底部工具栏" customClass="JPEmoticonToolView" customModule="SwiftWeibo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="214" width="375" height="44"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="uM4-a9-rt6"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="NZ5-De-ztk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+                    <color key="backgroundColor" red="1" green="0.51030752580000005" blue="0.62696702130000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mb3-Ys-sij">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="TfA-NS-eJC" secondAttribute="bottom" id="H3v-j5-Ycu"/>
+                <constraint firstItem="TfA-NS-eJC" firstAttribute="top" secondItem="NZ5-De-ztk" secondAttribute="bottom" id="Mhb-lD-doj"/>
+                <constraint firstItem="NZ5-De-ztk" firstAttribute="leading" secondItem="WnM-3E-B2w" secondAttribute="leading" id="URK-sD-ZWN"/>
+                <constraint firstAttribute="trailing" secondItem="TfA-NS-eJC" secondAttribute="trailing" id="XPQ-ct-K9F"/>
+                <constraint firstItem="TfA-NS-eJC" firstAttribute="leading" secondItem="WnM-3E-B2w" secondAttribute="leading" id="bdz-Nk-dJJ"/>
+                <constraint firstAttribute="trailing" secondItem="NZ5-De-ztk" secondAttribute="trailing" id="f9d-e4-Mrb"/>
+                <constraint firstItem="NZ5-De-ztk" firstAttribute="top" secondItem="WnM-3E-B2w" secondAttribute="top" id="wne-XS-gn3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="NZ5-De-ztk" id="xNx-Il-B9h"/>
+                <outlet property="toolView" destination="TfA-NS-eJC" id="VHn-nH-Ebp"/>
+            </connections>
+            <point key="canvasLocation" x="-45" y="-46"/>
+        </view>
+    </objects>
+</document>

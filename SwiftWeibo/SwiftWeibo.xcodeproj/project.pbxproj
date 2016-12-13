@@ -32,6 +32,9 @@
 		A2C3B9151DF7F9C1008B0ED2 /* JPEmoticonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B9141DF7F9C1008B0ED2 /* JPEmoticonManager.swift */; };
 		A2C3B9171DF80027008B0ED2 /* JPEmoticonPackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B9161DF80027008B0ED2 /* JPEmoticonPackages.swift */; };
 		A2C3B9191DF80044008B0ED2 /* JPEmoticonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B9181DF80044008B0ED2 /* JPEmoticonModel.swift */; };
+		A2C8091D1DFF916E00A31983 /* JPEmoticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */; };
+		A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */; };
+		A2C809211DFF946E00A31983 /* JPEmoticonToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */; };
 		A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */; };
 		A2CBFAF41DE3E2DA001D82B6 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */; };
 		A2CBFAF51DE3E2DA001D82B6 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */; };
@@ -140,6 +143,9 @@
 		A2C3B9141DF7F9C1008B0ED2 /* JPEmoticonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonManager.swift; sourceTree = "<group>"; };
 		A2C3B9161DF80027008B0ED2 /* JPEmoticonPackages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonPackages.swift; sourceTree = "<group>"; };
 		A2C3B9181DF80044008B0ED2 /* JPEmoticonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonModel.swift; sourceTree = "<group>"; };
+		A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonView.swift; sourceTree = "<group>"; };
+		A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPEmoticonView.xib; sourceTree = "<group>"; };
+		A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonToolView.swift; sourceTree = "<group>"; };
 		A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -340,6 +346,7 @@
 		A2C3B9101DF7F8C0008B0ED2 /* Emoticon */ = {
 			isa = PBXGroup;
 			children = (
+				A2C8091B1DFF910B00A31983 /* EmoticonView */,
 				A2C3B9121DF7F8D1008B0ED2 /* Emoticons.bundle */,
 				A2C3B9111DF7F8C0008B0ED2 /* Model */,
 				A2C3B9141DF7F9C1008B0ED2 /* JPEmoticonManager.swift */,
@@ -354,6 +361,16 @@
 				A2C3B9181DF80044008B0ED2 /* JPEmoticonModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A2C8091B1DFF910B00A31983 /* EmoticonView */ = {
+			isa = PBXGroup;
+			children = (
+				A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */,
+				A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */,
+				A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */,
+			);
+			path = EmoticonView;
 			sourceTree = "<group>";
 		};
 		A2CBFACF1DE3E2DA001D82B6 /* Third */ = {
@@ -694,6 +711,7 @@
 			files = (
 				A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */,
 				F58992BD1DFE363500B050EA /* JPComposeBtn.xib in Resources */,
+				A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
 				F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */,
 				A29BC5DD1DED528D0092B024 /* JPStatusNormalCell.xib in Resources */,
@@ -767,6 +785,7 @@
 				A2C3B9191DF80044008B0ED2 /* JPEmoticonModel.swift in Sources */,
 				A288D8A11DEE7D180061C0CD /* JPStatusPictureView.swift in Sources */,
 				A2C3B90D1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift in Sources */,
+				A2C809211DFF946E00A31983 /* JPEmoticonToolView.swift in Sources */,
 				A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */,
 				F58A08FB1DE092DB001E9521 /* UIButton+Extensions.swift in Sources */,
 				A2D06A5E1DEC152A0029DF80 /* UIPageControl+Extensions.swift in Sources */,
@@ -807,6 +826,7 @@
 				A2D5BB731DE2CACB00556800 /* JPVisitorView.swift in Sources */,
 				F58A08F71DE08821001E9521 /* JPTestViewController.swift in Sources */,
 				A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */,
+				A2C8091D1DFF916E00A31983 /* JPEmoticonView.swift in Sources */,
 				A2CBFB0A1DE3E2DA001D82B6 /* ConstraintRelatableTarget.swift in Sources */,
 				A288D8A31DEE9F250061C0CD /* JPStatusPicModel.swift in Sources */,
 				F58A08E81DDFF799001E9521 /* NSString+HMObjcSugar.m in Sources */,

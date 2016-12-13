@@ -22,6 +22,17 @@ class JPEmoticonManager {
     
     /// 表情包 models
     lazy var packagesModels = [JPEmoticonPackages]()
+    
+    /// 表情包的 bundle 懒加载
+    lazy var emoticonBundle: Bundle = {
+        
+        let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil)
+        let bundle = Bundle(path: path!)
+        return bundle!
+    }()
+    
+   
+    
 }
 
 // MARK: - 加载表情数据地址

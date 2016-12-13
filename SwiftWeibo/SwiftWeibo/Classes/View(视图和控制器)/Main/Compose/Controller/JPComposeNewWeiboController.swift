@@ -168,8 +168,8 @@ class JPComposeNewWeiboController: UIViewController {
     @objc fileprivate func emoticonClick() {
         
         //宽度可以随便写 高度等于键盘的高度
-        let emoticonView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
-        emoticonView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        let emoticonView = JPEmoticonView.emoticonView()
+        
         //替换原有的textview的inputview
         textView.inputView = (textView.inputView == nil) ? emoticonView : nil
         

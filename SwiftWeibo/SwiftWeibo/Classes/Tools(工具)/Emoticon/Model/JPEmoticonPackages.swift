@@ -14,6 +14,9 @@ class JPEmoticonPackages: NSObject {
     /// 组名
     var groupName: String?
     
+    /// 背景图片名
+    var bgImageName: String?
+    
     /// 图片所在文件名
     var directory: String? {
         
