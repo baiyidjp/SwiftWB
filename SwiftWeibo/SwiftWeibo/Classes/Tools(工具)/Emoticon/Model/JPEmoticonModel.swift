@@ -61,7 +61,25 @@ class JPEmoticonModel: NSObject {
     }
     
     /// emoji的16进制编码
-    var code: String?
+    var code: String? {
+        
+        didSet {
+            
+            guard let code = code else {
+                return
+            }
+            
+            let scanner = Scanner(string: code)
+            
+            var result: UInt32 = 0
+            scanner.scanHexInt32(&result)
+            
+            emoji = String(Character(UnicodeScalar(result)!))
+        }
+    }
+    
+    /// emoji的字符串 (表情)
+    var emoji: String?
     
     /// 重写 description 的计算型属性
     override var description: String {

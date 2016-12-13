@@ -35,6 +35,9 @@
 		A2C8091D1DFF916E00A31983 /* JPEmoticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */; };
 		A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */; };
 		A2C809211DFF946E00A31983 /* JPEmoticonToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */; };
+		A2C809231DFFC9EF00A31983 /* JPEmoticonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809221DFFC9EF00A31983 /* JPEmoticonViewCell.swift */; };
+		A2C809251DFFC9F800A31983 /* JPEmoticonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C809241DFFC9F800A31983 /* JPEmoticonViewCell.xib */; };
+		A2C809271DFFCB1900A31983 /* JPEmoticonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809261DFFCB1900A31983 /* JPEmoticonLayout.swift */; };
 		A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */; };
 		A2CBFAF41DE3E2DA001D82B6 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */; };
 		A2CBFAF51DE3E2DA001D82B6 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */; };
@@ -146,6 +149,9 @@
 		A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonView.swift; sourceTree = "<group>"; };
 		A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPEmoticonView.xib; sourceTree = "<group>"; };
 		A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonToolView.swift; sourceTree = "<group>"; };
+		A2C809221DFFC9EF00A31983 /* JPEmoticonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonViewCell.swift; sourceTree = "<group>"; };
+		A2C809241DFFC9F800A31983 /* JPEmoticonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPEmoticonViewCell.xib; sourceTree = "<group>"; };
+		A2C809261DFFCB1900A31983 /* JPEmoticonLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonLayout.swift; sourceTree = "<group>"; };
 		A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		A2CBFAD31DE3E2DA001D82B6 /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -369,6 +375,9 @@
 				A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */,
 				A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */,
 				A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */,
+				A2C809221DFFC9EF00A31983 /* JPEmoticonViewCell.swift */,
+				A2C809241DFFC9F800A31983 /* JPEmoticonViewCell.xib */,
+				A2C809261DFFCB1900A31983 /* JPEmoticonLayout.swift */,
 			);
 			path = EmoticonView;
 			sourceTree = "<group>";
@@ -680,7 +689,7 @@
 				TargetAttributes = {
 					A228A1301DDF016000F20EA0 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = U37X4645WQ;
+						DevelopmentTeam = E8A54ES6H6;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -711,6 +720,7 @@
 			files = (
 				A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */,
 				F58992BD1DFE363500B050EA /* JPComposeBtn.xib in Resources */,
+				A2C809251DFFC9F800A31983 /* JPEmoticonViewCell.xib in Resources */,
 				A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
 				F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */,
@@ -798,6 +808,7 @@
 				F5CA7C041DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift in Sources */,
 				F5CA7C0A1DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift in Sources */,
 				A2D0299A1DE6CF6E00658239 /* JPOAuthViewController.swift in Sources */,
+				A2C809271DFFCB1900A31983 /* JPEmoticonLayout.swift in Sources */,
 				A2CBFB0C1DE3E2DA001D82B6 /* ConstraintView+Extensions.swift in Sources */,
 				A2CBFB091DE3E2DA001D82B6 /* ConstraintPriorityTarget.swift in Sources */,
 				A2CBFB0F1DE3E2DA001D82B6 /* Debugging.swift in Sources */,
@@ -825,6 +836,7 @@
 				A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */,
 				A2D5BB731DE2CACB00556800 /* JPVisitorView.swift in Sources */,
 				F58A08F71DE08821001E9521 /* JPTestViewController.swift in Sources */,
+				A2C809231DFFC9EF00A31983 /* JPEmoticonViewCell.swift in Sources */,
 				A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */,
 				A2C8091D1DFF916E00A31983 /* JPEmoticonView.swift in Sources */,
 				A2CBFB0A1DE3E2DA001D82B6 /* ConstraintRelatableTarget.swift in Sources */,
@@ -977,7 +989,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = U37X4645WQ;
+				DEVELOPMENT_TEAM = E8A54ES6H6;
 				INFOPLIST_FILE = SwiftWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -995,7 +1007,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = U37X4645WQ;
+				DEVELOPMENT_TEAM = E8A54ES6H6;
 				INFOPLIST_FILE = SwiftWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

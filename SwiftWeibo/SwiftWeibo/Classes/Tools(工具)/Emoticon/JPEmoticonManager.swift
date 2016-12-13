@@ -51,7 +51,6 @@ fileprivate extension JPEmoticonManager {
         }
         
         packagesModels += models
-//        print(packagesModels)
     }
 }
 

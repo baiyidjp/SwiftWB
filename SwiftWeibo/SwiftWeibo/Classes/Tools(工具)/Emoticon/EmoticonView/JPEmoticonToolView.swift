@@ -36,11 +36,28 @@ fileprivate extension JPEmoticonToolView {
             btn.setTitle(page.groupName, for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             
-            btn.setTitleColor(UIColor.white, for: .normal)
-            btn.setTitleColor(UIColor.darkGray, for: .highlighted)
-            btn.setTitleColor(UIColor.darkGray, for: .selected)
+            btn.setTitleColor(UIColor.darkGray, for: .normal)
+            btn.setTitleColor(UIColor.white, for: .highlighted)
+            btn.setTitleColor(UIColor.white, for: .selected)
             
             addSubview(btn)
+            
+            //设置按钮图片
+            let imageNormalName = "compose_emotion_table_\(page.bgImageName ?? "")_normal"
+            let imageSelectesName = "compose_emotion_table_\(page.bgImageName ?? "")_selected"
+            
+            var imageNormal = UIImage(named: imageNormalName)
+            var imageSelected = UIImage(named: imageSelectesName)
+            
+            //图片的大小
+            let imageSize = imageNormal?.size ?? CGSize()
+            let inset = UIEdgeInsets(top: imageSize.height*0.5, left: imageSize.width*0.5, bottom: imageSize.width*0.5, right: imageSize.height*0.5)
+            
+            imageNormal = imageNormal?.resizableImage(withCapInsets: inset, resizingMode: .stretch)
+            imageSelected = imageSelected?.resizableImage(withCapInsets: inset, resizingMode: .stretch)
+            
+            btn.setBackgroundImage(imageNormal, for: .normal)
+            btn.setBackgroundImage(imageSelected, for: .selected)
             
             btn.snp.makeConstraints({ (make) in
                 make.top.bottom.equalTo(0)

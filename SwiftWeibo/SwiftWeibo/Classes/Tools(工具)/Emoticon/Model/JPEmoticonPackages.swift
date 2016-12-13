@@ -38,12 +38,42 @@ class JPEmoticonPackages: NSObject {
             }
             
             emoticons += models
-//            print(emoticons)
+
         }
     }
     
     /// 表情model数组
     lazy var emoticons = [JPEmoticonModel]()
+    
+    /// 每一组下的页面数
+    var numOfPages: Int {
+        
+        return (emoticons.count - 1) / 20 + 1
+    }
+    
+    /// 根据传进来的页数返回当前页面的表情数组
+    ///
+    /// - Parameter page: 页数
+    /// - Returns: 数组
+    func subEmoticons(page: Int) -> [JPEmoticonModel] {
+        
+        //常量
+        let count = 20
+        let location = page*count
+        var length = count
+        //最后一页不足20个时
+        if location+length > emoticons.count {
+            length = emoticons.count - location
+        }
+        
+        //计算需要截取的Range
+        let range = NSRange(location: location, length: length)
+        
+        //截取表情数组的子数组
+        let array = (emoticons as NSArray).subarray(with: range) as! [JPEmoticonModel]
+        
+        return array
+    }
     
     /// 重写 description 的计算型属性
     override var description: String {
