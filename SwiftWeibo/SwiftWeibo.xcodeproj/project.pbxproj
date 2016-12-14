@@ -79,6 +79,7 @@
 		A2D06A5E1DEC152A0029DF80 /* UIPageControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D06A5D1DEC152A0029DF80 /* UIPageControl+Extensions.swift */; };
 		A2D5BB731DE2CACB00556800 /* JPVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5BB721DE2CACB00556800 /* JPVisitorView.swift */; };
 		A2D5BB771DE2DD6C00556800 /* UILable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5BB761DE2DD6C00556800 /* UILable+Extensions.swift */; };
+		A2E890B71E012BD6006571D6 /* JPSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E890B61E012BD6006571D6 /* JPSQLiteManager.swift */; };
 		A2EB2D681DE5701300D2CCE5 /* JPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */; };
 		A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */; };
 		F55FE2121DF96480005515B3 /* JPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55FE2111DF96480005515B3 /* JPWebViewController.swift */; };
@@ -195,6 +196,7 @@
 		A2D06A5D1DEC152A0029DF80 /* UIPageControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageControl+Extensions.swift"; sourceTree = "<group>"; };
 		A2D5BB721DE2CACB00556800 /* JPVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPVisitorView.swift; sourceTree = "<group>"; };
 		A2D5BB761DE2DD6C00556800 /* UILable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILable+Extensions.swift"; sourceTree = "<group>"; };
+		A2E890B61E012BD6006571D6 /* JPSQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPSQLiteManager.swift; sourceTree = "<group>"; };
 		A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNetworkManager.swift; sourceTree = "<group>"; };
 		A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		E9E01608140BD22C7059D414 /* Pods-SwiftWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftWeibo/Pods-SwiftWeibo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -450,6 +452,14 @@
 			path = VisitorView;
 			sourceTree = "<group>";
 		};
+		A2E890B51E012BBA006571D6 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				A2E890B61E012BD6006571D6 /* JPSQLiteManager.swift */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
 		A2EB2D661DE56F8700D2CCE5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +515,7 @@
 		F58A08B81DDFF3F7001E9521 /* Tools(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				A2E890B51E012BBA006571D6 /* SQLite */,
 				A2C3B9101DF7F8C0008B0ED2 /* Emoticon */,
 				A2A452C01DF5051600AE8FD7 /* JPRefreshControl */,
 				A2EB2D661DE56F8700D2CCE5 /* Network */,
@@ -825,6 +836,7 @@
 				F58A08EB1DDFF799001E9521 /* UIImage+HMObjcSugar.m in Sources */,
 				A2C3B9171DF80027008B0ED2 /* JPEmoticonPackages.swift in Sources */,
 				A29668911DEE64E100307029 /* UIImageView+WebImage.swift in Sources */,
+				A2E890B71E012BD6006571D6 /* JPSQLiteManager.swift in Sources */,
 				A2CBFAFC1DE3E2DA001D82B6 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				A29BC5DB1DED4C000092B024 /* JPStatusCell.swift in Sources */,
 				F58A08E91DDFF799001E9521 /* UIButton+HMObjcSugar.m in Sources */,
