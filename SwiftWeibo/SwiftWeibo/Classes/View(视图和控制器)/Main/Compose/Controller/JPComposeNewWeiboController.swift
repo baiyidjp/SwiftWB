@@ -24,7 +24,7 @@ class JPComposeNewWeiboController: UIViewController {
     // emoticonModel 闭包传回的选中的表情的模型数据
     lazy var emoticonView: JPEmoticonView = JPEmoticonView.emoticonView { [weak self] (emoticonModel) in
         
-        self?.insertEmoticon(emoticonModel: emoticonModel)
+        self?.textView.insertEmoticon(emoticonModel: emoticonModel)
     }
     
     override func viewDidLoad() {
@@ -37,8 +37,6 @@ class JPComposeNewWeiboController: UIViewController {
                                                selector: #selector(keyboardWillChangeFrame),
                                                name: Notification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
-        //注册通知 textView 的变化
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: textView)
     }
     
     //视图将要加载
@@ -57,13 +55,7 @@ class JPComposeNewWeiboController: UIViewController {
         //移除通知
         NotificationCenter.default.removeObserver(self)
     }
-    
-    @objc fileprivate func textViewTextDidChange() {
-        
-        sendBtn.isEnabled = textView.hasText
-    }
 
-    
     @objc fileprivate func keyboardWillChangeFrame(noti: Notification) {
         
         
@@ -148,7 +140,7 @@ class JPComposeNewWeiboController: UIViewController {
         
         
         //获取微博文字(有表情的转换为字符串)
-        let text = emoticonStringText()
+        let text = textView.emoticonStringText()
         
         //发布微博
 //        let image = #imageLiteral(resourceName: "deliveryStaff")
@@ -178,75 +170,6 @@ class JPComposeNewWeiboController: UIViewController {
         
         //刷新inputview
         textView.reloadInputViews()
-    }
-    
-    /// 插入表情(图文混排)
-    ///
-    /// - Parameter emoticonModel: nil为删除键
-    func insertEmoticon(emoticonModel:JPEmoticonModel?) {
-        
-        print("VC--\(emoticonModel)")
-        
-        //若为nil 删除
-        guard let emoticonModel = emoticonModel else {
-            
-            textView.deleteBackward()
-            return
-        }
-        
-        //是否是emoji 字符串
-        if let emoji = emoticonModel.emoji,
-            let textRange = textView.selectedTextRange {
-            
-            //插入emoji字符串
-            textView.replace(textRange, withText: emoji)
-            return
-        }
-        
-        //走到此处 都是图片表情
-        //1-拿到图片表情对应的属性文本
-        let imageText = emoticonModel.imageText(font: textView.font!)
-        
-        //2-使用当前textview的文本内容创建一个新的属性文本 用来接收图片的属性文本
-        let attributeText = NSMutableAttributedString(attributedString: textView.attributedText)
-        
-        //3-更新属性文本
-            //记录当前鼠标的位置
-        let range = textView.selectedRange
-            //插入表情文本
-        attributeText.replaceCharacters(in: range, with: imageText)
-        
-        //4-恢复文本 光标位置
-        textView.attributedText = attributeText
-            //range的length是选中的文本的长度 重新设置时应该为0
-        textView.selectedRange = NSRange(location: range.location+1, length: 0)
-    }
-    
-    /// 将textview的属性文本 转换成 纯 文字的文本
-    ///
-    /// - Returns: 纯文字的文本
-    func emoticonStringText() -> String {
-        
-        //用来接收转换的文本
-        var resultText = String()
-        
-        //获取textview的属性文本
-        guard let attritubeText = textView.attributedText else {
-            return resultText
-        }
-        //遍历属性文本
-        attritubeText.enumerateAttributes(in: NSRange(location: 0, length: (attritubeText.length)), options: [], using: { (dict, range, _) in
-            
-            //表情字符的 dict 中 存在 NSAttachment 便是表情字符
-            if let textAttachment = dict["NSAttachment"] {
-                resultText += (textAttachment as! JPTextAttachment).chs ?? ""
-            }else {
-                let subStr = (attritubeText.string as NSString).substring(with: range)
-                resultText += subStr
-            }
-        })
-        print(resultText)
-        return resultText
     }
 }
 
@@ -302,5 +225,13 @@ fileprivate extension JPComposeNewWeiboController {
         items.removeLast()
         
         toolBar.items = items
+    }
+}
+//MARK: -UITextViewDelegate
+extension JPComposeNewWeiboController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        sendBtn.isEnabled = textView.hasText
     }
 }

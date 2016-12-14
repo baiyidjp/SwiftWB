@@ -38,8 +38,6 @@ class JPEmoticonView: UIView {
     override func awakeFromNib() {
         
         //注册可重用的cell
-//        let nib = UINib(nibName: "JPEmoticonViewCell", bundle: nil)
-//        collectionView.register(nib, forCellWithReuseIdentifier: cellID)
         collectionView.register(JPEmoticonViewCell.self, forCellWithReuseIdentifier: cellID)
     }
 }
