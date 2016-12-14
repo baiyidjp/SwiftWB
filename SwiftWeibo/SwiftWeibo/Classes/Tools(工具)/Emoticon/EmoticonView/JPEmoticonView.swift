@@ -15,14 +15,21 @@ class JPEmoticonView: UIView {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var toolView: UIView!
+    
+    //闭包属性 点击表情
+    fileprivate var seletedEmoticonCallBack: ((_ emoticonModel:JPEmoticonModel?)->())?
+    
     /// 从XIB加载shi'tu
     ///
     /// - Returns: 返回视图
-    class func emoticonView() -> JPEmoticonView {
+    class func emoticonView(seletedEmoticon:@escaping (_ emoticonModel:JPEmoticonModel?)->()) -> JPEmoticonView {
         
         let nib = UINib(nibName: "JPEmoticonView", bundle: nil)
         
         let view = nib.instantiate(withOwner: nil, options: nil)[0] as! JPEmoticonView
+        
+        //记录闭包
+        view.seletedEmoticonCallBack =  seletedEmoticon
         
         return view
         
@@ -65,6 +72,8 @@ extension JPEmoticonView: UICollectionViewDelegate,UICollectionViewDataSource {
 extension JPEmoticonView: JPEmoticonViewCellDelegate {
     
     func emoticonViewCellSelectEmoticon(cell: JPEmoticonViewCell, emoticonModel: JPEmoticonModel?) {
-        print(emoticonModel)
+//        print(emoticonModel)
+        
+        seletedEmoticonCallBack?(emoticonModel)
     }
 }

@@ -26,6 +26,7 @@
 		A29BC6051DED782C0092B024 /* JPStatusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BC6041DED782C0092B024 /* JPStatusUserModel.swift */; };
 		A29BC6071DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BC6061DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift */; };
 		A2A452C21DF5054D00AE8FD7 /* JPRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */; };
+		A2A4F4A11E00F9540073C5AA /* JPTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A4F4A01E00F9540073C5AA /* JPTextAttachment.swift */; };
 		A2C3B90D1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B90C1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift */; };
 		A2C3B90F1DF7B36C008B0ED2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3B90E1DF7B36C008B0ED2 /* String+Extensions.swift */; };
 		A2C3B9131DF7F8D1008B0ED2 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2C3B9121DF7F8D1008B0ED2 /* Emoticons.bundle */; };
@@ -140,6 +141,7 @@
 		A29BC6041DED782C0092B024 /* JPStatusUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStatusUserModel.swift; sourceTree = "<group>"; };
 		A29BC6061DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPStatusViewModel(单条微博的视图模型).swift"; sourceTree = "<group>"; };
 		A2A452C11DF5054D00AE8FD7 /* JPRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshControl.swift; sourceTree = "<group>"; };
+		A2A4F4A01E00F9540073C5AA /* JPTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPTextAttachment.swift; sourceTree = "<group>"; };
 		A2C3B90C1DF79E4B008B0ED2 /* JPComposeNewWeiboController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeNewWeiboController.swift; sourceTree = "<group>"; };
 		A2C3B90E1DF7B36C008B0ED2 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		A2C3B9121DF7F8D1008B0ED2 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 			children = (
 				A2C3B9161DF80027008B0ED2 /* JPEmoticonPackages.swift */,
 				A2C3B9181DF80044008B0ED2 /* JPEmoticonModel.swift */,
+				A2A4F4A01E00F9540073C5AA /* JPTextAttachment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				F58992C11DFE52AF00B050EA /* JPComposeTextView.swift in Sources */,
 				F58A08EE1DDFF799001E9521 /* UIScreen+HMObjcSugar.m in Sources */,
 				A2CBFB081DE3E2DA001D82B6 /* ConstraintOffsetTarget.swift in Sources */,
+				A2A4F4A11E00F9540073C5AA /* JPTextAttachment.swift in Sources */,
 				F5CA7C021DE7D0FB00A1FB69 /* JPStatusesModel.swift in Sources */,
 				A2EB2D681DE5701300D2CCE5 /* JPNetworkManager.swift in Sources */,
 				A29BC6071DED7D390092B024 /* JPStatusViewModel(单条微博的视图模型).swift in Sources */,

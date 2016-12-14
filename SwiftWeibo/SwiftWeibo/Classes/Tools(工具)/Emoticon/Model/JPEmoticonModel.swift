@@ -52,12 +52,22 @@ class JPEmoticonModel: NSObject {
         }
         
         //创建文本附件--图像
-        let attachment = NSTextAttachment()
+        let attachment = JPTextAttachment()
+        
+        //记录图片名
+        attachment.chs = chs
+        
         attachment.image = image
         let height = font.lineHeight
         attachment.bounds = CGRect(x: 0, y: -4, width: height, height: height)
+        
+        //所有的排版系统中 几乎都有一个特点 插入的字符显示都是跟随前一个字符的属性 本身不带属性(此处不处理会导致表情变小)
+        let attritubText = NSMutableAttributedString(attributedString: NSAttributedString (attachment: attachment))
+        
+        attritubText.addAttributes([NSFontAttributeName : font], range: NSRange(location: 0, length: 1))
+        
         //返回属性文本--带图
-        return NSAttributedString (attachment: attachment)
+        return attritubText
     }
     
     /// emoji的16进制编码
