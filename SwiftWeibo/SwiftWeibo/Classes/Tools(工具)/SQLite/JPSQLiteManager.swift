@@ -95,5 +95,28 @@ extension JPSQLiteManager {
          */
         let sql = "INSERT OR REPLACE INTO T_Status (statusid,userid,status) VALUES(?,?,?)"
         
+        //2.执行SQL
+        queue.inTransaction { (db, rollBack) in
+            
+            //遍历数组 逐条插入微博数据
+            for dict in array {
+                
+                //从字典中获取微博代号  将字典序列化成二进制数据
+                guard let statusid = dict["idstr"] as? String,
+                    let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: [])
+                    else {
+                        continue
+                }
+                //执行SQL
+                if db?.executeUpdate(sql, withArgumentsIn: [statusid,userid,jsonData]) == false {
+                    
+                    //FIXME: 插入失败 需要回滚
+                    //OC 中 *rollBack = yes
+                    //Swift 1 2 rollBack.memory = true
+                    rollBack?.pointee = true
+                    break
+                }
+            }
+        }
     }
 }
