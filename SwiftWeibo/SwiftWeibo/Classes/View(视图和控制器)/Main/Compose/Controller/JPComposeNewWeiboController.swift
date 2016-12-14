@@ -146,12 +146,9 @@ class JPComposeNewWeiboController: UIViewController {
     /// 发送微博
     @objc fileprivate func sendStatus() {
         
-        emoticonStringText()
-        return
-        //获取微博文字
-        guard let text = textView.text else {
-            return
-        }
+        
+        //获取微博文字(有表情的转换为字符串)
+        let text = emoticonStringText()
         
         //发布微博
 //        let image = #imageLiteral(resourceName: "deliveryStaff")
