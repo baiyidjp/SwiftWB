@@ -9,6 +9,10 @@
 
 import Foundation
 import FMDB
+
+/// 缓存的最大时间 s 向前找时间所以用'-'
+fileprivate let max_time: TimeInterval = -60//-7*24*60*60
+
 /**
     1.数据库本质上是保存在沙盒里的一个文件 首先需要创建并打开数据库
     FMDB - 队列
@@ -41,6 +45,26 @@ class JPSQLiteManager {
         
         //打开数据库
         creatTable()
+        
+        //监听通知
+        NotificationCenter.default.addObserver(self, selector: #selector(clearDBCache), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    }
+    
+    @objc fileprivate func clearDBCache() {
+        
+        //清理缓存
+        let dateString = Date.jp_dateString(max_time: max_time)
+        print("清理缓存的最早时间--" + dateString)
+        
+        //准备SQL
+        let sql = "DELETE FROM T_Status WHERE creattime < ?"
+        //执行SQL
+        queue.inDatabase { (db) in
+            if db?.executeUpdate(sql, withArgumentsIn: [dateString]) == true {
+                print("删除了\(db?.changes())条数据")
+            }
+        }
+        
     }
 }
 
