@@ -167,6 +167,8 @@ extension JPSQLiteManager {
     /// - Returns: 字典数组 需要将status对应的二进制数据反序列化为字典
     func loadStatusFromDB(userid: String,since_id:Int64 = 0,max_id: Int64 = 0) -> [[String: Any]] {
         
+        //since_id max_id都为0代表是第一次进入请求数据库最新的20条数据
+        //since_id > 0 代表 下拉   max_id > 0 代表 上拉
         //拼接SQL语句
         var sql = "SELECT statusid,userid,status FROM T_Status \n"
         //查询条件
@@ -179,8 +181,25 @@ extension JPSQLiteManager {
         }
         //倒序查询 并且限制条数
         sql += "ORDER BY statusid DESC LIMIT 20;"
-        
         print("sql--" + sql)
-        return []
+        
+        //执行SQL
+        let array = execRecordSet(sql: sql)
+        //遍历数据 将字典数组中的 status 反序列化 为字典
+        var result = [[String: Any]]()
+        
+        for dict in array {
+            
+            guard let jsondata = dict["status"] as? Data,
+                //反序列化
+            let json = try? JSONSerialization.jsonObject(with: jsondata, options: []) as? [String: Any]
+            else {
+                continue
+            }
+            
+            result.append(json ?? [:])
+        }
+        
+        return result
     }
 }

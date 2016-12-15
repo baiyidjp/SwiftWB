@@ -12,6 +12,7 @@
 		A20C56E61DEBCCC600A28144 /* JPNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20C56E51DEBCCC600A28144 /* JPNewFeatureView.swift */; };
 		A228A1351DDF016000F20EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228A1341DDF016000F20EA0 /* AppDelegate.swift */; };
 		A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A228A13B1DDF016000F20EA0 /* Assets.xcassets */; };
+		A232044B1E023AB800CA2023 /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = A232044A1E023AB800CA2023 /* status.sql */; };
 		A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */; };
 		A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */; };
 		A25C563B1DF65C9E00C7E042 /* JPRefreshJDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */; };
@@ -128,6 +129,7 @@
 		A228A1341DDF016000F20EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A228A13B1DDF016000F20EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A228A1401DDF016000F20EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A232044A1E023AB800CA2023 /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
 		A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPRefreshView.xib; sourceTree = "<group>"; };
 		A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshView.swift; sourceTree = "<group>"; };
 		A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshJDView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 		A2E890B51E012BBA006571D6 /* SQLite */ = {
 			isa = PBXGroup;
 			children = (
+				A232044A1E023AB800CA2023 /* status.sql */,
 				A2E890B61E012BD6006571D6 /* JPSQLiteManager.swift */,
 			);
 			path = SQLite;
@@ -738,6 +741,7 @@
 				A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
 				F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */,
+				A232044B1E023AB800CA2023 /* status.sql in Resources */,
 				A29BC5DD1DED528D0092B024 /* JPStatusNormalCell.xib in Resources */,
 				A2CBFB171DE4212B001D82B6 /* weibomain.json in Resources */,
 				A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */,
