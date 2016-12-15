@@ -13,6 +13,7 @@
 		A228A1351DDF016000F20EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228A1341DDF016000F20EA0 /* AppDelegate.swift */; };
 		A228A13C1DDF016000F20EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A228A13B1DDF016000F20EA0 /* Assets.xcassets */; };
 		A232044B1E023AB800CA2023 /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = A232044A1E023AB800CA2023 /* status.sql */; };
+		A232044D1E023D4B00CA2023 /* JPDALManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232044C1E023D4B00CA2023 /* JPDALManager.swift */; };
 		A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */; };
 		A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */; };
 		A25C563B1DF65C9E00C7E042 /* JPRefreshJDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */; };
@@ -130,6 +131,7 @@
 		A228A13B1DDF016000F20EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A228A1401DDF016000F20EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A232044A1E023AB800CA2023 /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
+		A232044C1E023D4B00CA2023 /* JPDALManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPDALManager.swift; sourceTree = "<group>"; };
 		A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPRefreshView.xib; sourceTree = "<group>"; };
 		A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshView.swift; sourceTree = "<group>"; };
 		A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshJDView.swift; sourceTree = "<group>"; };
@@ -463,13 +465,15 @@
 			path = SQLite;
 			sourceTree = "<group>";
 		};
-		A2EB2D661DE56F8700D2CCE5 /* Network */ = {
+		A2EB2D661DE56F8700D2CCE5 /* Network/DAL */ = {
 			isa = PBXGroup;
 			children = (
 				F5CA7C051DE7D11700A1FB69 /* NetModel */,
 				A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */,
 				A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */,
+				A232044C1E023D4B00CA2023 /* JPDALManager.swift */,
 			);
+			name = Network/DAL;
 			path = Network;
 			sourceTree = "<group>";
 		};
@@ -521,7 +525,7 @@
 				A2E890B51E012BBA006571D6 /* SQLite */,
 				A2C3B9101DF7F8C0008B0ED2 /* Emoticon */,
 				A2A452C01DF5051600AE8FD7 /* JPRefreshControl */,
-				A2EB2D661DE56F8700D2CCE5 /* Network */,
+				A2EB2D661DE56F8700D2CCE5 /* Network/DAL */,
 				A2CBFACF1DE3E2DA001D82B6 /* Third */,
 				F58A08F21DDFFBFC001E9521 /* SwiftExtension */,
 				F58A08CE1DDFF799001E9521 /* ObjcSugar */,
@@ -890,6 +894,7 @@
 				F58992BE1DFE363500B050EA /* JPComposeView.swift in Sources */,
 				A2CBFB111DE3E2DA001D82B6 /* LayoutConstraint.swift in Sources */,
 				A2CBFAF81DE3E2DA001D82B6 /* ConstraintDSL.swift in Sources */,
+				A232044D1E023D4B00CA2023 /* JPDALManager.swift in Sources */,
 				A2CBFB071DE3E2DA001D82B6 /* ConstraintMultiplierTarget.swift in Sources */,
 				A2C3B90F1DF7B36C008B0ED2 /* String+Extensions.swift in Sources */,
 				F58A08C71DDFF4A2001E9521 /* JPHomeController.swift in Sources */,

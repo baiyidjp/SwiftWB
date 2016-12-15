@@ -37,8 +37,9 @@ class JPStatusListViewModel: NSObject {
         // 取出数组的最后一条数据的ID 作为上拉刷新的参数
         let max_id = isPullup ? (statusList.last?.status.id ?? 0) : 0
         
-        JPNetworkManager.sharedManager.statusList(since_id: since_id, max_id: max_id) { (status, isSuccess) in
-            
+        //从数据访问层 请求数据
+        JPDALManager.loadStatus(since_id: since_id, max_id: max_id) { (status, isSuccess) in
+
             /// 判断网络是否请求成功
             if !isSuccess {
                 completion(false, false)
