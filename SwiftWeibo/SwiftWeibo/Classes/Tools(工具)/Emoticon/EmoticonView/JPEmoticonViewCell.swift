@@ -20,7 +20,7 @@ import UIKit
 
 class JPEmoticonViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var label: UILabel!
+    fileprivate lazy var tipView = JPEmoticonTipView()
     
     /// 代理
     weak var delegate: JPEmoticonViewCellDelegate?
@@ -86,6 +86,63 @@ class JPEmoticonViewCell: UICollectionViewCell {
         //执行代理
         delegate?.emoticonViewCellSelectEmoticon(cell: self, emoticonModel: emoticonModel)
     }
+    
+    /// 长按手势
+    ///
+    /// - Parameter longPress:
+    @objc fileprivate func longGesture(longGesture: UILongPressGestureRecognizer) {
+        
+        //获取触摸位置
+        let location = longGesture.location(in: self)
+        //获取触摸位置对应的按钮
+        guard let button = locationBtn(location: location) else {
+            //此时是移动到删除按钮或者空白处
+            tipView.isHidden = true
+            return
+        }
+        //处理手势变化
+        switch longGesture.state {
+        case .began,.changed:
+            
+            tipView.isHidden = false
+            //坐标系转换
+            let center = self.convert(button.center, to: window)
+            tipView.center = center
+            //模型赋值
+            if button.tag < emoticons?.count ?? 0 {
+                
+                tipView.emoticonModel = emoticons?[button.tag]
+            }
+        case .ended:
+            tipView.isHidden = true
+            //执行选中按钮的函数
+            emoticonBtnClick(button: button)
+        case .cancelled ,.failed:
+            tipView.isHidden = true
+        default:
+            break
+        }
+    }
+    
+    fileprivate func locationBtn(location: CGPoint) -> UIButton? {
+        //遍历所有的子视图 如果可见 并且在location中
+        for btn in contentView.subviews as! [UIButton] {
+            // 按钮的frame在location内 按钮是显示 按钮不是最后一个删除按钮
+            if btn.frame.contains(location) && btn.isHidden == false && btn != contentView.subviews.last {
+                return btn
+            }
+        }
+        return nil
+    }
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        guard let newWindow = newWindow else {
+            return
+        }
+        newWindow.addSubview(tipView)
+        tipView.isHidden = true
+    }
 }
 
 // MARK: - 设置视图
@@ -133,5 +190,9 @@ fileprivate extension JPEmoticonViewCell {
         deleteButton.setImage(#imageLiteral(resourceName: "compose_emotion_delete"), for: .normal)
         deleteButton.setImage(#imageLiteral(resourceName: "compose_emotion_delete_highlighted"), for: .highlighted)
         
+        //添加长按手势
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
+        longPress.minimumPressDuration = 0.1
+        addGestureRecognizer(longPress)
     }
 }

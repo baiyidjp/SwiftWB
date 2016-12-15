@@ -15,6 +15,7 @@
 		A232044B1E023AB800CA2023 /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = A232044A1E023AB800CA2023 /* status.sql */; };
 		A232044D1E023D4B00CA2023 /* JPDALManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232044C1E023D4B00CA2023 /* JPDALManager.swift */; };
 		A232044F1E02766400CA2023 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232044E1E02766400CA2023 /* Date+Extensions.swift */; };
+		A23204511E02918D00CA2023 /* JPEmoticonTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23204501E02918D00CA2023 /* JPEmoticonTipView.swift */; };
 		A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */; };
 		A23B4BEF1DF5440300B9F853 /* JPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */; };
 		A25C563B1DF65C9E00C7E042 /* JPRefreshJDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */; };
@@ -40,7 +41,6 @@
 		A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */; };
 		A2C809211DFF946E00A31983 /* JPEmoticonToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */; };
 		A2C809231DFFC9EF00A31983 /* JPEmoticonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809221DFFC9EF00A31983 /* JPEmoticonViewCell.swift */; };
-		A2C809251DFFC9F800A31983 /* JPEmoticonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C809241DFFC9F800A31983 /* JPEmoticonViewCell.xib */; };
 		A2C809271DFFCB1900A31983 /* JPEmoticonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C809261DFFCB1900A31983 /* JPEmoticonLayout.swift */; };
 		A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */; };
 		A2CBFAF41DE3E2DA001D82B6 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */; };
@@ -134,6 +134,7 @@
 		A232044A1E023AB800CA2023 /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
 		A232044C1E023D4B00CA2023 /* JPDALManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPDALManager.swift; sourceTree = "<group>"; };
 		A232044E1E02766400CA2023 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A23204501E02918D00CA2023 /* JPEmoticonTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonTipView.swift; sourceTree = "<group>"; };
 		A23B4BEC1DF53EDF00B9F853 /* JPRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPRefreshView.xib; sourceTree = "<group>"; };
 		A23B4BEE1DF5440300B9F853 /* JPRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshView.swift; sourceTree = "<group>"; };
 		A25C563A1DF65C9E00C7E042 /* JPRefreshJDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPRefreshJDView.swift; sourceTree = "<group>"; };
@@ -159,7 +160,6 @@
 		A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPEmoticonView.xib; sourceTree = "<group>"; };
 		A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonToolView.swift; sourceTree = "<group>"; };
 		A2C809221DFFC9EF00A31983 /* JPEmoticonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonViewCell.swift; sourceTree = "<group>"; };
-		A2C809241DFFC9F800A31983 /* JPEmoticonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPEmoticonViewCell.xib; sourceTree = "<group>"; };
 		A2C809261DFFCB1900A31983 /* JPEmoticonLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEmoticonLayout.swift; sourceTree = "<group>"; };
 		A2CBFAD11DE3E2DA001D82B6 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		A2CBFAD21DE3E2DA001D82B6 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -385,10 +385,10 @@
 			children = (
 				A2C8091C1DFF916E00A31983 /* JPEmoticonView.swift */,
 				A2C809201DFF946E00A31983 /* JPEmoticonToolView.swift */,
-				A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */,
 				A2C809221DFFC9EF00A31983 /* JPEmoticonViewCell.swift */,
-				A2C809241DFFC9F800A31983 /* JPEmoticonViewCell.xib */,
 				A2C809261DFFCB1900A31983 /* JPEmoticonLayout.swift */,
+				A23204501E02918D00CA2023 /* JPEmoticonTipView.swift */,
+				A2C8091E1DFF917800A31983 /* JPEmoticonView.xib */,
 			);
 			path = EmoticonView;
 			sourceTree = "<group>";
@@ -744,7 +744,6 @@
 			files = (
 				A23B4BED1DF53EDF00B9F853 /* JPRefreshView.xib in Resources */,
 				F58992BD1DFE363500B050EA /* JPComposeBtn.xib in Resources */,
-				A2C809251DFFC9F800A31983 /* JPEmoticonViewCell.xib in Resources */,
 				A2C8091F1DFF917800A31983 /* JPEmoticonView.xib in Resources */,
 				A2CBFB101DE3E2DA001D82B6 /* Info.plist in Resources */,
 				F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */,
@@ -908,6 +907,7 @@
 				F58A08CB1DDFF4C6001E9521 /* JPMessageController.swift in Sources */,
 				A2CBFB041DE3E2DA001D82B6 /* ConstraintMakerFinalizable.swift in Sources */,
 				A2CBFB131DE3E2DA001D82B6 /* UILayoutSupport+Extensions.swift in Sources */,
+				A23204511E02918D00CA2023 /* JPEmoticonTipView.swift in Sources */,
 				F58A08C11DDFF436001E9521 /* JPMainViewController.swift in Sources */,
 				A2CBFAF71DE3E2DA001D82B6 /* ConstraintDescription.swift in Sources */,
 				A20C56E41DEBCCB400A28144 /* JPWelcomeView.swift in Sources */,
