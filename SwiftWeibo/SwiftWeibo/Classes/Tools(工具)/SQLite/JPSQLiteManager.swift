@@ -71,8 +71,6 @@ fileprivate extension JPSQLiteManager {
                 print("创表Failed")
             }
         }
-        
-        print("Over")
     }
     
 }
@@ -95,7 +93,7 @@ extension JPSQLiteManager {
          */
         let sql = "INSERT OR REPLACE INTO T_Status (statusid,userid,status) VALUES(?,?,?)"
         
-        //2.执行SQL
+        //2.执行SQL 开启事务
         queue.inTransaction { (db, rollBack) in
             
             //遍历数组 逐条插入微博数据
@@ -110,7 +108,7 @@ extension JPSQLiteManager {
                 //执行SQL
                 if db?.executeUpdate(sql, withArgumentsIn: [statusid,userid,jsonData]) == false {
                     
-                    //FIXME: 插入失败 需要回滚
+                    print("插入失败 需要回滚")
                     //OC 中 *rollBack = yes
                     //Swift 1 2 rollBack.memory = true
                     rollBack?.pointee = true
@@ -118,5 +116,71 @@ extension JPSQLiteManager {
                 }
             }
         }
+    }
+    
+    
+    /// 传入一条SQL 返回 字典数组
+    ///
+    /// - Parameter sql: sql语句
+    /// - Returns: 返回相应的字典数组
+    func execRecordSet(sql: String) -> [[String: Any]] {
+        
+        //要返回的数组
+        var result = [[String: Any]]()
+        
+        //执行SQL -- 查询数据 不用修改数据 所以不用开启事物
+        //事务的目的是保证数据的有效性  一旦失败可以回滚
+        queue.inDatabase { (db) in
+            
+            //数据库集合
+            guard let rs = db?.executeQuery(sql, withArgumentsIn: []) else {
+                return
+            }
+            //逐行 -- 遍历集合
+            while rs.next() {
+                
+                //列数
+                let colCount = rs.columnCount()
+                //遍历所有列
+                for col in 0..<colCount {
+                    
+                    //列名--KEY / 值--Value
+                    guard let name = rs.columnName(for: col),
+                        let value = rs.object(forColumnIndex: col)
+                        else {
+                            continue
+                    }
+                    //追加结果
+                    result.append([name: value])
+                }
+            }
+        }
+        return result
+    }
+    
+    /// 从数据库加载微博数据数组
+    ///
+    /// - Parameters:
+    ///   - userid: 当前登录用户的ID
+    ///   - since_id: 返回ID比since_id大的微博 下拉用
+    ///   - max_id: 返回ID比max_id小的微博 上拉用
+    /// - Returns: 字典数组 需要将status对应的二进制数据反序列化为字典
+    func loadStatusFromDB(userid: String,since_id:Int64 = 0,max_id: Int64 = 0) -> [[String: Any]] {
+        
+        //拼接SQL语句
+        var sql = "SELECT statusid,userid,status FROM T_Status \n"
+        //查询条件
+        sql += "WHERE userid = \(userid) \n"
+        //判断是上拉/下拉
+        if since_id > 0 {
+            sql += "AND statusid > \(since_id) \n"
+        }else if max_id > 0 {
+            sql += "AND statusid < \(max_id) \n"
+        }
+        //倒序查询 并且限制条数
+        sql += "ORDER BY statusid DESC LIMIT 20;"
+        
+        print("sql--" + sql)
+        return []
     }
 }
