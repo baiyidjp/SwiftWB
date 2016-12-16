@@ -24,6 +24,9 @@ class JPEmoticonModel: NSObject {
     /// 表情所在文件名
     var directory: String?
     
+    /// 使用次数
+    var times: Int = 0
+    
     /// 图片表情对应的图片
     var image: UIImage? {
         

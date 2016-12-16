@@ -71,7 +71,12 @@ extension JPEmoticonView: JPEmoticonViewCellDelegate {
     
     func emoticonViewCellSelectEmoticon(cell: JPEmoticonViewCell, emoticonModel: JPEmoticonModel?) {
 //        print(emoticonModel)
-        
+        // 点击表情
         seletedEmoticonCallBack?(emoticonModel)
+        //添加最近表情
+        guard let emoticonModel = emoticonModel else {
+            return
+        }
+        JPEmoticonManager.shared.addLastEmoticon(emoticonModel: emoticonModel)
     }
 }

@@ -31,7 +31,28 @@ class JPEmoticonManager {
         return bundle!
     }()
     
-   
+    /// 添加最近使用的表情
+    ///
+    /// - Parameter emoticonModel: 表情模型
+    func addLastEmoticon(emoticonModel: JPEmoticonModel) {
+        
+        //1.增加表情使用次数
+        emoticonModel.times += 1
+        //2.判断表情是否已存在 如果不存在 则记录
+        if !packagesModels[0].emoticons.contains(emoticonModel) {
+            packagesModels[0].emoticons.insert(emoticonModel, at: 0)
+        }
+        //3.使用次数排序
+        packagesModels[0].emoticons.sort { (emoticonModel1, emoticonModel2) -> Bool in
+            
+            return emoticonModel1.times > emoticonModel2.times
+        }
+        //4.判断表情总数是否已经超出20个
+        if packagesModels[0].emoticons.count > 20 {
+            packagesModels[0].emoticons.removeSubrange(20..<packagesModels[0].emoticons.count)
+        }
+        print(packagesModels[0].emoticons)
+    }
     
 }
 
