@@ -51,7 +51,6 @@ class JPEmoticonManager {
         if packagesModels[0].emoticons.count > 20 {
             packagesModels[0].emoticons.removeSubrange(20..<packagesModels[0].emoticons.count)
         }
-        print(packagesModels[0].emoticons)
     }
     
 }

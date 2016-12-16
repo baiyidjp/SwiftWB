@@ -17,7 +17,6 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfA-NS-eJC" userLabel="底部工具栏" customClass="JPEmoticonToolView" customModule="SwiftWeibo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="214" width="375" height="44"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="uM4-a9-rt6"/>
                     </constraints>
@@ -36,10 +35,17 @@
                         <outlet property="delegate" destination="WnM-3E-B2w" id="Gdv-EV-ueu"/>
                     </connections>
                 </collectionView>
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="IOv-g7-4aM">
+                    <rect key="frame" x="187.5" y="222" width="0.0" height="0.0"/>
+                    <color key="pageIndicatorTintColor" red="1" green="0.28532055779999999" blue="0.92980041420000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="TfA-NS-eJC" firstAttribute="top" secondItem="IOv-g7-4aM" secondAttribute="bottom" constant="-8" id="Esr-rJ-3TE"/>
                 <constraint firstAttribute="bottom" secondItem="TfA-NS-eJC" secondAttribute="bottom" id="H3v-j5-Ycu"/>
+                <constraint firstItem="IOv-g7-4aM" firstAttribute="centerX" secondItem="WnM-3E-B2w" secondAttribute="centerX" id="HAt-od-brg"/>
                 <constraint firstItem="TfA-NS-eJC" firstAttribute="top" secondItem="NZ5-De-ztk" secondAttribute="bottom" id="Mhb-lD-doj"/>
                 <constraint firstItem="NZ5-De-ztk" firstAttribute="leading" secondItem="WnM-3E-B2w" secondAttribute="leading" id="URK-sD-ZWN"/>
                 <constraint firstAttribute="trailing" secondItem="TfA-NS-eJC" secondAttribute="trailing" id="XPQ-ct-K9F"/>
@@ -51,6 +57,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="NZ5-De-ztk" id="xNx-Il-B9h"/>
+                <outlet property="pageControl" destination="IOv-g7-4aM" id="dFg-t1-GWc"/>
                 <outlet property="toolView" destination="TfA-NS-eJC" id="VHn-nH-Ebp"/>
             </connections>
             <point key="canvasLocation" x="-45" y="-46"/>

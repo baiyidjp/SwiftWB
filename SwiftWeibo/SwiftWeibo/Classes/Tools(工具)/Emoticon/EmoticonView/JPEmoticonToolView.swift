@@ -8,6 +8,12 @@
 
 import UIKit
 
+/// 代理/协议
+@objc protocol JPEmoticonToolViewDelegate: NSObjectProtocol {
+    
+    func emoticonToolBarItemDidSelectIndex(toolView: JPEmoticonToolView,index: Int)
+}
+
 /// 表情键盘底部的工具栏
 class JPEmoticonToolView: UIView {
 
@@ -15,7 +21,39 @@ class JPEmoticonToolView: UIView {
         
         setupUI()
     }
-
+    
+    weak var delegate: JPEmoticonToolViewDelegate?
+    
+    /// 滚动时 调整按钮的点击状态
+    var selectIndex: Int = 0 {
+        
+        didSet {
+            
+            for btn in subviews as! [UIButton] {
+                
+                setButton(isSelect: btn.tag == selectIndex, btn: btn)
+            }
+        }
+    }
+    
+    
+    /// 点击底部的item
+    ///
+    /// - Parameter button: 按钮
+    @objc fileprivate func clickItem(button: UIButton) {
+        
+        for btn in subviews as! [UIButton] {
+            
+            setButton(isSelect: btn == button, btn: btn)
+        }
+        
+        delegate?.emoticonToolBarItemDidSelectIndex(toolView: self, index: button.tag)
+    }
+    
+    fileprivate func setButton(isSelect: Bool,btn: UIButton) {
+        
+        btn.isSelected = isSelect
+    }
 }
 
 fileprivate extension JPEmoticonToolView {
@@ -36,18 +74,13 @@ fileprivate extension JPEmoticonToolView {
             btn.setTitle(page.groupName, for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             
-            btn.setTitleColor(UIColor.darkGray, for: .normal)
-            btn.setTitleColor(UIColor.white, for: .highlighted)
-            btn.setTitleColor(UIColor.white, for: .selected)
-            
-            addSubview(btn)
-            
-            //设置按钮图片
-            let imageNormalName = "compose_emotion_table_\(page.bgImageName ?? "")_normal"
-            let imageSelectesName = "compose_emotion_table_\(page.bgImageName ?? "")_selected"
-            
-            var imageNormal = UIImage(named: imageNormalName)
-            var imageSelected = UIImage(named: imageSelectesName)
+            btn.setTitleColor(UIColor.white, for: .normal)
+            btn.setTitleColor(UIColor.darkGray, for: .highlighted)
+            btn.setTitleColor(UIColor.darkGray, for: .selected)
+
+            //设置按钮图片 compose_emotion_table_left_normal  compose_emotion_table_mid_selected
+            var imageNormal = UIImage(named: "compose_emotion_table_\(page.bgImageName ?? "")_normal")
+            var imageSelected = UIImage(named: "compose_emotion_table_\(page.bgImageName ?? "")_selected")
             
             //图片的大小
             let imageSize = imageNormal?.size ?? CGSize()
@@ -57,7 +90,10 @@ fileprivate extension JPEmoticonToolView {
             imageSelected = imageSelected?.resizableImage(withCapInsets: inset, resizingMode: .stretch)
             
             btn.setBackgroundImage(imageNormal, for: .normal)
+            btn.setBackgroundImage(imageSelected, for: .highlighted)
             btn.setBackgroundImage(imageSelected, for: .selected)
+            
+            addSubview(btn)
             
             btn.snp.makeConstraints({ (make) in
                 make.top.bottom.equalTo(0)
@@ -65,6 +101,13 @@ fileprivate extension JPEmoticonToolView {
                 make.left.equalTo(CGFloat(i)*btnW)
             })
             
+            //设置tag值
+            btn.tag = i
+            //添加点击方法
+            btn.addTarget(self, action: #selector(clickItem), for: .touchUpInside)
+
         }
+        //第一个按钮默认点击
+        (subviews[0] as! UIButton).isSelected = true
     }
 }

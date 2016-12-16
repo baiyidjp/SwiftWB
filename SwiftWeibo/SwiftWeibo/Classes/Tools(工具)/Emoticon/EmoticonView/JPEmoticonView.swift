@@ -14,7 +14,8 @@ fileprivate let cellID = "collectionCell"
 class JPEmoticonView: UIView {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var toolView: UIView!
+    @IBOutlet weak var toolView: JPEmoticonToolView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     //闭包属性 点击表情
     fileprivate var seletedEmoticonCallBack: ((_ emoticonModel:JPEmoticonModel?)->())?
@@ -39,6 +40,17 @@ class JPEmoticonView: UIView {
         
         //注册可重用的cell
         collectionView.register(JPEmoticonViewCell.self, forCellWithReuseIdentifier: cellID)
+        
+        //设置底部工具栏的代理
+        toolView.delegate = self
+    }
+}
+
+// MARK: - JPEmoticonToolViewDelegate
+extension JPEmoticonView: JPEmoticonToolViewDelegate {
+    
+    func emoticonToolBarItemDidSelectIndex(toolView: JPEmoticonToolView, index: Int) {
+        
     }
 }
 
@@ -64,6 +76,39 @@ extension JPEmoticonView: UICollectionViewDelegate,UICollectionViewDataSource {
         cell.delegate = self
         return cell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        //获取中心店
+        var center = scrollView.center
+        center.x += scrollView.contentOffset.x
+        
+        //获取当前显示的 cell 的indexPath集合
+        let paths = collectionView.indexPathsForVisibleItems
+        
+        var currentIndex: IndexPath?
+        //判断中心点在哪一个cell内
+        for indexPath in paths {
+            
+            //根据indexpath获取当前的cell
+            let cell = collectionView.cellForItem(at: indexPath)
+            
+            //判断中心点位置
+            if cell?.frame.contains(center) == true {
+                currentIndex = indexPath
+                break
+            }
+        }
+        
+        guard let indexPath = currentIndex else {
+            return
+        }
+        toolView.selectIndex = indexPath.section
+        
+        //设置分页控件
+        pageControl.numberOfPages = collectionView.numberOfItems(inSection: indexPath.section)
+        pageControl.currentPage = indexPath.item
+    }
 }
 
 // MARK: - JPEmoticonViewCellDelegate
@@ -77,6 +122,16 @@ extension JPEmoticonView: JPEmoticonViewCellDelegate {
         guard let emoticonModel = emoticonModel else {
             return
         }
+        //如果是最近分组 就不添加最近使用表情
+        let indexPath = collectionView.indexPathsForVisibleItems[0]
+        if indexPath.section == 0 {
+            return
+        }
         JPEmoticonManager.shared.addLastEmoticon(emoticonModel: emoticonModel)
+        
+        //刷新最近组的数据
+        var indexSet = IndexSet()
+        indexSet.insert(0)
+        collectionView.reloadSections(indexSet)
     }
 }

@@ -64,7 +64,6 @@ extension AppDelegate {
         let url = Bundle.main.url(forResource: "weibomain.json", withExtension: nil)
         let data = NSData(contentsOf: url!)
         data?.write(toFile: weiboMainPath!, atomically: true)
-        print(weiboMainPath ?? "")
     }
     
 }

@@ -81,7 +81,7 @@ fileprivate extension JPSQLiteManager {
             return
         }
         
-        print(sql)
+//        print(sql)
         //2.执行SQL
         //MARK: --FMDB的内部队列是 串行队列 同步执行
         //可以保证同一时间 只有一个任务在操作数据库 从而保证数据库的读写安全
@@ -205,7 +205,7 @@ extension JPSQLiteManager {
         }
         //倒序查询 并且限制条数
         sql += "ORDER BY statusid DESC LIMIT 20;"
-        print("sql--" + sql)
+//        print("sql--" + sql)
         
         //执行SQL
         let array = execRecordSet(sql: sql)
