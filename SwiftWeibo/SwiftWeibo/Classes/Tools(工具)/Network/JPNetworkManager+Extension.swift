@@ -164,4 +164,24 @@ extension JPNetworkManager {
             completion(data as? [String : Any], isSuccess)
         }
     }
+    
+}
+
+// MARK: - 删除微博
+extension JPNetworkManager {
+    
+    /// 删除微博
+    ///
+    /// - Parameters:
+    ///   - id: 要删除的微博ID。
+    func deleteOneStatus(id: Int64,completion:@escaping (_ result:[String: Any]?,_ isSuccess: Bool)->()) {
+        
+        let urlStr = "https://api.weibo.com/2/statuses/destroy.json"
+        let parmas = ["id":id] as [String : Any]
+        
+        tokenRequest(method: .POST, URLString: urlStr, parameters: parmas) { (data, isSuccess) in
+            
+            completion(data as? [String : Any], isSuccess)
+        }
+    }
 }
