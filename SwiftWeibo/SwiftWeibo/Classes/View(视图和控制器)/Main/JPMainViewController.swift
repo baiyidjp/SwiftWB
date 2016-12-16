@@ -54,6 +54,8 @@ class JPMainViewController: UITabBarController {
             }
             let composeVC = clsCtrl.init()
             let navCtrl = UINavigationController(rootViewController: composeVC)
+            //强行更新约束
+            navCtrl.view.layoutIfNeeded()
             self.present(navCtrl, animated: true, completion: nil)
         }
     }

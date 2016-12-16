@@ -11,12 +11,15 @@ import UIKit
 class JPStatusPicModel: NSObject {
     
     /// 单张图片的缩略图地址
-    var thumbnail_pic: String?
-    /// 单张图片的大图地址
-    var imageOrignalUrl: String? {
+    var thumbnail_pic: String? {
         
-        let url = thumbnail_pic?.replacingOccurrences(of: "thumbnail", with: "or360")
-        return url
+        didSet {
+        
+            large_Pic = thumbnail_pic?.replacingOccurrences(of: "/thumbnail/", with: "/large/")
+            thumbnail_pic = thumbnail_pic?.replacingOccurrences(of: "/thumbnail/", with: "/wap360/")
+        }
     }
+    /// 单张图片的大图地址
+    var large_Pic: String?
     
 }

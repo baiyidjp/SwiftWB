@@ -58,6 +58,9 @@ extension JPEmoticonView: JPEmoticonToolViewDelegate {
     
     func emoticonToolBarItemDidSelectIndex(toolView: JPEmoticonToolView, index: Int) {
         
+        let indexPath = IndexPath(item: 0, section: index)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+        pageControl.currentPage = 0
     }
 }
 

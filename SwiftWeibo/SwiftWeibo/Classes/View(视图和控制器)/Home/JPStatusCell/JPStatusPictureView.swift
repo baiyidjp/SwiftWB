@@ -73,6 +73,10 @@ class JPStatusPictureView: UIView {
                 //设置图片
                 imageV.jp_setWebImage(urlString: picModel?.thumbnail_pic, placeholderImage: nil)
                 imageV.isHidden = false
+                
+                //设置gif显示与否 lowercased-小写
+                let gifView = imageV.subviews[0]
+                gifView.isHidden = (((picModel?.thumbnail_pic ?? "") as NSString).pathExtension.lowercased() != "gif")
             }
         }
     }
@@ -108,8 +112,20 @@ extension JPStatusPictureView {
             let imageY = row * (JPStatusPictureWidth + JPStatusPicIntterMargin) + JPStatusPicOutterMargin
             
             imageV.frame = CGRect(x: imageX, y: imageY, width: JPStatusPictureWidth, height: JPStatusPictureWidth)
-
+            
+            addGifView(imageV: imageV)
         }
         
+    }
+    
+    func addGifView(imageV: UIImageView) {
+        
+        let gifView = UIImageView(image: #imageLiteral(resourceName: "timeline_image_gif"))
+        imageV.addSubview(gifView)
+        //自动布局
+        gifView.snp.makeConstraints { (make) in
+            make.right.equalTo(imageV)
+            make.bottom.equalTo(imageV)
+        }
     }
 }

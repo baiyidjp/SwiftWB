@@ -149,7 +149,8 @@ class JPStatusViewModel: CustomStringConvertible {
         /// 对于图片的过宽和过窄的处理
         let maxWidth: CGFloat = ScreenWidth - 2*JPStatusPicOutterMargin
         let minWidth: CGFloat = 40
-        
+        let maxHeight: CGFloat = maxWidth*9/16
+
         if size.width > maxWidth {
             
             size.width = maxWidth
@@ -160,6 +161,10 @@ class JPStatusViewModel: CustomStringConvertible {
             
             size.width = minWidth
             size.height = size.width*image.size.height/image.size.width/4
+        }
+        
+        if size.height > maxHeight {
+            size.height = maxHeight
         }
         
         size.height += JPStatusPicOutterMargin
@@ -182,8 +187,6 @@ class JPStatusViewModel: CustomStringConvertible {
         let bottomHeight: CGFloat = 36
         //期望文本size/正文字号/转发字号
         let textSize = CGSize(width: ScreenWidth-2*margin, height: CGFloat(MAXFLOAT))
-        let originalFont = UIFont.systemFont(ofSize: 15)
-        let retweetFont = UIFont.systemFont(ofSize: 14)
         
         //cell 高度
         var cellHeight: CGFloat = 0
@@ -199,15 +202,6 @@ class JPStatusViewModel: CustomStringConvertible {
                                             options: .usesLineFragmentOrigin,
                                             context: nil).height+1
             
-//            /*
-//                预期的文本宽度高度
-//                选项 换行文本 统一使用usesLineFragmentOrigin
-//                attributes 指定字体的字典 一般计算高度是指定字号
-//             */
-//            cellHeight += (text as NSString).boundingRect(with: textSize,
-//                                                           options: .usesLineFragmentOrigin,
-//                                                           attributes: [NSFontAttributeName : originalFont],
-//                                                           context: nil).height+1
         }
         
         //判断是否是转发微博
@@ -221,11 +215,6 @@ class JPStatusViewModel: CustomStringConvertible {
                 cellHeight += rettext.boundingRect(with: textSize,
                                                    options: .usesLineFragmentOrigin,
                                                    context: nil).height+1
-
-//                cellHeight += (rettext as NSString).boundingRect(with: textSize,
-//                                                              options: .usesLineFragmentOrigin,
-//                                                              attributes: [NSFontAttributeName : retweetFont],
-//                                                              context: nil).height+1
             }
         }
         
