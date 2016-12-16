@@ -43,6 +43,13 @@ class JPEmoticonView: UIView {
         
         //设置底部工具栏的代理
         toolView.delegate = self
+        
+        //设置分页图片
+        let normalImage = #imageLiteral(resourceName: "compose_keyboard_dot_normal")
+        let selectImage = #imageLiteral(resourceName: "compose_keyboard_dot_selected")
+        //使用KVC设置图片
+        pageControl.setValue(normalImage, forKey: "_pageImage")
+        pageControl.setValue(selectImage, forKey: "_currentPageImage")
     }
 }
 
@@ -108,6 +115,7 @@ extension JPEmoticonView: UICollectionViewDelegate,UICollectionViewDataSource {
         //设置分页控件
         pageControl.numberOfPages = collectionView.numberOfItems(inSection: indexPath.section)
         pageControl.currentPage = indexPath.item
+        
     }
 }
 
