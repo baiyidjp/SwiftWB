@@ -60,6 +60,7 @@ extension JPEmoticonView: JPEmoticonToolViewDelegate {
         
         let indexPath = IndexPath(item: 0, section: index)
         collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+        pageControl.numberOfPages = collectionView.numberOfItems(inSection: index)
         pageControl.currentPage = 0
     }
 }
