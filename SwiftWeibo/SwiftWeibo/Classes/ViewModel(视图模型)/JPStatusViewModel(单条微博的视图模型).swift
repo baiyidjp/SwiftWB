@@ -15,6 +15,8 @@ class JPStatusViewModel: CustomStringConvertible {
     var status: JPStatusesModel
     /// 会员图标
     var memberImage: UIImage?
+    /// 昵称颜色
+    var nameColor: UIColor?
     /// 认证图标  -1:没有认证 0:认证用户 2.3.5:企业认证 220:达人
     var verifiedImage: UIImage?
     /// 转发 评论 赞
@@ -50,6 +52,9 @@ class JPStatusViewModel: CustomStringConvertible {
         if (model.user?.mbrank)! > 0 && (model.user?.mbrank)! < 7 {
             let imageName = "common_icon_membership_level\(model.user?.mbrank ?? 1)"
             self.memberImage = UIImage(named: imageName)
+            nameColor = UIColor.orange
+        }else {
+            nameColor = UIColor.black
         }
         
         switch model.user?.verified_type ?? -1 {

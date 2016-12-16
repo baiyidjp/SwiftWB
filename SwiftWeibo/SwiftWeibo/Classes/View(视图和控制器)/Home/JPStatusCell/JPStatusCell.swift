@@ -40,6 +40,8 @@ class JPStatusCell: UITableViewCell {
             statusLabel?.attributedText = statusViewModel?.originalAttributeText
             /// 昵称
             nameLabel.text = statusViewModel?.status.user?.screen_name
+            /// 昵称颜色
+            nameLabel.textColor = statusViewModel?.nameColor
             /// 设置会员图标
             vipImage.image = statusViewModel?.memberImage
             /// 设置认证图标
