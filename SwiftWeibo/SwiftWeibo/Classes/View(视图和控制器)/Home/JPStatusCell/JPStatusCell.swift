@@ -54,7 +54,8 @@ class JPStatusCell: UITableViewCell {
             retweetLabel?.attributedText = statusViewModel?.retweetAttributeText
             // 设置来源
             sourceLabel.text = statusViewModel?.sourceStr
-            
+            //设置时间
+            timeLabel.text = statusViewModel?.status.created_date?.jp_dateDescription
         }
     }
     

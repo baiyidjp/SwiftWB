@@ -22,10 +22,16 @@ class JPStatusesModel: NSObject {
     /// 点赞数
     var attitudes_count: Int = 0
     /// 微博的创建时间
-    var created_at: String?
+    var created_at: String? {
+        
+        didSet {
+            created_date = Date.jp_sinaDateString(str: created_at ?? "")
+        }
+    }
+    /// 微博的创建日期 转换来
+    var created_date: Date?
     /// 微博来源
     var source: String?
-    
     
     /// 微博用户信息
     var user: JPStatusUserModel?
