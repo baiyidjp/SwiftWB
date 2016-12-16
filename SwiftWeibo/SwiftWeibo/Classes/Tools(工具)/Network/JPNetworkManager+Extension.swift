@@ -142,3 +142,26 @@ extension JPNetworkManager {
         
     }
 }
+
+// MARK: - 转发微博
+extension JPNetworkManager {
+    
+    /// 转发微博
+    ///
+    /// - Parameters:
+    ///   - id: 要转发的微博ID。
+    ///   - status: 添加的转发文本，必须做URLencode，内容不超过140个汉字，不填则默认为“转发微博”。
+    ///   - is_comment: 是否在转发的同时发表评论，0：否、1：评论给当前微博、2：评论给原微博、3：都评论，默认为0
+    func reportOneStatus(id: Int64,status: String = "",is_comment: Int = 0,completion:@escaping (_ result:[String: Any]?,_ isSuccess: Bool)->()) {
+        
+        let urlStr = "https://api.weibo.com/2/statuses/repost.json"
+        let parmas = ["id":id,
+                      "status":status,
+                      "is_comment":is_comment] as [String : Any]
+        
+        tokenRequest(method: .POST, URLString: urlStr, parameters: parmas) { (data, isSuccess) in
+            
+            completion(data as? [String : Any], isSuccess)
+        }
+    }
+}

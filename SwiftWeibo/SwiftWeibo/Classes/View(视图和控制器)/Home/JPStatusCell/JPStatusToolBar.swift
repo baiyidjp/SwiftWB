@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class JPStatusToolBar: UIView {
     
@@ -29,4 +30,28 @@ class JPStatusToolBar: UIView {
         }
     }
     
+    override func awakeFromNib() {
+        
+        retweektBtn.addTarget(self, action: #selector(clickRetweekBtn), for: .touchUpInside)
+    }
+    
+    @objc fileprivate func clickRetweekBtn() {
+        
+        JPNetworkManager.sharedManager.reportOneStatus(id: statusViewModel?.status.id ?? 0) { (data, isSuccess) in
+            
+            SVProgressHUD.setDefaultStyle(.dark)
+            if isSuccess {
+                SVProgressHUD.showSuccess(withStatus: "转发成功")
+                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                    SVProgressHUD.setDefaultStyle(.light)
+                })
+                
+            }else {
+                SVProgressHUD.showSuccess(withStatus: "转发失败")
+                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                    SVProgressHUD.setDefaultStyle(.light)
+                })
+            }
+        }
+    }
 }
