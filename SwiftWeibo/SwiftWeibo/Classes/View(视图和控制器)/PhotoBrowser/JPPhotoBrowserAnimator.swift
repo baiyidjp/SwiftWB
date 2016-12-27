@@ -12,18 +12,20 @@ import UIKit
 /// UIViewControllerTransitioningDelegate 控制器自定义转场的代理
 class JPPhotoBrowserAnimator: NSObject,UIViewControllerTransitioningDelegate {
     
-    fileprivate var isPresend = false
+    fileprivate var isPresent = false
     
+    /// 返回真正的 present 动画
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        isPresend = true
+        isPresent = true
         
         return self
     }
     
+    /// 返回真正的 dismiss 动画
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        isPresend = false
+        isPresent = false
         
         return self
     }
@@ -43,5 +45,41 @@ extension JPPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
     /// - Parameter transitionContext: 转场上下文 提供转场所需相关内容
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
+        isPresent ? presentTransition(using: transitionContext): dismissTransition(using: transitionContext)
     }
+    /*
+     转场动画需要的内容 从'from控制器' 到 'to控制器'
+     1-位置
+     2-方式
+     3-容器视图 存放被展现视图控制器的视图->动画代码实现的舞台
+     */
+    //MARK: -动画函数
+    /// 展现动画
+    private func presentTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
+        //目标视图
+        let toView = transitionContext.view(forKey: .to)
+        let toVC = transitionContext.viewController(forKey: .to)
+        
+        //拿到系统提供的容器视图
+        let containerView = transitionContext.containerView
+        //将目标视图添加到容器视图
+        containerView.addSubview(toView!)
+        //告诉上下文转转场动画结束  结束之前 默认没有交互
+        transitionContext.completeTransition(true)
+        
+        
+    }
+    /// 解除动画  从 browser 回到 Home
+    private func dismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
+        //拿到照片浏览的视图 是from
+        let fromView = transitionContext.view(forKey: .from)
+        //移除
+        fromView?.removeFromSuperview()
+        //结束转场
+        transitionContext.completeTransition(true)
+        
+    }
+
 }
