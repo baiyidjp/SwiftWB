@@ -60,7 +60,7 @@ class JPPhotoBrowserController: UIViewController {
         let str = "\(index+1) / \(allCount)"
         
         let attributeStr = NSMutableAttributedString(string: str)
-        attributeStr.addAttributes([NSFontAttributeName:UIFont.systemFont(ofSize: 17)], range: NSMakeRange(0, 1))
+        attributeStr.addAttributes([NSFontAttributeName:UIFont.systemFont(ofSize: 17),NSForegroundColorAttributeName:UIColor.red], range: NSMakeRange(0, 1))
         tipCountLabel.attributedText = attributeStr
     }
 }
@@ -87,9 +87,10 @@ fileprivate extension JPPhotoBrowserController {
         //4->设置手势识别
         view.gestureRecognizers = pageViewController.gestureRecognizers
         
-        //5->设置数据源
+        //5->设置数据源 代理
         pageViewController.dataSource = self
-        
+        pageViewController.delegate = self
+
         //添加的点击手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView))
         view.addGestureRecognizer(tap)
@@ -120,11 +121,6 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         
         //拿到当前显示的控制器的索引
         var index = (viewController as! JPPhotoViewController).selectedIndex
-        //记录当前图片的下标
-        selectedIndex = index
-        //改变提示label
-        setTipLabel(index: index)
-        print(index)
         //判断是否到头
         if index <= 0 {
             return nil
@@ -149,11 +145,7 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         
         //拿到当前显示的控制器的索引
         var index = (viewController as! JPPhotoViewController).selectedIndex
-        //记录当前图片的下标
-        selectedIndex = index
-        //改变提示label
-        setTipLabel(index: index)
-        print(index)
+        
         //判断是否到头
         index += 1
         if index >= urls.count {
@@ -166,4 +158,24 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
 
     }
     
+}
+
+// MARK: - UIPageViewControllerDelegate
+extension JPPhotoBrowserController: UIPageViewControllerDelegate {
+    
+    /// 分页停止动画 - 第一次启动，不会调用此代理方法
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        // viewControllers[0] 是当前显示的控制器，随着分页控制器的滚动，调整数组的内容次序
+        // 始终保证当前显示的控制器的下标是 0
+        // 一定注意，不要使用 childViewControllers
+
+        guard let photoView = pageViewController.viewControllers?[0] as? JPPhotoViewController else {
+            return
+        }
+        let index = photoView.selectedIndex
+        //记录当前图片的下标
+        selectedIndex = index
+        //改变提示label
+        setTipLabel(index: index)
+    }
 }
