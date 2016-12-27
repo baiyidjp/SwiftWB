@@ -18,7 +18,7 @@ class JPPhotoViewController: UIViewController {
     
     /// 图片的URL 和 下标
     fileprivate let urlString: String
-    fileprivate let selectedIndex: Int
+    let selectedIndex: Int
     
     //构造函数
     init(urlString: String,selectedIndex: Int) {

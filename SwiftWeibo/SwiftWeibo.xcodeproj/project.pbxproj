@@ -85,6 +85,7 @@
 		A2E890B71E012BD6006571D6 /* JPSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E890B61E012BD6006571D6 /* JPSQLiteManager.swift */; };
 		A2EB2D681DE5701300D2CCE5 /* JPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */; };
 		A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */; };
+		F55365E41E124E12004ED982 /* JPPhotoBrowserAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55365E31E124E12004ED982 /* JPPhotoBrowserAnimator.swift */; };
 		F55FE2121DF96480005515B3 /* JPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55FE2111DF96480005515B3 /* JPWebViewController.swift */; };
 		F58992BC1DFE363500B050EA /* JPComposeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58992B81DFE363500B050EA /* JPComposeBtn.swift */; };
 		F58992BD1DFE363500B050EA /* JPComposeBtn.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58992B91DFE363500B050EA /* JPComposeBtn.xib */; };
@@ -208,6 +209,7 @@
 		A2EB2D671DE5701300D2CCE5 /* JPNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPNetworkManager.swift; sourceTree = "<group>"; };
 		A2EB2D691DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		E9E01608140BD22C7059D414 /* Pods-SwiftWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftWeibo/Pods-SwiftWeibo.debug.xcconfig"; sourceTree = "<group>"; };
+		F55365E31E124E12004ED982 /* JPPhotoBrowserAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPPhotoBrowserAnimator.swift; sourceTree = "<group>"; };
 		F55FE2111DF96480005515B3 /* JPWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPWebViewController.swift; sourceTree = "<group>"; };
 		F58992B81DFE363500B050EA /* JPComposeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPComposeBtn.swift; sourceTree = "<group>"; };
 		F58992B91DFE363500B050EA /* JPComposeBtn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeBtn.xib; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 			children = (
 				F5FDEAD41E120C0100F62A32 /* JPPhotoBrowserController.swift */,
 				F5FDEAD61E120C4100F62A32 /* JPPhotoViewController.swift */,
+				F55365E31E124E12004ED982 /* JPPhotoBrowserAnimator.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				A2CBFB0A1DE3E2DA001D82B6 /* ConstraintRelatableTarget.swift in Sources */,
 				A288D8A31DEE9F250061C0CD /* JPStatusPicModel.swift in Sources */,
 				F58A08E81DDFF799001E9521 /* NSString+HMObjcSugar.m in Sources */,
+				F55365E41E124E12004ED982 /* JPPhotoBrowserAnimator.swift in Sources */,
 				A2CBFB011DE3E2DA001D82B6 /* ConstraintMaker.swift in Sources */,
 				A2CBFAFA1DE3E2DA001D82B6 /* ConstraintInsetTarget.swift in Sources */,
 				A2CBFB0E1DE3E2DA001D82B6 /* ConstraintViewDSL.swift in Sources */,

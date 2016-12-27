@@ -75,6 +75,8 @@ class JPHomeController: JPBaseViewController {
                 return
         }
         let photoController = JPPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
+        //使用自定义转场 保留当前控制器
+        photoController.modalPresentationStyle = .custom
         present(photoController, animated: true, completion: nil)
         
         

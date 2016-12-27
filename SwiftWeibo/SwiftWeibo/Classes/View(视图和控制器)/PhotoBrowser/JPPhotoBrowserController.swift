@@ -52,7 +52,7 @@ fileprivate extension JPPhotoBrowserController {
         //2->添加分页控制器子控制器
         //--1->实例化子控制器
         let photoView = JPPhotoViewController(urlString: urls[selectedIndex], selectedIndex: selectedIndex)
-        //--2->设置子控制器
+        //--2->设置子控制器 初始化当前显示的控制器 只有一个
         pageViewController.setViewControllers([photoView], direction: .forward, animated: false, completion: nil)
         
         //3->将分页控制器添加为当前控制器的子控制器
@@ -63,11 +63,61 @@ fileprivate extension JPPhotoBrowserController {
         //4->设置手势识别
         view.gestureRecognizers = pageViewController.gestureRecognizers
         
-        //添加photoView的点击手势
+        //5->设置数据源
+        pageViewController.dataSource = self
+        
+        //添加的点击手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView))
-        photoView.view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
         
+    }
+}
+
+// MARK: - UIPageViewControllerDataSource
+extension JPPhotoBrowserController: UIPageViewControllerDataSource {
+    
+    /// 返回前一页控制器
+    ///
+    /// - Parameters:
+    ///   - pageViewController: pageViewController description
+    ///   - viewController: 当前显示的控制器
+    /// - Returns: 返回前一页控制器 返回nil 到头了
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
+        //拿到当前显示的控制器的索引
+        var index = (viewController as! JPPhotoViewController).selectedIndex
+        //判断是否到头
+        if index <= 0 {
+            return nil
+        }
         
+        //计算前一页控制器的索引并实例化一个控制器
+        index -= 1
+        let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index)
+        //返回实例化的显示图片的控制器
+        return photoView
+        
+    }
+    
+    /// 返回后一页
+    ///
+    /// - Parameters:
+    ///   - pageViewController: pageViewController description
+    ///   - viewController: 当前显示的控制器
+    /// - Returns: 返回后一页的控制器 返回nil 到头了
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        //拿到当前显示的控制器的索引
+        var index = (viewController as! JPPhotoViewController).selectedIndex
+        //判断是否到头
+        index += 1
+        if index >= urls.count {
+            return nil
+        }
+        //计算后一页控制器的索引并实例化一个控制器
+        let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index)
+        //返回实例化的显示图片的控制器
+        return photoView
+
     }
 }
