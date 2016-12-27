@@ -59,26 +59,38 @@ extension JPPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
         
         //目标视图
         let toView = transitionContext.view(forKey: .to)
-        let toVC = transitionContext.viewController(forKey: .to)
         
         //拿到系统提供的容器视图
         let containerView = transitionContext.containerView
         //将目标视图添加到容器视图
         containerView.addSubview(toView!)
-        //告诉上下文转转场动画结束  结束之前 默认没有交互
-        transitionContext.completeTransition(true)
         
-        
+        //简单的动画
+        toView?.alpha = 0
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+            toView?.alpha = 1
+        }) { (_) in
+            
+            //告诉上下文转转场动画结束  结束之前 默认没有交互
+            transitionContext.completeTransition(true)
+        }
     }
     /// 解除动画  从 browser 回到 Home
     private func dismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         //拿到照片浏览的视图 是from
         let fromView = transitionContext.view(forKey: .from)
-        //移除
-        fromView?.removeFromSuperview()
-        //结束转场
-        transitionContext.completeTransition(true)
+        
+        //简单的动画
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+            fromView?.alpha = 0
+        }) { (_) in
+            
+            //移除
+            fromView?.removeFromSuperview()
+            //结束转场
+            transitionContext.completeTransition(true)
+        }
         
     }
 
