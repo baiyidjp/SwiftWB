@@ -93,14 +93,22 @@ class JPStatusPictureView: UIView {
         guard let picUrls = picUrls else {
             return
         }
-        //使用KVC获取字符串数组
+        //使用KVC获取URL字符串数组
         let urlStrs = (picUrls as NSArray).value(forKey: "large_Pic")
+        //获取可视的imageView集合
+        var imageViews = [UIImageView]()
+        for imageV in subviews {
+            if !imageV.isHidden {
+                imageViews.append(imageV as! UIImageView)
+            }
+        }
         
         //发送通知 传输数据 将当前点击的图片的下标还有URL数组传递给HomeController
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: JPStatusPicturesSelectedNotification),
                                         object: self,
                                         userInfo: [JPStatusPicturesSelectedIndexKey:index,
-                                                   JPStatusPicturesSelectedUrlsKey:urlStrs])
+                                                   JPStatusPicturesSelectedUrlsKey:urlStrs,
+                                                   JPStatusPicturesSelectedImageViewsKey:imageViews])
         
     }
 

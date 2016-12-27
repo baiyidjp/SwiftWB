@@ -26,6 +26,8 @@ let JPStatusPicturesSelectedNotification = "JPSelectedImageNotification"
 let JPStatusPicturesSelectedIndexKey = "JPStatusPicturesSelectedIndexKey"
 /// 所有照片的Url数组的 key值
 let JPStatusPicturesSelectedUrlsKey = "JPStatusPicturesSelectedUrlsKey"
+/// 所有可视的ImageView key值
+let JPStatusPicturesSelectedImageViewsKey = "JPStatusPicturesSelectedImageViewsKey"
 
 //MARK: 授权需要信息
 //应用的ID

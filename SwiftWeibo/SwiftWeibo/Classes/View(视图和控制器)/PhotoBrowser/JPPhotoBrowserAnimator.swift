@@ -12,7 +12,24 @@ import UIKit
 /// UIViewControllerTransitioningDelegate 控制器自定义转场的代理
 class JPPhotoBrowserAnimator: NSObject,UIViewControllerTransitioningDelegate {
     
+    /// 是否是展示
     fileprivate var isPresent = false
+    
+    /// 展示临时视图的位置/图片来源 用于动画
+    var presentingImageView: UIImageView? {
+        
+        didSet {
+            self.currentImageView = presentingImageView
+        }
+    }
+    
+    var currentImageView: UIImageView?
+    
+    
+    override init() {
+        
+        super.init()
+    }
     
     /// 返回真正的 present 动画
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -62,15 +79,41 @@ extension JPPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
         
         //拿到系统提供的容器视图
         let containerView = transitionContext.containerView
+        
+        //新建临时的展示视图 用于动画
+        let imageView = UIImageView()
+        guard let image = currentImageView?.image else {
+            return
+        }
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        guard let frame = currentImageView?.frame else {
+            return
+        }
+        
+        //拿到presentingImageView父视图上的presentingImageView 在containerView 上的frame
+        imageView.frame = containerView.convert(frame, from: currentImageView?.superview)
+        //添加临时的imageView
+        containerView.addSubview(imageView)
+        //计算目的frame
+        let toRect = setImageSize(image: image)
+        
         //将目标视图添加到容器视图
         containerView.addSubview(toView!)
         
         //简单的动画
         toView?.alpha = 0
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            toView?.alpha = 1
+        UIView.animate(withDuration: transitionDuration(using: transitionContext),
+                       animations: {
+                        //设置变大
+                        imageView.frame = toRect
         }) { (_) in
-            
+            //删除临时view
+            imageView.removeFromSuperview()
+            //设置目标视图显示
+            toView?.alpha = 1
             //告诉上下文转转场动画结束  结束之前 默认没有交互
             transitionContext.completeTransition(true)
         }
@@ -81,17 +124,67 @@ extension JPPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
         //拿到照片浏览的视图 是from
         let fromView = transitionContext.view(forKey: .from)
         
+        //拿到系统提供的容器视图
+        let containerView = transitionContext.containerView
+        
+        //新建临时的展示视图 用于动画
+        let imageView = UIImageView()
+        
+        guard let image = currentImageView?.image else {
+            return
+        }
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        //计算目的frame
+        imageView.frame = setImageSize(image: image)
+        
+        guard let frame = currentImageView?.frame else {
+            return
+        }
+        
+        //拿到presentingImageView父视图上的presentingImageView 在containerView 上的frame
+        let toRect = containerView.convert(frame, from: currentImageView?.superview)
+        //添加临时的imageView
+        containerView.addSubview(imageView)
+
+        
         //简单的动画
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            fromView?.alpha = 0
+        fromView?.alpha = 0
+        UIView.animate(withDuration: transitionDuration(using: transitionContext),
+                       animations: {
+                        imageView.frame = toRect
         }) { (_) in
             
             //移除
             fromView?.removeFromSuperview()
+            imageView.removeFromSuperview()
             //结束转场
             transitionContext.completeTransition(true)
         }
         
     }
+    
+    /// 根据图片设置 imageView的尺寸
+    ///
+    /// - Parameter image:
+    fileprivate func setImageSize(image: UIImage)-> CGRect {
+        
+        let screenSize = UIScreen.main.bounds.size
+        var size = screenSize
+        // 根据屏幕的宽度计算图片的高度
+        size.height = image.size.height * size.width / image.size.width
+        //创建一个CGRect
+        var rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+
+        //设置短图居中显示
+        if size.height < screenSize.height {
+            rect.origin.y = (screenSize.height - size.height)*0.5
+        }
+        
+        return rect
+    }
+
 
 }

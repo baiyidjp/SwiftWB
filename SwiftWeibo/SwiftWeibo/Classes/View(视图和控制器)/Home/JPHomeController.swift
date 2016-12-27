@@ -70,11 +70,13 @@ class JPHomeController: JPBaseViewController {
         
         guard let dict = notifation.userInfo,
             let selectedIndex = dict[JPStatusPicturesSelectedIndexKey] as? Int,
-            let urls = dict[JPStatusPicturesSelectedUrlsKey] as? [String]
+            let urls = dict[JPStatusPicturesSelectedUrlsKey] as? [String],
+            let imageViews = dict[JPStatusPicturesSelectedImageViewsKey] as? [UIImageView]
+        
             else {
                 return
         }
-        let photoController = JPPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
+        let photoController = JPPhotoBrowserController(selectedIndex: selectedIndex, urls: urls,imageViews: imageViews)
         //使用自定义转场 保留当前控制器
         photoController.modalPresentationStyle = .custom
         present(photoController, animated: true, completion: nil)

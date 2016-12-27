@@ -79,7 +79,7 @@ fileprivate extension JPPhotoViewController {
     
     func setupUI() {
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.black
         
         view.addSubview(scrollView)
         //设置scrol的bounds

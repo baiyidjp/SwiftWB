@@ -11,21 +11,27 @@ import UIKit
 /// 照片浏览控制器 负责用户交互
 class JPPhotoBrowserController: UIViewController {
     
-    /// 选中的图片的下标
-    fileprivate let selectedIndex: Int
+    /// 顶部提示
+    fileprivate lazy var tipCountLabel: UILabel = UILabel(text: "", fontSize: 15, textColor: UIColor.white, textAlignment: .center)
+    
+    /// 当前图片的下标
+    fileprivate var selectedIndex: Int
     /// URL的集合
     fileprivate let urls: [String]
     
+    fileprivate let imageViews: [UIImageView]
+    
     private let animator: JPPhotoBrowserAnimator
     
-    init(selectedIndex: Int,urls: [String]) {
+    init(selectedIndex: Int,urls: [String],imageViews: [UIImageView]) {
         
         self.selectedIndex = selectedIndex
         self.urls = urls
+        self.imageViews = imageViews
         
         //实例化转场代理
         animator = JPPhotoBrowserAnimator()
-        
+        animator.presentingImageView = imageViews[selectedIndex]
         //调用父类的构造函数
         super.init(nibName: nil, bundle: nil)
         //代理是父类的方法 所以需要写在父类之后
@@ -41,10 +47,21 @@ class JPPhotoBrowserController: UIViewController {
 
         setupUI()
     }
-    
+    /// 退出当前视图
     @objc fileprivate func tapPhotoView() {
-        
+        animator.presentingImageView = imageViews[selectedIndex]
         dismiss(animated: true, completion: nil)
+    }
+    
+    /// 设置顶部提示的文本
+    fileprivate func setTipLabel(index: Int) {
+        
+        let allCount = urls.count
+        let str = "\(index+1) / \(allCount)"
+        
+        let attributeStr = NSMutableAttributedString(string: str)
+        attributeStr.addAttributes([NSFontAttributeName:UIFont.systemFont(ofSize: 17)], range: NSMakeRange(0, 1))
+        tipCountLabel.attributedText = attributeStr
     }
 }
 
@@ -52,8 +69,7 @@ fileprivate extension JPPhotoBrowserController {
     
     func setupUI() {
         
-        view.backgroundColor = UIColor.red;
-        
+        view.backgroundColor = UIColor.black;
         /// 添加分页控制器
         //1->实例化
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey:20])
@@ -78,6 +94,16 @@ fileprivate extension JPPhotoBrowserController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView))
         view.addGestureRecognizer(tap)
         
+        if urls.count == 1 {
+            tipCountLabel.isHidden = true
+        }
+        view.addSubview(tipCountLabel)
+        tipCountLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(20)
+            make.size.equalTo(CGSize(width: view.bounds.width, height: 25))
+        }
+        setTipLabel(index: selectedIndex)
     }
 }
 
@@ -94,6 +120,11 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         
         //拿到当前显示的控制器的索引
         var index = (viewController as! JPPhotoViewController).selectedIndex
+        //记录当前图片的下标
+        selectedIndex = index
+        //改变提示label
+        setTipLabel(index: index)
+        print(index)
         //判断是否到头
         if index <= 0 {
             return nil
@@ -101,6 +132,7 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         
         //计算前一页控制器的索引并实例化一个控制器
         index -= 1
+
         let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index)
         //返回实例化的显示图片的控制器
         return photoView
@@ -117,6 +149,11 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         
         //拿到当前显示的控制器的索引
         var index = (viewController as! JPPhotoViewController).selectedIndex
+        //记录当前图片的下标
+        selectedIndex = index
+        //改变提示label
+        setTipLabel(index: index)
+        print(index)
         //判断是否到头
         index += 1
         if index >= urls.count {
@@ -128,4 +165,5 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         return photoView
 
     }
+    
 }
