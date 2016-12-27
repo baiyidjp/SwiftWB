@@ -16,12 +16,20 @@ class JPPhotoBrowserController: UIViewController {
     /// URL的集合
     fileprivate let urls: [String]
     
+    private let animator: JPPhotoBrowserAnimator
+    
     init(selectedIndex: Int,urls: [String]) {
         
         self.selectedIndex = selectedIndex
         self.urls = urls
+        
+        //实例化转场代理
+        animator = JPPhotoBrowserAnimator()
+        
         //调用父类的构造函数
         super.init(nibName: nil, bundle: nil)
+        //代理是父类的方法 所以需要写在父类之后
+        transitioningDelegate = animator
     }
     
     required init?(coder aDecoder: NSCoder) {
