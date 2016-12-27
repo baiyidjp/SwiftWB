@@ -20,6 +20,12 @@ let ScreenHeight = UIScreen.main.bounds.height
 let JPUserShouldLoginNotification = "JPUserShouldLoginNotification"
 /// 用户登陆成功的通知名
 let JPUserLoginSuccessNotification = "JPUserLoginSuccessNotification"
+/// 选中照片的通知名
+let JPStatusPicturesSelectedNotification = "JPSelectedImageNotification"
+/// 选中的照片的index key值
+let JPStatusPicturesSelectedIndexKey = "JPStatusPicturesSelectedIndexKey"
+/// 所有照片的Url数组的 key值
+let JPStatusPicturesSelectedUrlsKey = "JPStatusPicturesSelectedUrlsKey"
 
 //MARK: 授权需要信息
 //应用的ID

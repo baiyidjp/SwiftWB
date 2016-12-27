@@ -21,7 +21,15 @@ class JPHomeController: JPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //注册选中照片的通知
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedPicture), name: NSNotification.Name(rawValue: JPStatusPicturesSelectedNotification), object: nil)
     }
+    
+    deinit {
+        //移除通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     
     //加载数据
     override func loadData() {
@@ -52,6 +60,23 @@ class JPHomeController: JPBaseViewController {
         let testVC = JPTestViewController()
         
         navigationController?.pushViewController(testVC, animated: true)
+        
+    }
+    
+    /// 点击图片的通知方法
+    ///
+    /// - Parameter notifation: 通知
+    @objc fileprivate func selectedPicture(notifation:Notification) {
+        
+        guard let dict = notifation.userInfo,
+            let selectedIndex = dict[JPStatusPicturesSelectedIndexKey] as? Int,
+            let urls = dict[JPStatusPicturesSelectedUrlsKey] as? [String]
+            else {
+                return
+        }
+        let photoController = JPPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
+        present(photoController, animated: true, completion: nil)
+        
         
     }
     

@@ -81,6 +81,29 @@ class JPStatusPictureView: UIView {
         }
     }
     
+    @objc fileprivate func tapImageView(gesture:UITapGestureRecognizer) {
+        
+        //获取对应的tag值
+        var index = gesture.view!.tag;
+        //针对四张图片单独处理
+        if index > 2 && picUrls?.count == 4 {
+            index -= 1
+        }
+        //从picUrls中 获得 thumbnail_pic 的字符串数组
+        guard let picUrls = picUrls else {
+            return
+        }
+        //使用KVC获取字符串数组
+        let urlStrs = (picUrls as NSArray).value(forKey: "thumbnail_pic")
+        
+        //发送通知 传输数据 将当前点击的图片的下标还有URL数组传递给HomeController
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: JPStatusPicturesSelectedNotification),
+                                        object: self,
+                                        userInfo: [JPStatusPicturesSelectedIndexKey:index,
+                                                   JPStatusPicturesSelectedUrlsKey:urlStrs])
+        
+    }
+
 }
 
 extension JPStatusPictureView {
@@ -112,6 +135,11 @@ extension JPStatusPictureView {
             let imageY = row * (JPStatusPictureWidth + JPStatusPicIntterMargin) + JPStatusPicOutterMargin
             
             imageV.frame = CGRect(x: imageX, y: imageY, width: JPStatusPictureWidth, height: JPStatusPictureWidth)
+            //添加手势
+            imageV.tag = i;
+            imageV.isUserInteractionEnabled = true;
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapImageView))
+            imageV.addGestureRecognizer(tap);
             
             addGifView(imageV: imageV)
         }

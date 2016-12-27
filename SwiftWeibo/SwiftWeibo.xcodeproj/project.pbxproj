@@ -118,6 +118,8 @@
 		F5CA7C041DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C031DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift */; };
 		F5CA7C071DE7D13300A1FB69 /* JPUserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C061DE7D13300A1FB69 /* JPUserAccountModel.swift */; };
 		F5CA7C0A1DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA7C091DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift */; };
+		F5FDEAD51E120C0100F62A32 /* JPPhotoBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDEAD41E120C0100F62A32 /* JPPhotoBrowserController.swift */; };
+		F5FDEAD71E120C4200F62A32 /* JPPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDEAD61E120C4100F62A32 /* JPPhotoViewController.swift */; };
 		F5FEC74E1DFA8283007951B3 /* JPComposeNewWeiboController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5FEC74D1DFA8283007951B3 /* JPComposeNewWeiboController.xib */; };
 /* End PBXBuildFile section */
 
@@ -252,6 +254,8 @@
 		F5CA7C031DE7D10300A1FB69 /* JPStatusListViewModel(列表视图模型).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPStatusListViewModel(列表视图模型).swift"; sourceTree = "<group>"; };
 		F5CA7C061DE7D13300A1FB69 /* JPUserAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPUserAccountModel.swift; sourceTree = "<group>"; };
 		F5CA7C091DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPHomeNavTitleBtn.swift; sourceTree = "<group>"; };
+		F5FDEAD41E120C0100F62A32 /* JPPhotoBrowserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPPhotoBrowserController.swift; sourceTree = "<group>"; };
+		F5FDEAD61E120C4100F62A32 /* JPPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPPhotoViewController.swift; sourceTree = "<group>"; };
 		F5FEC74D1DFA8283007951B3 /* JPComposeNewWeiboController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JPComposeNewWeiboController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -539,6 +543,7 @@
 		F58A08B91DDFF3F7001E9521 /* View(视图和控制器) */ = {
 			isa = PBXGroup;
 			children = (
+				F5FDEAD31E120BC400F62A32 /* PhotoBrowser */,
 				F58A08BC1DDFF3F7001E9521 /* Main */,
 				F58A08BB1DDFF3F7001E9521 /* Home */,
 				F58A08BA1DDFF3F7001E9521 /* Discover */,
@@ -675,6 +680,15 @@
 				F5CA7C091DE82C8200A1FB69 /* JPHomeNavTitleBtn.swift */,
 			);
 			path = JPHomeNavTitleBtn;
+			sourceTree = "<group>";
+		};
+		F5FDEAD31E120BC400F62A32 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				F5FDEAD41E120C0100F62A32 /* JPPhotoBrowserController.swift */,
+				F5FDEAD61E120C4100F62A32 /* JPPhotoViewController.swift */,
+			);
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -838,6 +852,7 @@
 				A2CBFB0F1DE3E2DA001D82B6 /* Debugging.swift in Sources */,
 				A2CBFAF51DE3E2DA001D82B6 /* ConstraintConfig.swift in Sources */,
 				F58992BC1DFE363500B050EA /* JPComposeBtn.swift in Sources */,
+				F5FDEAD71E120C4200F62A32 /* JPPhotoViewController.swift in Sources */,
 				A2C3B9151DF7F9C1008B0ED2 /* JPEmoticonManager.swift in Sources */,
 				F58A08ED1DDFF799001E9521 /* UINavigationController+HMObjcSugar.m in Sources */,
 				F58A08EC1DDFF799001E9521 /* UILabel+HMObjcSugar.m in Sources */,
@@ -861,6 +876,7 @@
 				A2CBFAF31DE3E2DA001D82B6 /* Constraint.swift in Sources */,
 				A2D5BB731DE2CACB00556800 /* JPVisitorView.swift in Sources */,
 				F58A08F71DE08821001E9521 /* JPTestViewController.swift in Sources */,
+				F5FDEAD51E120C0100F62A32 /* JPPhotoBrowserController.swift in Sources */,
 				A2C809231DFFC9EF00A31983 /* JPEmoticonViewCell.swift in Sources */,
 				A2EB2D6A1DE57E2700D2CCE5 /* JPNetworkManager+Extension.swift in Sources */,
 				A2C8091D1DFF916E00A31983 /* JPEmoticonView.swift in Sources */,
