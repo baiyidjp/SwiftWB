@@ -51,6 +51,7 @@ class JPPhotoViewController: UIViewController {
             guard let image = image  else {
                 return
             }
+            //根据图片尺寸设置imageView的尺寸
             self.setImageSize(image: image)
         }
     }

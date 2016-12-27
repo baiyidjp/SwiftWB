@@ -32,10 +32,6 @@ class JPPhotoBrowserController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        
-        print(selectedIndex)
-        print(urls)
-
     }
     
     @objc fileprivate func tapPhotoView() {
@@ -49,19 +45,28 @@ fileprivate extension JPPhotoBrowserController {
     func setupUI() {
         
         view.backgroundColor = UIColor.red;
-        //添加子控制器
-        //1->实例化子控制器
+        
+        /// 添加分页控制器
+        //1->实例化
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey:20])
+        //2->添加分页控制器子控制器
+        //--1->实例化子控制器
         let photoView = JPPhotoViewController(urlString: urls[selectedIndex], selectedIndex: selectedIndex)
-        //2->将子控制器的View添加到当前的View上
-        view.addSubview(photoView.view)
-        //3->将子控制器添加到当前的控制器
-        addChildViewController(photoView)
-        //4->通知当前控制器已经添加完成
-        photoView.didMove(toParentViewController: self)
+        //--2->设置子控制器
+        pageViewController.setViewControllers([photoView], direction: .forward, animated: false, completion: nil)
+        
+        //3->将分页控制器添加为当前控制器的子控制器
+        view.addSubview(pageViewController.view)
+        addChildViewController(pageViewController)
+        pageViewController.didMove(toParentViewController: self)
+        
+        //4->设置手势识别
+        view.gestureRecognizers = pageViewController.gestureRecognizers
         
         //添加photoView的点击手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView))
         photoView.view.addGestureRecognizer(tap)
+        
         
         
     }
