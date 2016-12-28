@@ -60,7 +60,8 @@ class JPPhotoViewController: UIViewController {
             return
         }
         // reference to member 'sd_setImage(with:placeholderImage:options:)'
-        imageV.sd_setImage(with: url, placeholderImage: placeholderImage, options: .progressiveDownload) { (image, _, _, _) in
+        imageV.setShowActivityIndicator(true)
+        imageV.sd_setImage(with: url, placeholderImage: placeholderImage, options: []) { (image, _, _, _) in
             
             guard let image = image  else {
                 return
@@ -91,39 +92,32 @@ class JPPhotoViewController: UIViewController {
         //设置短图居中显示
         if size.height < scrollView.bounds.size.height*scale {
             imageV.frame.origin.y = (scrollView.bounds.size.height - size.height)*0.5
+            if imageV.frame.origin.y < 0 {
+                imageV.frame.origin.y = 0
+            }
         }
     }
     /// 单击图片 关闭
     @objc fileprivate func oneTapImageView() {
-        print("单击")
-        
-//        if isBig {
-//            UIView .animate(withDuration: 0.3, animations: {
-//                
-//                self.imageV.transform = CGAffineTransform(scaleX: 1, y: 1)
-//                
-//            }) { (_) in
-//                self.delegate?.photoViewControllerImageViewTap()
-//            }
-//        }else {
-            delegate?.photoViewControllerImageViewTap()
-//        }
+        //代理-Browser中
+        delegate?.photoViewControllerImageViewTap()
     }
 
     
     /// 双击图片 放大
     @objc fileprivate func doubleTapImageView(gesture: UITapGestureRecognizer) {
         print("双击")
-        isBig = !isBig
-        let scale: CGFloat = isBig ? 2 : 1
+        
+        let scale: CGFloat = scrollView.zoomScale < 2 ? 2 : 1
         UIView .animate(withDuration: 0.3, animations: {
             
-//            self.imageV.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.scrollView.zoomScale = scale
             
-        }) { (_) in
-            
-        }
-        
+        })
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        scrollView.zoomScale = 1
     }
 }
 
@@ -139,8 +133,9 @@ fileprivate extension JPPhotoViewController {
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 2
         
-        imageV.frame = CGRect(x: 0, y: 0, width: placeholderImage.size.width, height: placeholderImage.size.height)
-        imageV.center = scrollView.center
+        //设置初始位置
+        setImageSize(image: placeholderImage)
+        
         scrollView.addSubview(imageV)
         //开启交互
         imageV.isUserInteractionEnabled = true
