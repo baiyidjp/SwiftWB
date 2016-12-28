@@ -23,15 +23,13 @@ class JPPhotoViewController: UIViewController {
     
     /// 懒加载滚动视图 和 图片视图
     fileprivate lazy var scrollView = UIScrollView()
-    fileprivate lazy var imageV = UIImageView()
+    lazy var imageV = UIImageView()
     
     /// 图片的URL 和 下标
     fileprivate let urlString: String
     let selectedIndex: Int
     fileprivate let placeholderImage: UIImage
     
-    /// 是否放大
-    var isBig = false
     
     //构造函数
     init(urlString: String,selectedIndex: Int,placeholderImage: UIImage) {
@@ -115,10 +113,13 @@ class JPPhotoViewController: UIViewController {
             
         })
     }
+    
+    /// 控制器消失时 恢复图片的缩放为1
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         scrollView.zoomScale = 1
     }
+    
 }
 
 fileprivate extension JPPhotoViewController {

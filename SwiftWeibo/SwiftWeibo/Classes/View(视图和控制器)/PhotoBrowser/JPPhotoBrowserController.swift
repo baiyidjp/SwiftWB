@@ -7,21 +7,26 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 /// 照片浏览控制器 负责用户交互
 class JPPhotoBrowserController: UIViewController {
     
     /// 顶部提示
-    fileprivate lazy var tipCountLabel: UILabel = UILabel(text: "", fontSize: 15, textColor: UIColor.white, textAlignment: .center)
-    
+    fileprivate lazy var tipCountLabel: UILabel = UILabel(text: "", fontSize: 15, textColor: UIColor.darkGray, textAlignment: .center)
+    /// 保存按钮
+    fileprivate lazy var saveButton: UIButton = UIButton()
+
     /// 当前图片的下标
     fileprivate var selectedIndex: Int
     /// URL的集合
     fileprivate let urls: [String]
-    
+    /// imageView的集合
     fileprivate let imageViews: [UIImageView]
-    
+    /// 转场动画代理
     private let animator: JPPhotoBrowserAnimator
+    /// 记录当前的图片控制器
+    fileprivate var currentPhotoCtrl: JPPhotoViewController?
     
     init(selectedIndex: Int,urls: [String],imageViews: [UIImageView]) {
         
@@ -64,6 +69,26 @@ class JPPhotoBrowserController: UIViewController {
         tipCountLabel.font = UIFont.boldSystemFont(ofSize: 18)
         tipCountLabel.attributedText = attributeStr
     }
+    
+    /// 保存图片
+    @objc fileprivate func saveImage() {
+        
+        // 1. 取出图像
+        guard let image = currentPhotoCtrl?.imageV.image  else {
+            return
+        }
+        // 2. 保存图像
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    //  - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+        
+        let message = (error == nil) ? "保存成功" : "保存失败"
+        
+        SVProgressHUD.showSuccess(withStatus: message)
+    }
+
 }
 
 fileprivate extension JPPhotoBrowserController {
@@ -78,6 +103,7 @@ fileprivate extension JPPhotoBrowserController {
         //--1->实例化子控制器
         let photoView = JPPhotoViewController(urlString: urls[selectedIndex], selectedIndex: selectedIndex,placeholderImage: imageViews[selectedIndex].image!)
         photoView.delegate = self
+        currentPhotoCtrl = photoView
         //--2->设置子控制器 初始化当前显示的控制器 只有一个
         pageViewController.setViewControllers([photoView], direction: .forward, animated: false, completion: nil)
         
@@ -103,6 +129,20 @@ fileprivate extension JPPhotoBrowserController {
             make.size.equalTo(CGSize(width: view.bounds.width, height: 25))
         }
         setTipLabel(index: selectedIndex)
+        
+        //保存按钮
+        saveButton.setTitle("保存", for: .normal)
+        saveButton.backgroundColor = UIColor.black
+        saveButton.layer.cornerRadius = 5
+        saveButton.layer.borderWidth = 1
+        saveButton.layer.borderColor = UIColor.white.cgColor
+        view.addSubview(saveButton)
+        saveButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(tipCountLabel.snp.centerY)
+            make.right.equalTo(-20)
+            make.size.equalTo(CGSize(width: 50, height: 25))
+        }
+        saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
     }
 }
 
@@ -172,6 +212,8 @@ extension JPPhotoBrowserController: UIPageViewControllerDelegate {
         guard let photoView = pageViewController.viewControllers?[0] as? JPPhotoViewController else {
             return
         }
+        //记录当前的控制器
+        currentPhotoCtrl = photoView
         let index = photoView.selectedIndex
         //记录当前图片的下标
         selectedIndex = index
