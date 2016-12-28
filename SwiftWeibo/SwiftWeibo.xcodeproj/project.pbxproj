@@ -730,7 +730,7 @@
 				TargetAttributes = {
 					A228A1301DDF016000F20EA0 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = E8A54ES6H6;
+						DevelopmentTeam = U37X4645WQ;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -1038,7 +1038,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = E8A54ES6H6;
+				DEVELOPMENT_TEAM = U37X4645WQ;
 				INFOPLIST_FILE = SwiftWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1056,7 +1056,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = E8A54ES6H6;
+				DEVELOPMENT_TEAM = U37X4645WQ;
 				INFOPLIST_FILE = SwiftWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

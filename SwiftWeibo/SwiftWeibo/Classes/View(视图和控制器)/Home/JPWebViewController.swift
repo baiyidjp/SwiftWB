@@ -40,7 +40,7 @@ extension JPWebViewController {
         view.insertSubview(webView, belowSubview: JPNavigationBar)
         
         webView.backgroundColor = UIColor.white
-        
+        webView.scalesPageToFit = true
         //设置contentInset
         webView.scrollView.contentInset.top = JPNavigationBar.bounds.height
     }

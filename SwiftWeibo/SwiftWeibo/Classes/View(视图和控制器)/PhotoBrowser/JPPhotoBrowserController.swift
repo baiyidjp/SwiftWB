@@ -60,7 +60,8 @@ class JPPhotoBrowserController: UIViewController {
         let str = "\(index+1) / \(allCount)"
         
         let attributeStr = NSMutableAttributedString(string: str)
-        attributeStr.addAttributes([NSFontAttributeName:UIFont.systemFont(ofSize: 17),NSForegroundColorAttributeName:UIColor.red], range: NSMakeRange(0, 1))
+        attributeStr.addAttributes([NSForegroundColorAttributeName:UIColor.red], range: NSMakeRange(0, 1))
+        tipCountLabel.font = UIFont.boldSystemFont(ofSize: 18)
         tipCountLabel.attributedText = attributeStr
     }
 }
@@ -75,7 +76,8 @@ fileprivate extension JPPhotoBrowserController {
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey:20])
         //2->添加分页控制器子控制器
         //--1->实例化子控制器
-        let photoView = JPPhotoViewController(urlString: urls[selectedIndex], selectedIndex: selectedIndex)
+        let photoView = JPPhotoViewController(urlString: urls[selectedIndex], selectedIndex: selectedIndex,placeholderImage: imageViews[selectedIndex].image!)
+        photoView.delegate = self
         //--2->设置子控制器 初始化当前显示的控制器 只有一个
         pageViewController.setViewControllers([photoView], direction: .forward, animated: false, completion: nil)
         
@@ -90,10 +92,6 @@ fileprivate extension JPPhotoBrowserController {
         //5->设置数据源 代理
         pageViewController.dataSource = self
         pageViewController.delegate = self
-
-        //添加的点击手势
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView))
-        view.addGestureRecognizer(tap)
         
         if urls.count == 1 {
             tipCountLabel.isHidden = true
@@ -129,7 +127,8 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
         //计算前一页控制器的索引并实例化一个控制器
         index -= 1
 
-        let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index)
+        let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index,placeholderImage: imageViews[index].image!)
+        photoView.delegate = self
         //返回实例化的显示图片的控制器
         return photoView
         
@@ -152,7 +151,8 @@ extension JPPhotoBrowserController: UIPageViewControllerDataSource {
             return nil
         }
         //计算后一页控制器的索引并实例化一个控制器
-        let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index)
+        let photoView = JPPhotoViewController(urlString: urls[index], selectedIndex: index,placeholderImage: imageViews[index].image!)
+        photoView.delegate = self
         //返回实例化的显示图片的控制器
         return photoView
 
@@ -177,5 +177,14 @@ extension JPPhotoBrowserController: UIPageViewControllerDelegate {
         selectedIndex = index
         //改变提示label
         setTipLabel(index: index)
+    }
+}
+
+// MARK: - JPPhotoViewControllerDelegate
+extension JPPhotoBrowserController: JPPhotoViewControllerDelegate {
+    
+    func photoViewControllerImageViewTap() {
+        
+        tapPhotoView()
     }
 }

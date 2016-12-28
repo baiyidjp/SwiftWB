@@ -137,7 +137,7 @@ extension JPPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
-        //计算目的frame
+        //frame
         imageView.frame = setImageSize(image: image)
         
         guard let frame = currentImageView?.frame else {

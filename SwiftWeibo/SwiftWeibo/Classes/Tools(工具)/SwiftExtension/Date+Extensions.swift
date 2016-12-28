@@ -39,6 +39,8 @@ extension Date {
         
         //设置日期格式
         dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss zzz yyy"
+        //必须设置，否则无法解析
+        dateFormatter.locale = Locale(identifier: "en_US")
         //转换并且返回日期
         return dateFormatter.date(from: str)
     }
