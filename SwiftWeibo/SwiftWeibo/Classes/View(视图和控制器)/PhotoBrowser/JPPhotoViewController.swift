@@ -104,7 +104,6 @@ class JPPhotoViewController: UIViewController {
     
     /// 双击图片 放大
     @objc fileprivate func doubleTapImageView(gesture: UITapGestureRecognizer) {
-        print("双击")
         
         let scale: CGFloat = scrollView.zoomScale < 2 ? 2 : 1
         UIView .animate(withDuration: 0.3, animations: {
@@ -164,7 +163,7 @@ extension JPPhotoViewController: UIScrollViewDelegate {
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        print("viewForZooming")
+        
         return imageV
     }
     

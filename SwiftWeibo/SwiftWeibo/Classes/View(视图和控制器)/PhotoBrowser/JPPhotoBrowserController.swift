@@ -133,13 +133,13 @@ fileprivate extension JPPhotoBrowserController {
         //保存按钮
         saveButton.setTitle("保存", for: .normal)
         saveButton.backgroundColor = UIColor.black
+        saveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         saveButton.layer.cornerRadius = 5
         saveButton.layer.borderWidth = 1
         saveButton.layer.borderColor = UIColor.white.cgColor
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(tipCountLabel.snp.centerY)
-            make.right.equalTo(-20)
+            make.right.bottom.equalTo(-20)
             make.size.equalTo(CGSize(width: 50, height: 25))
         }
         saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)

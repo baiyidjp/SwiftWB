@@ -171,6 +171,11 @@ class JPComposeNewWeiboController: UIViewController {
         //刷新inputview
         textView.reloadInputViews()
     }
+    
+    /// 选择图片
+    @objc fileprivate func choosePictureClick() {
+            print("choose pic")
+    }
 }
 
 // MARK: - 设置界面
@@ -194,7 +199,7 @@ fileprivate extension JPComposeNewWeiboController {
     
     func setupBottomItems() {
         
-        let itemsName = [["imageName":"compose_toolbar_picture"],
+        let itemsName = [["imageName":"compose_toolbar_picture","actionName":"choosePictureClick"],
                          ["imageName":"compose_mentionbutton_background"],
                          ["imageName":"compose_trendbutton_background"],
                          ["imageName":"compose_emoticonbutton_background","actionName":"emoticonClick"],
