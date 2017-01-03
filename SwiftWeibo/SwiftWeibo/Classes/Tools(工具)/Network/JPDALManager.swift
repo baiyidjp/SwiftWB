@@ -23,13 +23,14 @@ class JPDALManager {
         guard let userid = JPNetworkManager.sharedManager.userAccount.uid else {
             return
         }
+        //MARK: 不从数据库加载
         //1.检查本地数据 如果有直接返回
-        let array = JPSQLiteManager.shared.loadStatusFromDB(userid: userid, since_id: since_id, max_id: max_id)
-            //判断数组的数量 没有数据返回的是空数组
-        if array.count > 0 {
-            completion(array, true)
-            return
-        }
+//        let array = JPSQLiteManager.shared.loadStatusFromDB(userid: userid, since_id: since_id, max_id: max_id)
+//            //判断数组的数量 没有数据返回的是空数组
+//        if array.count > 0 {
+//            completion(array, true)
+//            return
+//        }
         //2.加载网络数据
         JPNetworkManager.sharedManager.statusList(since_id: since_id, max_id: max_id) { (status, isSuccess) in
             

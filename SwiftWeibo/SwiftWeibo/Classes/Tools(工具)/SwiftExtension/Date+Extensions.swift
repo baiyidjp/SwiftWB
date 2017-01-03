@@ -61,7 +61,7 @@ extension Date {
                 return "\(delta/60)分钟前"
             }
             
-            return "\(delta/60*60)小时前"
+            return "\(delta/(60*60))小时前"
         }
         //其他天
         var fmt = " HH:mm"
