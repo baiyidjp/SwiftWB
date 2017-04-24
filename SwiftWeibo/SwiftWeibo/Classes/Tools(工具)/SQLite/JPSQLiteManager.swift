@@ -61,7 +61,7 @@ class JPSQLiteManager {
         //执行SQL
         queue.inDatabase { (db) in
             if db?.executeUpdate(sql, withArgumentsIn: [dateString]) == true {
-                print("删除了\(db?.changes())条数据")
+                print("删除了 \(String(describing: db?.changes()))条数据")
             }
         }
         
